@@ -104,11 +104,19 @@ export default function ProteinScroll() {
     ctx.drawImage(img, 0, 0, img.width, img.height, centerShiftX, centerShiftY, img.width * ratio, img.height * ratio);
   }
 
-  const opacityText1 = useTransform(scrollYProgress, [0, 0.1, 0.25], [1, 1, 0]);
-  const opacityText2 = useTransform(scrollYProgress, [0.25, 0.3, 0.55], [0, 1, 0]);
-  const opacityText3 = useTransform(scrollYProgress, [0.55, 0.6, 0.8], [0, 1, 0]);
-  const opacityText4 = useTransform(scrollYProgress, [0.8, 0.85, 0.95], [0, 1, 0]);
-  const opacityText5 = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
+  const opacityText1 = useTransform(scrollYProgress, [0, 0.05, 0.2], [1, 1, 0]);
+  
+  // New cinematic smoke & text reveal section
+  const smokeOpacity = useTransform(scrollYProgress, [0.2, 0.25, 0.45, 0.5], [0, 0.6, 0.6, 0]);
+  const smokeX = useTransform(scrollYProgress, [0.2, 0.5], ['-100%', '100%']);
+  const textOpacityPrimary = useTransform(scrollYProgress, [0.28, 0.33, 0.45, 0.5], [0, 1, 1, 0]);
+  const textOpacitySecondary = useTransform(scrollYProgress, [0.34, 0.38, 0.45, 0.5], [0, 1, 1, 0]);
+  const buttonOpacity = useTransform(scrollYProgress, [0.4, 0.45, 0.5], [0, 1, 0]);
+
+
+  const opacityText3 = useTransform(scrollYProgress, [0.5, 0.55, 0.75], [0, 1, 0]);
+  const opacityText4 = useTransform(scrollYProgress, [0.75, 0.8, 0.9], [0, 1, 0]);
+  const opacityText5 = useTransform(scrollYProgress, [0.9, 0.95, 1], [0, 1, 1]);
 
   return (
     <div ref={scrollRef} className="relative h-[400vh] w-full">
@@ -126,11 +134,39 @@ export default function ProteinScroll() {
                 <h1 className="text-5xl font-bold text-white md:text-7xl font-headline">Protein Zone</h1>
                 <p className="text-xl text-white/80 md:text-2xl">Fuel Your Strength</p>
             </motion.div>
-            
-            <motion.div style={{ opacity: opacityText2 }} className="flex h-full w-full items-center justify-start px-8 md:px-24">
-                <h2 className="text-4xl font-semibold md:text-6xl font-headline">Ultra-Clean Formula</h2>
-            </motion.div>
 
+            {/* Cinematic Smoke & Text Reveal */}
+            <motion.div 
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-black/40 to-transparent"
+                style={{
+                  opacity: smokeOpacity,
+                  x: smokeX,
+                  background: 'linear-gradient(90deg, rgba(15,15,15,0) 0%, rgba(20,20,20,0.7) 40%, rgba(20,20,20,0.7) 60%, rgba(15,15,15,0) 100%)',
+                  filter: 'blur(40px)',
+                  transform: 'translateY(10%)'
+                }}
+              />
+              <div className="relative w-full max-w-3xl px-8 text-left">
+                <motion.h2 style={{ opacity: textOpacityPrimary }} className="text-4xl font-semibold md:text-6xl font-headline text-white/90">
+                  Strength is built.<br/>Not borrowed.
+                </motion.h2>
+                <motion.p style={{ opacity: textOpacitySecondary }} className="mt-4 text-lg text-white/60 md:text-xl">
+                  What you feed your body decides how far it goes.
+                </motion.p>
+                <motion.div style={{ opacity: buttonOpacity }} className="mt-8">
+                  <Button
+                    variant="outline"
+                    className="border-white/25 bg-transparent text-white/75 hover:bg-white/10 hover:text-white transition-all duration-300"
+                  >
+                    Fuel Your Body
+                  </Button>
+                </motion.div>
+              </div>
+            </motion.div>
+            
             <motion.div style={{ opacity: opacityText3 }} className="flex h-full w-full items-center justify-end px-8 text-right md:px-24">
                 <div>
                     <h2 className="text-4xl font-semibold md:text-6xl font-headline">High Protein.</h2>
