@@ -81,11 +81,11 @@ const ContactSection = () => (
   <section id="contact" className="py-24 sm:py-32">
     <div className="container mx-auto px-6 max-w-3xl">
       <h2 className="text-5xl md:text-7xl text-center mb-16 text-white/90">Contact Us</h2>
-      <form className="space-y-6">
+      <form className="space-y-6" suppressHydrationWarning>
         <Input type="text" placeholder="Name" className="bg-[#111111] border-[#1A1A1A] text-white/90 placeholder:text-white/60 h-12" />
         <Input type="email" placeholder="Email" className="bg-[#111111] border-[#1A1A1A] text-white/90 placeholder:text-white/60 h-12" />
         <Textarea placeholder="Message" className="bg-[#111111] border-[#1A1A1A] text-white/90 placeholder:text-white/60" rows={5} />
-        <Button type="submit" className="w-full bg-white text-black font-medium uppercase tracking-wider py-3 h-auto hover:bg-white/90">Submit</Button>
+        <Button suppressHydrationWarning type="submit" className="w-full bg-white text-black font-medium uppercase tracking-wider py-3 h-auto hover:bg-white/90">Submit</Button>
       </form>
     </div>
   </section>

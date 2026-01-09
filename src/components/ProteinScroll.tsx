@@ -148,6 +148,7 @@ export default function ProteinScroll() {
             {/* Cinematic Smoke & Text Reveal */}
             <motion.div 
               className="absolute inset-0 flex items-center justify-center"
+              suppressHydrationWarning
             >
               <motion.div 
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-black/40 to-transparent"
@@ -168,6 +169,7 @@ export default function ProteinScroll() {
                 </motion.p>
                 <motion.div style={{ opacity: buttonOpacity }} className="mt-8">
                   <Button
+                    suppressHydrationWarning
                     variant="outline"
                     className="border-white/25 bg-transparent text-white/75 hover:bg-white/10 hover:text-white transition-all duration-300"
                   >
