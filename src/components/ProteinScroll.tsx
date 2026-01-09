@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 const TOTAL_FRAMES = 40;
 
@@ -48,14 +49,14 @@ export default function ProteinScroll() {
 
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const context = canvas.getContext('2d', { willReadFrequently: false });
+    const context = canvas.getContext('2d', { willReadFrequently: true });
     if (!context) return;
 
     let animationFrameId: number;
 
     const render = () => {
       const currentScrollFrame = frameIndex.get();
-      animatedFrameIndex.current = lerp(animatedFrameIndex.current, currentScrollFrame, 0.1);
+      animatedFrameIndex.current = lerp(animatedFrameIndex.current, currentScrollFrame, 0.05);
       
       const frameToDraw = Math.round(animatedFrameIndex.current);
       const img = images[frameToDraw];
@@ -105,8 +106,9 @@ export default function ProteinScroll() {
 
   const opacityText1 = useTransform(scrollYProgress, [0, 0.1, 0.25], [1, 1, 0]);
   const opacityText2 = useTransform(scrollYProgress, [0.25, 0.3, 0.55], [0, 1, 0]);
-  const opacityText3 = useTransform(scrollYProgress, [0.55, 0.6, 0.85], [0, 1, 0]);
-  const opacityText4 = useTransform(scrollYProgress, [0.85, 0.9, 1], [0, 1, 1]);
+  const opacityText3 = useTransform(scrollYProgress, [0.55, 0.6, 0.8], [0, 1, 0]);
+  const opacityText4 = useTransform(scrollYProgress, [0.8, 0.85, 0.95], [0, 1, 0]);
+  const opacityText5 = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
 
   return (
     <div ref={scrollRef} className="relative h-[400vh] w-full">
@@ -118,7 +120,7 @@ export default function ProteinScroll() {
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
         
-        <div className="pointer-events-none absolute inset-0 z-10">
+        <div className="absolute inset-0 z-10">
             <motion.div style={{ opacity: opacityText1 }} className="flex h-full flex-col items-center justify-center space-y-4 text-center">
                 <h1 className="text-5xl font-bold text-white/90 md:text-7xl">Protein Zone</h1>
                 <p className="text-xl text-white/60 md:text-2xl">Fuel Your Strength</p>
@@ -137,6 +139,11 @@ export default function ProteinScroll() {
 
             <motion.div style={{ opacity: opacityText4 }} className="flex h-full flex-col items-center justify-center space-y-4 text-center">
                 <h2 className="text-4xl font-semibold text-white/90 md:text-6xl">Build Muscle. Recover Faster.</h2>
+            </motion.div>
+
+            <motion.div style={{ opacity: opacityText5 }} className="flex h-full flex-col items-center justify-center space-y-6 text-center">
+                <h2 className="text-4xl font-semibold text-white/90 md:text-6xl">Grab your protein</h2>
+                <Button size="lg" className="text-lg">Book Now</Button>
             </motion.div>
         </div>
       </div>
