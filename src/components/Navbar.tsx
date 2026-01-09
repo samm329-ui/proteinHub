@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick }) => {
   }, [navItems]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black h-16 flex items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 h-16 flex items-center">
       <div className="container mx-auto flex justify-between items-center px-6">
         <div className="text-xl font-bold font-headline uppercase tracking-widest text-white/75">
           ProteinZone
