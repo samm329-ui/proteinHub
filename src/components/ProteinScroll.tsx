@@ -126,7 +126,7 @@ export default function ProteinScroll() {
               className="absolute inset-0 bg-black/50"
             />
             <motion.div style={{ opacity: opacityText1 }} className="flex h-full flex-col items-center justify-center space-y-4 text-center">
-                <h1 className="text-5xl font-bold text-white/90 md:text-7xl">Protein Zone</h1>
+                <h1 className="text-5xl font-bold text-white md:text-7xl">Protein Zone</h1>
                 <p className="text-xl text-white/60 md:text-2xl">Fuel Your Strength</p>
             </motion.div>
             
