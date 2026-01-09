@@ -147,6 +147,12 @@ export default function ProteinScroll() {
             background: 'radial-gradient(ellipse at bottom right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%)'
           }}
         />
+        <div 
+          className="absolute inset-0 z-1"
+          style={{
+            background: 'linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 30%)'
+          }}
+        />
         
         <div className="absolute inset-0 z-10 text-white/90">
             <motion.div style={{ opacity: opacityText1 }} className="flex h-full flex-col items-center justify-end pb-48 space-y-4 text-center">
