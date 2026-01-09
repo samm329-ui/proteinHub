@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 
 const Navbar = () => (
-  <header className="fixed top-0 left-0 right-0 z-50 bg-white text-black h-20 flex items-center">
+  <header className="fixed top-0 left-0 right-0 z-50 bg-black/20 text-white backdrop-blur-md h-20 flex items-center">
     <div className="container mx-auto flex justify-between items-center px-6">
       <div className="text-xl font-bold font-headline uppercase tracking-widest">
         Brand
