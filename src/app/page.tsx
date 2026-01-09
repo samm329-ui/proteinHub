@@ -1,60 +1,12 @@
 
 'use client';
 
+import Navbar from '@/components/Navbar';
 import ProteinScroll from '@/components/ProteinScroll';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
-
-const Navbar = () => {
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      const targetPosition = targetElement.offsetTop;
-      const startPosition = window.pageYOffset;
-      const distance = targetPosition - startPosition;
-      const duration = 1000; // 1 second duration for a smoother animation
-      let startTime: number | null = null;
-
-      const animation = (currentTime: number) => {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = ease(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-      };
-
-      const ease = (t: number, b: number, c: number, d: number) => {
-        t /= d / 2;
-        if (t < 1) return c / 2 * t * t + b;
-        t--;
-        return -c / 2 * (t * (t - 2) - 1) + b;
-      };
-
-      requestAnimationFrame(animation);
-    }
-  };
-
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white text-black h-16 flex items-center">
-      <div className="container mx-auto flex justify-between items-center px-6">
-        <div className="text-xl font-bold font-headline uppercase tracking-widest">
-          Brand
-        </div>
-        <nav>
-          <ul className="flex items-center space-x-8">
-            <li><a href="#home" onClick={(e) => handleScroll(e, 'home')} className="font-medium tracking-wider text-black/90 hover:text-black/70 transition-opacity">Home</a></li>
-            <li><a href="#products" onClick={(e) => handleScroll(e, 'products')} className="font-medium tracking-wider text-black/90 hover:text-black/70 transition-opacity">Products</a></li>
-            <li><a href="#gallery" onClick={(e) => handleScroll(e, 'gallery')} className="font-medium tracking-wider text-black/90 hover:text-black/70 transition-opacity">Gallery</a></li>
-            <li><a href="#contact" onClick={(e) => handleScroll(e, 'contact')} className="font-medium tracking-wider text-black/90 hover:text-black/70 transition-opacity">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-  );
-};
 
 const ProductsSection = () => {
   const products = ['Whey Protein', 'Mass Gainer', 'Pre Workout', 'Creatine'];
@@ -108,8 +60,8 @@ const ContactSection = () => (
     <div className="container mx-auto px-6 max-w-3xl">
       <h2 className="text-5xl md:text-7xl text-center mb-16 text-white/90">Contact Us</h2>
       <form className="space-y-6" suppressHydrationWarning>
-        <Input type="text" placeholder="Name" className="bg-[#111111] border-[#1A1A1A] text-white/90 placeholder:text-white/60 h-12" />
-        <Input type="email" placeholder="Email" className="bg-[#111111] border-[#1A1A1A] text-white/90 placeholder:text-white/60 h-12" />
+        <Input suppressHydrationWarning type="text" placeholder="Name" className="bg-[#111111] border-[#1A1A1A] text-white/90 placeholder:text-white/60 h-12" />
+        <Input suppressHydrationWarning type="email" placeholder="Email" className="bg-[#111111] border-[#1A1A1A] text-white/90 placeholder:text-white/60 h-12" />
         <Textarea placeholder="Message" className="bg-[#111111] border-[#1A1A1A] text-white/90 placeholder:text-white/60" rows={5} />
         <Button suppressHydrationWarning type="submit" className="w-full bg-white text-black font-medium uppercase tracking-wider py-3 h-auto hover:bg-white/90">Submit</Button>
       </form>
@@ -130,14 +82,65 @@ const Footer = () => (
   </footer>
 );
 
-
 export default function Home() {
+  const sections = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About Us' },
+    { id: 'products', label: 'Products' },
+    { id: 'gallery', label: 'Gallery' },
+    { id: 'contact', label: 'Contact Us' },
+  ];
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const targetPosition = targetElement.offsetTop;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 1000;
+      let startTime: number | null = null;
+
+      const animation = (currentTime: number) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      };
+
+      const ease = (t: number, b: number, c: number, d: number) => {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+      };
+
+      requestAnimationFrame(animation);
+    }
+  };
+
   return (
     <div className="bg-[#050505]">
-      <Navbar />
+      <Navbar
+        navItems={[
+          { label: 'HOME', href: '#home' },
+          { label: 'ABOUT US', href: '#about' },
+          { label: 'MEMBERSHIP', href: '#products' },
+          { label: 'TRAINING', href: '#gallery' },
+          { label: 'CONTACT US', href: '#contact' },
+        ]}
+        onNavItemClick={handleScroll}
+      />
       <main>
         <div id="home">
           <ProteinScroll />
+        </div>
+        <div id="about" className="py-24 sm:py-32 text-center text-white/90 container mx-auto px-6">
+          <h2 className="text-5xl md:text-7xl mb-8">About Us</h2>
+          <p className="max-w-3xl mx-auto text-lg text-white/60">
+            We are a premium fitness brand dedicated to providing the highest quality supplements to help you achieve your strength and conditioning goals.
+          </p>
         </div>
         <ProductsSection />
         <GallerySection />
