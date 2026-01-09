@@ -106,6 +106,7 @@ export default function ProteinScroll() {
 
   const opacityText1 = useTransform(scrollYProgress, [0, 0.05, 0.2], [1, 1, 0]);
   const saturation = useTransform(scrollYProgress, [0, 0.8, 1], [0, 1, 1]);
+  const blur = useTransform(scrollYProgress, [0.28, 0.33, 0.9, 1], [0, 8, 8, 0]);
   
   // New cinematic smoke & text reveal section
   const smokeOpacity = useTransform(scrollYProgress, [0.2, 0.25, 1], [0, 0.6, 0.6]);
@@ -125,7 +126,10 @@ export default function ProteinScroll() {
         <motion.canvas
           ref={canvasRef}
           className="absolute inset-0 h-full w-full"
-          style={{ filter: useTransform(saturation, (v) => `saturate(${v})`) }}
+          style={{ filter: useTransform(
+            [saturation, blur],
+            ([s, b]) => `saturate(${s}) blur(${b}px)`
+          ) }}
         />
         <div className="absolute inset-0 z-0 bg-black/40"></div>
         
