@@ -165,11 +165,10 @@ export default function ProteinScroll() {
               suppressHydrationWarning
             >
               <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-black/40 to-transparent"
+                className="absolute inset-0"
                 style={{
                   opacity: smokeOpacity,
-                  x: smokeX,
-                  background: 'linear-gradient(90deg, rgba(15,15,15,0) 0%, rgba(20,20,20,0.7) 40%, rgba(20,20,20,0.7) 60%, rgba(15,15,15,0) 100%)',
+                  background: 'radial-gradient(ellipse at bottom right, rgba(20,20,20,0.7) 0%, rgba(15,15,15,0) 70%)',
                   filter: 'blur(40px)',
                   transform: 'translateY(10%)'
                 }}
