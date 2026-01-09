@@ -24,7 +24,10 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick }) => {
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(section.id);
+          const newActiveSection = section.id;
+          if (newActiveSection) {
+            setActiveSection(newActiveSection);
+          }
           break;
         }
       }

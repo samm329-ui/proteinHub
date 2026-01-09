@@ -125,10 +125,10 @@ export default function Home() {
       <Navbar
         navItems={[
           { label: 'HOME', href: '#home' },
-          { label: 'ABOUT US', href: '#about' },
-          { label: 'MEMBERSHIP', href: '#products' },
-          { label: 'TRAINING', href: '#gallery' },
+          { label: 'PRODUCTS', href: '#products' },
+          { label: 'GALLERY', href: '#gallery' },
           { label: 'CONTACT US', href: '#contact' },
+          { label: 'ABOUT US', href: '#about' },
         ]}
         onNavItemClick={handleScroll}
       />
@@ -136,15 +136,15 @@ export default function Home() {
         <div id="home">
           <ProteinScroll />
         </div>
+        <ProductsSection />
+        <GallerySection />
+        <ContactSection />
         <div id="about" className="py-24 sm:py-32 text-center text-white/90 container mx-auto px-6">
           <h2 className="text-5xl md:text-7xl mb-8">About Us</h2>
           <p className="max-w-3xl mx-auto text-lg text-white/60">
             We are a premium fitness brand dedicated to providing the highest quality supplements to help you achieve your strength and conditioning goals.
           </p>
         </div>
-        <ProductsSection />
-        <GallerySection />
-        <ContactSection />
       </main>
       <Footer />
     </div>
