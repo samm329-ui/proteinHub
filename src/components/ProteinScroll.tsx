@@ -4,9 +4,9 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
-const TOTAL_FRAMES = 120;
+const TOTAL_FRAMES = 40;
 
-const framePath = (frame: number) => `https://www.apple.com/105/media/us/airpods-pro/2022/d2deeb8e-83eb-48ea-9721-f567cf0fffa8/anim/hero/large/${String(frame).padStart(4, '0')}.jpg`;
+const framePath = (frame: number) => `/protein-sequence/protein_${String(frame).padStart(2, '0')}.png`;
 
 const preloadImages = (frameCount: number): Promise<HTMLImageElement[]> => {
   const promises = [];
@@ -14,7 +14,6 @@ const preloadImages = (frameCount: number): Promise<HTMLImageElement[]> => {
     promises.push(new Promise((resolve, reject) => {
       const img = new Image();
       img.src = framePath(i);
-      img.crossOrigin = "anonymous";
       img.onload = () => resolve(img);
       img.onerror = () => reject(`Failed to load image: ${framePath(i)}`);
     }));
@@ -43,7 +42,6 @@ export default function ProteinScroll() {
       .then(setImages)
       .catch((error) => {
         console.error("Error preloading images:", error);
-        // Optionally, you could set an error state here to show a message to the user
       })
       .finally(() => setIsLoading(false));
   }, []);
@@ -60,7 +58,7 @@ export default function ProteinScroll() {
 
     const render = () => {
       const currentScrollFrame = frameIndex.get();
-      animatedFrameIndex.current = lerp(animatedFrameIndex.current, currentScrollFrame, 0.05); // Smoother interpolation
+      animatedFrameIndex.current = lerp(animatedFrameIndex.current, currentScrollFrame, 0.1);
       
       const frameToDraw = Math.round(animatedFrameIndex.current);
       const img = images[frameToDraw];
@@ -110,9 +108,8 @@ export default function ProteinScroll() {
 
   const opacityText1 = useTransform(scrollYProgress, [0, 0.05, 0.2], [1, 1, 0]);
   const saturation = useTransform(scrollYProgress, [0, 0.8, 1], [0, 1, 1]);
-  const blur = useTransform(scrollYProgress, [0.28, 0.33, 0.9, 1], [0, 1, 1, 0]);
+  const blur = useTransform(scrollYProgress, [0.28, 0.33, 0.9, 1], [0, 0.5, 0.5, 0]);
   
-  // New cinematic smoke & text reveal section
   const smokeOpacity = useTransform(scrollYProgress, [0.2, 0.25, 1], [0, 0.6, 0.6]);
   const smokeX = useTransform(scrollYProgress, [0.2, 1], ['-100%', '100%']);
   const textOpacityPrimary = useTransform(scrollYProgress, [0.28, 0.33, 1], [0, 1, 1]);
@@ -149,7 +146,6 @@ export default function ProteinScroll() {
                 <p className="text-xl text-white/80 md:text-2xl">Fuel Your Strength</p>
             </motion.div>
 
-            {/* Cinematic Smoke & Text Reveal */}
             <motion.div 
               className="absolute inset-0 flex items-center justify-center"
               suppressHydrationWarning
@@ -187,3 +183,5 @@ export default function ProteinScroll() {
     </div>
   );
 }
+
+    
