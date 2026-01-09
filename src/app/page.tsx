@@ -1,3 +1,4 @@
+
 'use client';
 
 import ProteinScroll from '@/components/ProteinScroll';
@@ -11,10 +12,28 @@ const Navbar = () => {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop,
-        behavior: 'smooth',
-      });
+      const targetPosition = targetElement.offsetTop;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 1000; // 1 second duration for a smoother animation
+      let startTime: number | null = null;
+
+      const animation = (currentTime: number) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      };
+
+      const ease = (t: number, b: number, c: number, d: number) => {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+      };
+
+      requestAnimationFrame(animation);
     }
   };
 
@@ -56,14 +75,6 @@ const ProductsSection = () => {
 };
 
 const GallerySection = () => {
-    const images = [
-      { id: 1, src: '/gallery/gallery-1.jpg', alt: 'Bodybuilder posing', hint: 'bodybuilder muscle' },
-      { id: 2, src: '/gallery/gallery-2.jpg', alt: 'Weightlifter lifting barbell', hint: 'weightlifter gym' },
-      { id: 3, src: '/gallery/gallery-3.jpg', alt: 'Athlete showing muscles', hint: 'athlete fitness' },
-      { id: 4, src: '/gallery/gallery-4.jpg', alt: 'Man doing pull-ups', hint: 'fitness workout' },
-    ];
-    
-    // Using picsum for placeholder images since local ones aren't available
     const placeholderImages = [
         { id: 1, src: 'https://picsum.photos/seed/g1/800/1200', alt: 'Bodybuilder posing', hint: 'bodybuilder muscle' },
         { id: 2, src: 'https://picsum.photos/seed/g2/800/1200', alt: 'Weightlifter lifting barbell', hint: 'weightlifter gym' },
