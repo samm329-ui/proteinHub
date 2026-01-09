@@ -23,7 +23,7 @@ const preloadImages = (frameCount: number): Promise<HTMLImageElement[]> => {
       img.crossOrigin = "anonymous"; // Required for canvas with external images
       img.src = framePath(i);
       img.onload = () => resolve(img);
-      img.onerror = () => reject(`Failed to load image: ${framePath(i)}`);
+      img.onerror = (e) => reject(`Failed to load image: ${framePath(i)}`);
     }));
   }
   return Promise.all(promises as Promise<HTMLImageElement>[]);
@@ -116,7 +116,7 @@ export default function ProteinScroll() {
 
   const opacityText1 = useTransform(scrollYProgress, [0, 0.05, 0.2], [1, 1, 0]);
   const saturation = useTransform(scrollYProgress, [0, 0.8, 1], [0, 1, 1]);
-  const blur = useTransform(scrollYProgress, [0.28, 0.33, 0.9, 1], [0, 0.5, 0.5, 0]);
+  const blur = useTransform(scrollYProgress, [0.28, 0.33, 0.9, 1], [0, 0, 0, 0]);
   
   const smokeOpacity = useTransform(scrollYProgress, [0.2, 0.25, 1], [0, 0.6, 0.6]);
   const smokeX = useTransform(scrollYProgress, [0.2, 1], ['-100%', '100%']);
@@ -149,7 +149,7 @@ export default function ProteinScroll() {
         />
         
         <div className="absolute inset-0 z-10 text-white/90">
-            <motion.div style={{ opacity: opacityText1 }} className="flex h-full flex-col items-center justify-center space-y-4 text-center">
+            <motion.div style={{ opacity: opacityText1 }} className="flex h-full flex-col items-center justify-end pb-32 space-y-4 text-center">
                 <h1 className="text-5xl font-bold text-white md:text-7xl font-headline">Protein Zone</h1>
                 <p className="text-xl text-white/80 md:text-2xl">Fuel Your Strength</p>
             </motion.div>
