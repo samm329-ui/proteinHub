@@ -6,13 +6,16 @@ import { Button } from '@/components/ui/button';
 
 const TOTAL_FRAMES = 40;
 
-const framePath = (frame: number) => `/protein-sequence/protein_${String(frame).padStart(2, '0')}.png`;
+// Using picsum.photos for placeholder images as local sequence is unavailable.
+// Each frame will have a unique seed.
+const framePath = (frame: number) => `https://picsum.photos/seed/p${frame}/1200/800`;
 
 const preloadImages = (frameCount: number): Promise<HTMLImageElement[]> => {
   const promises = [];
   for (let i = 0; i < frameCount; i++) {
     promises.push(new Promise((resolve, reject) => {
       const img = new Image();
+      img.crossOrigin = "anonymous"; // Required for canvas with external images
       img.src = framePath(i);
       img.onload = () => resolve(img);
       img.onerror = () => reject(`Failed to load image: ${framePath(i)}`);
