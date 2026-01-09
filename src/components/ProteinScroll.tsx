@@ -107,16 +107,11 @@ export default function ProteinScroll() {
   const opacityText1 = useTransform(scrollYProgress, [0, 0.05, 0.2], [1, 1, 0]);
   
   // New cinematic smoke & text reveal section
-  const smokeOpacity = useTransform(scrollYProgress, [0.2, 0.25, 0.45, 0.5], [0, 0.6, 0.6, 0]);
-  const smokeX = useTransform(scrollYProgress, [0.2, 0.5], ['-100%', '100%']);
-  const textOpacityPrimary = useTransform(scrollYProgress, [0.28, 0.33, 0.45, 0.5], [0, 1, 1, 0]);
-  const textOpacitySecondary = useTransform(scrollYProgress, [0.34, 0.38, 0.45, 0.5], [0, 1, 1, 0]);
-  const buttonOpacity = useTransform(scrollYProgress, [0.4, 0.45, 0.5], [0, 1, 0]);
-
-
-  const opacityText3 = useTransform(scrollYProgress, [0.5, 0.55, 0.75], [0, 1, 0]);
-  const opacityText4 = useTransform(scrollYProgress, [0.75, 0.8, 0.9], [0, 1, 0]);
-  const opacityText5 = useTransform(scrollYProgress, [0.9, 0.95, 1], [0, 1, 1]);
+  const smokeOpacity = useTransform(scrollYProgress, [0.2, 0.25, 1], [0, 0.6, 0.6]);
+  const smokeX = useTransform(scrollYProgress, [0.2, 1], ['-100%', '100%']);
+  const textOpacityPrimary = useTransform(scrollYProgress, [0.28, 0.33, 1], [0, 1, 1]);
+  const textOpacitySecondary = useTransform(scrollYProgress, [0.34, 0.38, 1], [0, 1, 1]);
+  const buttonOpacity = useTransform(scrollYProgress, [0.4, 0.45, 1], [0, 1, 1]);
 
   return (
     <div ref={scrollRef} className="relative h-[400vh] w-full">
@@ -165,22 +160,6 @@ export default function ProteinScroll() {
                   </Button>
                 </motion.div>
               </div>
-            </motion.div>
-            
-            <motion.div style={{ opacity: opacityText3 }} className="flex h-full w-full items-center justify-end px-8 text-right md:px-24">
-                <div>
-                    <h2 className="text-4xl font-semibold md:text-6xl font-headline">High Protein.</h2>
-                    <h2 className="text-4xl font-semibold md:text-6xl font-headline">Zero Compromise.</h2>
-                </div>
-            </motion.div>
-
-            <motion.div style={{ opacity: opacityText4 }} className="flex h-full flex-col items-center justify-center space-y-4 text-center">
-                <h2 className="text-4xl font-semibold md:text-6xl font-headline">Build Muscle. Recover Faster.</h2>
-            </motion.div>
-
-            <motion.div style={{ opacity: opacityText5 }} className="flex h-full flex-col items-center justify-center space-y-6 text-center">
-                <h2 className="text-4xl font-semibold md:text-6xl font-headline">Grab your protein</h2>
-                <Button size="lg" className="text-lg bg-white text-black hover:bg-white/90 font-medium uppercase tracking-wider">Book Now</Button>
             </motion.div>
         </div>
       </div>
