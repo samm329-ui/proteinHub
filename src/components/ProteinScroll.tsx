@@ -121,30 +121,30 @@ export default function ProteinScroll() {
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
         <div className="absolute inset-0 z-0 bg-black/40"></div>
         
-        <div className="absolute inset-0 z-10">
+        <div className="absolute inset-0 z-10 text-white/90">
             <motion.div style={{ opacity: opacityText1 }} className="flex h-full flex-col items-center justify-center space-y-4 text-center">
-                <h1 className="text-5xl font-bold text-white md:text-7xl">Protein Zone</h1>
+                <h1 className="text-5xl font-bold text-white md:text-7xl font-headline">Protein Zone</h1>
                 <p className="text-xl text-white/80 md:text-2xl">Fuel Your Strength</p>
             </motion.div>
             
             <motion.div style={{ opacity: opacityText2 }} className="flex h-full w-full items-center justify-start px-8 md:px-24">
-                <h2 className="text-4xl font-semibold text-white/90 md:text-6xl">Ultra-Clean Formula</h2>
+                <h2 className="text-4xl font-semibold md:text-6xl font-headline">Ultra-Clean Formula</h2>
             </motion.div>
 
             <motion.div style={{ opacity: opacityText3 }} className="flex h-full w-full items-center justify-end px-8 text-right md:px-24">
                 <div>
-                    <h2 className="text-4xl font-semibold text-white/90 md:text-6xl">High Protein.</h2>
-                    <h2 className="text-4xl font-semibold text-white/90 md:text-6xl">Zero Compromise.</h2>
+                    <h2 className="text-4xl font-semibold md:text-6xl font-headline">High Protein.</h2>
+                    <h2 className="text-4xl font-semibold md:text-6xl font-headline">Zero Compromise.</h2>
                 </div>
             </motion.div>
 
             <motion.div style={{ opacity: opacityText4 }} className="flex h-full flex-col items-center justify-center space-y-4 text-center">
-                <h2 className="text-4xl font-semibold text-white/90 md:text-6xl">Build Muscle. Recover Faster.</h2>
+                <h2 className="text-4xl font-semibold md:text-6xl font-headline">Build Muscle. Recover Faster.</h2>
             </motion.div>
 
             <motion.div style={{ opacity: opacityText5 }} className="flex h-full flex-col items-center justify-center space-y-6 text-center">
-                <h2 className="text-4xl font-semibold text-white/90 md:text-6xl">Grab your protein</h2>
-                <Button size="lg" className="text-lg">Book Now</Button>
+                <h2 className="text-4xl font-semibold md:text-6xl font-headline">Grab your protein</h2>
+                <Button size="lg" className="text-lg bg-white text-black hover:bg-white/90 font-medium uppercase tracking-wider">Book Now</Button>
             </motion.div>
         </div>
       </div>

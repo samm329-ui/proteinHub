@@ -16,9 +16,9 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&family=Oswald:wght@700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased" suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }
