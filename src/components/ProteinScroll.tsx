@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
-const TOTAL_FRAMES = 40;
+const TOTAL_FRAMES = 120;
 
 const framePath = (frame: number) => `https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/png/ezgif-frame-${String(frame + 1).padStart(3, '0')}.jpg`;
 
@@ -56,7 +56,7 @@ export default function ProteinScroll() {
 
     const render = () => {
       const currentScrollFrame = frameIndex.get();
-      animatedFrameIndex.current = lerp(animatedFrameIndex.current, currentScrollFrame, 0.07);
+      animatedFrameIndex.current = lerp(animatedFrameIndex.current, currentScrollFrame, 0.1);
       
       const frameToDraw = Math.round(animatedFrameIndex.current);
       const img = images[frameToDraw];
@@ -106,7 +106,7 @@ export default function ProteinScroll() {
 
   const opacityText1 = useTransform(scrollYProgress, [0, 0.05, 0.2], [1, 1, 0]);
   const saturation = useTransform(scrollYProgress, [0, 0.8, 1], [0, 1, 1]);
-  const blur = useTransform(scrollYProgress, [0.28, 0.33, 0.9, 1], [0, 4, 4, 0]);
+  const blur = useTransform(scrollYProgress, [0.28, 0.33, 0.9, 1], [0, 2, 2, 0]);
   
   // New cinematic smoke & text reveal section
   const smokeOpacity = useTransform(scrollYProgress, [0.2, 0.25, 1], [0, 0.6, 0.6]);
