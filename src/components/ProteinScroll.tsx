@@ -5,7 +5,7 @@ import { useScroll, useTransform, motion } from 'framer-motion';
 
 const TOTAL_FRAMES = 40;
 
-const framePath = (frame: number) => `/protein-sequence/frame_${String(frame).padStart(3, '0')}.png`;
+const framePath = (frame: number) => `https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/png/ezgif-frame-${String(frame + 1).padStart(3, '0')}.jpg`;
 
 const preloadImages = (frameCount: number): Promise<HTMLImageElement[]> => {
   const promises = [];
@@ -13,6 +13,7 @@ const preloadImages = (frameCount: number): Promise<HTMLImageElement[]> => {
     promises.push(new Promise((resolve, reject) => {
       const img = new Image();
       img.src = framePath(i);
+      img.crossOrigin = "anonymous";
       img.onload = () => resolve(img);
       img.onerror = reject;
     }));
