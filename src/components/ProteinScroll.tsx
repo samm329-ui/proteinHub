@@ -6,9 +6,13 @@ import { Button } from '@/components/ui/button';
 
 const TOTAL_FRAMES = 40;
 
-// Using picsum.photos for placeholder images as local sequence is unavailable.
-// Each frame will have a unique seed.
-const framePath = (frame: number) => `https://picsum.photos/seed/p${frame}/1200/800`;
+const framePath = (frame: number) =>
+  `https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/png/ezgif-frame-${(
+    frame + 1
+  )
+    .toString()
+    .padStart(3, '0')}.jpg`;
+
 
 const preloadImages = (frameCount: number): Promise<HTMLImageElement[]> => {
   const promises = [];
