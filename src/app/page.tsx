@@ -5,17 +5,17 @@ import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 
 const Navbar = () => (
-  <header className="fixed top-0 left-0 right-0 z-50 bg-black/20 text-white backdrop-blur-md h-20 flex items-center">
+  <header className="fixed top-0 left-0 right-0 z-50 bg-white text-black h-16 flex items-center">
     <div className="container mx-auto flex justify-between items-center px-6">
       <div className="text-xl font-bold font-headline uppercase tracking-widest">
         Brand
       </div>
       <nav>
         <ul className="flex items-center space-x-8">
-          <li><a href="#home" className="font-medium tracking-wider hover:text-opacity-70 transition-opacity">Home</a></li>
-          <li><a href="#products" className="font-medium tracking-wider hover:text-opacity-70 transition-opacity">Products</a></li>
-          <li><a href="#gallery" className="font-medium tracking-wider hover:text-opacity-70 transition-opacity">Gallery</a></li>
-          <li><a href="#contact" className="font-medium tracking-wider hover:text-opacity-70 transition-opacity">Contact</a></li>
+          <li><a href="#home" className="font-medium tracking-wider text-black/90 hover:text-black/70 transition-opacity">Home</a></li>
+          <li><a href="#products" className="font-medium tracking-wider text-black/90 hover:text-black/70 transition-opacity">Products</a></li>
+          <li><a href="#gallery" className="font-medium tracking-wider text-black/90 hover:text-black/70 transition-opacity">Gallery</a></li>
+          <li><a href="#contact" className="font-medium tracking-wider text-black/90 hover:text-black/70 transition-opacity">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -28,7 +28,7 @@ const ProductsSection = () => {
     <section id="products" className="py-24 sm:py-32">
       <div className="container mx-auto px-6">
         <h2 className="text-5xl md:text-7xl text-center mb-16 text-white/90">Our Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {products.map((product) => (
             <div key={product} className="bg-[#111111] p-8 text-center">
               <h3 className="text-3xl text-white/90">{product}</h3>
