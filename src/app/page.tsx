@@ -11,13 +11,13 @@ import Image from 'next/image';
 const ProductsSection = () => {
   const products = ['Whey Protein', 'Mass Gainer', 'Pre Workout', 'Creatine'];
   return (
-    <section id="products" className="py-24 sm:py-32">
-      <div className="container mx-auto px-6">
+    <section id="products" className="py-20 sm:py-32">
+      <div className="container mx-auto px-5">
         <h2 className="text-5xl md:text-7xl text-center mb-16 text-white/90">Our Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
           {products.map((product) => (
-            <div key={product} className="bg-[#111111] p-8 text-center">
-              <h3 className="text-3xl text-white/90">{product}</h3>
+            <div key={product} className="bg-[#111111] p-4 rounded-md text-center h-[56px] flex items-center justify-center">
+              <h3 className="text-lg uppercase tracking-wider text-white/90">{product}</h3>
             </div>
           ))}
         </div>
@@ -37,9 +37,9 @@ const GallerySection = () => {
 
   return (
     <section id="gallery" className="py-12">
-      <div className="grid grid-cols-2 md:grid-cols-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
         {placeholderImages.map(image => (
-            <div key={image.id} className="relative aspect-[2/3] w-full h-full">
+            <div key={image.id} className="relative aspect-[3/4] w-full h-full">
                 <Image 
                     src={image.src} 
                     alt={image.alt}
@@ -56,40 +56,44 @@ const GallerySection = () => {
 };
 
 const ContactSection = () => (
-  <section id="contact" className="py-24 sm:py-32">
-    <div className="container mx-auto px-6 max-w-3xl">
+  <section id="contact" className="py-20 sm:py-32">
+    <div className="container mx-auto px-5 max-w-3xl">
       <h2 className="text-5xl md:text-7xl text-center mb-16 text-white/90">Contact Us</h2>
-      <form className="space-y-6" suppressHydrationWarning>
-        <Input suppressHydrationWarning type="text" placeholder="Name" className="bg-[#111111] border-[#1A1A1A] text-white/90 placeholder:text-white/60 h-12" />
-        <Input suppressHydrationWarning type="email" placeholder="Email" className="bg-[#111111] border-[#1A1A1A] text-white/90 placeholder:text-white/60 h-12" />
-        <Textarea placeholder="Message" className="bg-[#111111] border-[#1A1A1A] text-white/90 placeholder:text-white/60" rows={5} />
+      <form className="space-y-4" suppressHydrationWarning>
+        <Input suppressHydrationWarning type="text" placeholder="Name" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 h-12 rounded-md" />
+        <Input suppressHydrationWarning type="email" placeholder="Email" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 h-12 rounded-md" />
+        <Textarea placeholder="Message" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 rounded-md" rows={5} />
         <Button suppressHydrationWarning type="submit" className="w-full bg-white text-black font-medium uppercase tracking-wider py-3 h-auto hover:bg-white/90">Submit</Button>
       </form>
     </div>
   </section>
 );
 
+const AboutUsSection = () => (
+    <section id="about" className="py-20 sm:py-32 text-center text-white/90 container mx-auto px-5">
+        <div className="max-w-2xl mx-auto">
+            <h2 className="text-5xl md:text-7xl mb-8">About Us</h2>
+            <p className="text-base text-white/60 leading-relaxed">
+                We are a premium fitness brand dedicated to providing the highest quality supplements to help you achieve your strength and conditioning goals.
+            </p>
+        </div>
+  </section>
+);
+
 const Footer = () => (
   <footer className="py-12">
-    <div className="container mx-auto px-6 text-center text-white/60">
-      <div className="flex justify-center space-x-6 mb-4">
-        <a href="#" className="hover:text-white/90 transition-colors">Instagram</a>
-        <a href="#" className="hover:text-white/90 transition-colors">Facebook</a>
-        <a href="#" className="hover:text-white/90 transition-colors">Privacy</a>
-      </div>
+    <div className="container mx-auto px-5 text-center text-white/60 text-sm space-y-4">
+        <div className="flex flex-col md:flex-row justify-center items-center md:space-x-6 space-y-2 md:space-y-0">
+            <a href="#" className="hover:text-white/90 transition-colors">Instagram</a>
+            <a href="#" className="hover:text-white/90 transition-colors">Facebook</a>
+            <a href="#" className="hover:text-white/90 transition-colors">Privacy</a>
+        </div>
       <p>© ProteinZone</p>
     </div>
   </footer>
 );
 
 export default function Home() {
-  const sections = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About Us' },
-    { id: 'products', label: 'Products' },
-    { id: 'gallery', label: 'Gallery' },
-    { id: 'contact', label: 'Contact Us' },
-  ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -119,32 +123,30 @@ export default function Home() {
       requestAnimationFrame(animation);
     }
   };
+  
+  const navItems = [
+    { label: 'HOME', href: '#home' },
+    { label: 'PRODUCTS', href: '#products' },
+    { label: 'GALLERY', href: '#gallery' },
+    { label: 'CONTACT', href: '#contact' },
+    { label: 'ABOUT', href: '#about' },
+  ];
 
   return (
     <div className="bg-[#050505]">
       <Navbar
-        navItems={[
-          { label: 'HOME', href: '#home' },
-          { label: 'PRODUCTS', href: '#products' },
-          { label: 'GALLERY', href: '#gallery' },
-          { label: 'CONTACT US', href: '#contact' },
-          { label: 'ABOUT US', href: '#about' },
-        ]}
+        navItems={navItems}
         onNavItemClick={handleScroll}
       />
       <main>
         <div id="home">
           <ProteinScroll />
         </div>
+        <div className="h-20 md:h-32 bg-transparent"></div>
         <ProductsSection />
         <GallerySection />
         <ContactSection />
-        <div id="about" className="py-24 sm:py-32 text-center text-white/90 container mx-auto px-6">
-          <h2 className="text-5xl md:text-7xl mb-8">About Us</h2>
-          <p className="max-w-3xl mx-auto text-lg text-white/60">
-            We are a premium fitness brand dedicated to providing the highest quality supplements to help you achieve your strength and conditioning goals.
-          </p>
-        </div>
+        <AboutUsSection />
       </main>
       <Footer />
     </div>
