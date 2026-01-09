@@ -106,7 +106,7 @@ export default function ProteinScroll() {
 
   const opacityText1 = useTransform(scrollYProgress, [0, 0.05, 0.2], [1, 1, 0]);
   const saturation = useTransform(scrollYProgress, [0, 0.8, 1], [0, 1, 1]);
-  const blur = useTransform(scrollYProgress, [0.28, 0.33, 0.9, 1], [0, 5, 5, 0]);
+  const blur = useTransform(scrollYProgress, [0.28, 0.33, 0.9, 1], [0, 4, 4, 0]);
   
   // New cinematic smoke & text reveal section
   const smokeOpacity = useTransform(scrollYProgress, [0.2, 0.25, 1], [0, 0.6, 0.6]);
@@ -132,6 +132,12 @@ export default function ProteinScroll() {
           ) }}
         />
         <div className="absolute inset-0 z-0 bg-black/40"></div>
+        <div 
+          className="absolute inset-0 z-1"
+          style={{
+            background: 'radial-gradient(ellipse at bottom right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%)'
+          }}
+        />
         
         <div className="absolute inset-0 z-10 text-white/90">
             <motion.div style={{ opacity: opacityText1 }} className="flex h-full flex-col items-center justify-center space-y-4 text-center">
