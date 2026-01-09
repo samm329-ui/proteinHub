@@ -55,7 +55,7 @@ export default function ProteinScroll() {
 
     const render = () => {
       const currentScrollFrame = frameIndex.get();
-      animatedFrameIndex.current = lerp(animatedFrameIndex.current, currentScrollFrame, 0.05);
+      animatedFrameIndex.current = lerp(animatedFrameIndex.current, currentScrollFrame, 0.1);
       
       const frameToDraw = Math.round(animatedFrameIndex.current);
       const img = images[frameToDraw];
