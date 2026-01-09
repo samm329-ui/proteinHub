@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { ShoppingCart } from 'lucide-react';
 
 type NavItem = {
   label: string;
@@ -45,7 +46,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick }) => {
         <div className="text-xl font-bold font-headline uppercase tracking-widest text-white/75">
           ProteinZone
         </div>
-        <nav>
+        <nav className="flex items-center space-x-8">
           <ul className="flex items-center space-x-8">
             {navItems.map(item => (
               <li key={item.label}>
@@ -63,6 +64,9 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick }) => {
               </li>
             ))}
           </ul>
+          <button className="text-white/75 hover:text-[#C9A44C] transition-colors">
+            <ShoppingCart size={20} />
+          </button>
         </nav>
       </div>
     </header>
