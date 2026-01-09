@@ -56,7 +56,7 @@ export default function ProteinScroll() {
 
     const render = () => {
       const currentScrollFrame = frameIndex.get();
-      animatedFrameIndex.current = lerp(animatedFrameIndex.current, currentScrollFrame, 0.03);
+      animatedFrameIndex.current = lerp(animatedFrameIndex.current, currentScrollFrame, 0.05);
       
       const frameToDraw = Math.round(animatedFrameIndex.current);
       const img = images[frameToDraw];
@@ -95,7 +95,7 @@ export default function ProteinScroll() {
     
     const hRatio = canvas.width / img.width;
     const vRatio = canvas.height / img.height;
-    const ratio = Math.min(hRatio, vRatio, 1.5);
+    const ratio = Math.max(hRatio, vRatio);
 
     const centerShiftX = (canvas.width - img.width * ratio) / 2;
     const centerShiftY = (canvas.height - img.height * ratio) / 2;
@@ -119,11 +119,12 @@ export default function ProteinScroll() {
       )}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
+        <div className="absolute inset-0 z-0 bg-black/40"></div>
         
         <div className="absolute inset-0 z-10">
             <motion.div style={{ opacity: opacityText1 }} className="flex h-full flex-col items-center justify-center space-y-4 text-center">
                 <h1 className="text-5xl font-bold text-white md:text-7xl">Protein Zone</h1>
-                <p className="text-xl text-white/60 md:text-2xl">Fuel Your Strength</p>
+                <p className="text-xl text-white/80 md:text-2xl">Fuel Your Strength</p>
             </motion.div>
             
             <motion.div style={{ opacity: opacityText2 }} className="flex h-full w-full items-center justify-start px-8 md:px-24">
