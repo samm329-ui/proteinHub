@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Navbar from '@/components/Navbar';
@@ -36,9 +37,9 @@ const ProductsSection = () => {
 
 const BestSellersSection = () => {
   return (
-    <section id="bestsellers" className="py-20 sm:py-32 bg-[#0A0A0A]">
+    <section id="bestsellers" className="py-20 sm:py-32 bg-[#0A0A0A] overflow-hidden">
       <div className="container mx-auto px-5">
-        <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Best Sellers</h2>
+        <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-16 sm:mb-24 text-white/90">Best Sellers</h2>
         <Carousel
           opts={{
             align: "start",
@@ -46,17 +47,17 @@ const BestSellersSection = () => {
           }}
           className="w-full"
         >
-          <CarouselContent>
+          <CarouselContent className="-ml-2">
             {bestSellers.map((product, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/1">
-                <div className="p-1">
+              <CarouselItem key={index} className="pl-2 md:basis-1/1 lg:basis-1/1">
                   <BestSellerCard product={product} />
-                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="text-white" />
-          <CarouselNext className="text-white" />
+           <div className="absolute -bottom-12 left-1/2 -translate-x-1/2">
+            <CarouselPrevious className="text-white bg-transparent border-white/20 hover:bg-white/10" />
+            <CarouselNext className="text-white bg-transparent border-white/20 hover:bg-white/10" />
+          </div>
         </Carousel>
       </div>
     </section>
