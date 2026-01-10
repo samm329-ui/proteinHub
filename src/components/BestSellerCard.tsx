@@ -18,7 +18,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
   const accentColor = selectedFlavor.color;
 
   return (
-    <div className="w-full max-w-5xl mx-auto font-sans bg-[#0A0A0A] rounded-3xl shadow-2xl shadow-black/20 overflow-hidden">
+    <div className="w-full max-w-4xl mx-auto font-sans bg-[#0A0A0A] rounded-3xl shadow-2xl shadow-black/20 overflow-hidden">
       <div className="flex flex-col md:flex-row">
         
         {/* Left Side: Product Image */}
