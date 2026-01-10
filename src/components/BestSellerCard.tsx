@@ -21,7 +21,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
   const progressValue = typeof statValue === 'string' ? parseFloat(statValue) : statValue;
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto p-4 flex items-center justify-center font-sans" style={{ height: '320px' }}>
+    <div className="relative w-full max-w-2xl mx-auto p-4 flex items-center justify-center font-sans">
       {/* Back Card */}
       <div 
         className="absolute top-0 left-0 w-full h-[95%] sm:w-1/2 sm:h-full rounded-3xl transition-colors duration-500 flex items-center justify-center overflow-hidden"
@@ -33,10 +33,10 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
       </div>
       
       {/* Front Card */}
-      <div className="absolute top-0 right-0 w-full sm:w-[85%] md:w-[80%] h-full bg-[#1A1C29] rounded-3xl shadow-2xl shadow-black/40 flex flex-col sm:flex-row overflow-hidden">
+      <div className="relative w-full sm:w-[85%] md:w-[80%] bg-[#1A1C29] rounded-3xl shadow-2xl shadow-black/40 flex flex-col sm:flex-row overflow-hidden">
         
         {/* Left Side: Product Image */}
-        <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0">
+        <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0 h-48 sm:h-auto">
            <div className="relative w-36 h-48 sm:w-48 sm:h-64">
             <Image
                 src={product.image.src}
