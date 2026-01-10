@@ -45,7 +45,7 @@ const BestSellersSection = () => {
             align: "start",
             loop: true,
           }}
-          className="w-full"
+          className="w-full relative"
         >
           <CarouselContent className="-ml-2">
             {bestSellers.map((product, index) => (
@@ -54,10 +54,8 @@ const BestSellersSection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-           <div className="absolute -bottom-12 left-1/2 -translate-x-1/2">
-            <CarouselPrevious className="text-white bg-transparent border-white/20 hover:bg-white/10" />
-            <CarouselNext className="text-white bg-transparent border-white/20 hover:bg-white/10" />
-          </div>
+          <CarouselPrevious className="absolute left-[-2rem] top-1/2 -translate-y-1/2 text-white bg-white/10 border-white/20 hover:bg-white/20" />
+          <CarouselNext className="absolute right-[-2rem] top-1/2 -translate-y-1/2 text-white bg-white/10 border-white/20 hover:bg-white/20" />
         </Carousel>
       </div>
     </section>
