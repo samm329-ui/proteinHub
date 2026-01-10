@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 import { bestSellers } from '@/lib/products';
 import { Heart, ShoppingCart } from 'lucide-react';
 import { CircularProgress } from '@/components/ui/circular-progress';
@@ -19,40 +18,31 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
 
   const statValue = product.stat.label === 'Protein' ? Math.round((parseInt(product.stat.value) / 40) * 100) : Math.round((parseInt(product.stat.value) / 1000) * 100);
 
-
   return (
     <div className="font-sans bg-[#0A0A0A] rounded-3xl shadow-2xl shadow-black/30 overflow-hidden w-full max-w-4xl mx-auto">
       <div className="flex flex-col md:flex-row min-h-[380px]">
         
         {/* Left Side: Product Image */}
-        <div className="relative w-full md:w-2/5 flex items-center justify-center p-6 bg-[#111111]">
+        <div className="relative w-full md:w-1/2 flex items-center justify-center p-6 bg-[#111111] overflow-hidden">
           <div 
-            className="absolute top-1/2 left-0 w-full h-4/5 rounded-r-full opacity-30"
-            style={{ 
-              backgroundColor: accentColor,
-              transform: 'translateY(-50%) translateX(-40%)',
-              filter: 'blur(80px)'
-            }}
-          />
-          <div 
-            className="absolute -right-20 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full"
+            className="absolute -translate-x-1/4 -translate-y-1/4 w-[28rem] h-[28rem] rounded-full opacity-20 blur-xl"
             style={{ 
               backgroundColor: accentColor,
             }}
           />
-           <div className="relative w-48 h-72 md:w-56 md:h-80 drop-shadow-[0_35px_35px_rgba(0,0,0,0.6)]">
+           <div className="relative w-56 h-80 drop-shadow-[0_25px_25px_rgba(0,0,0,0.8)]">
             <Image
                 src={product.image.src}
                 alt={product.name}
                 fill
-                className="object-contain transition-transform duration-300 hover:scale-105"
+                className="object-contain transition-transform duration-300 group-hover:scale-105"
                 unoptimized
             />
           </div>
         </div>
 
         {/* Right Side: Product Details */}
-        <div className="w-full md:w-3/5 flex flex-col justify-between p-8 text-white/90">
+        <div className="w-full md:w-1/2 flex flex-col justify-between p-8 text-white/90">
           
           <div className="flex justify-between items-start">
             <div>
@@ -64,7 +54,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                   <p className="text-lg font-medium text-white/40 line-through">₹{product.oldPrice.toLocaleString()}</p>
               </div>
             </div>
-            <div className="text-center">
+            <div className="text-center flex-shrink-0">
               <CircularProgress value={statValue} color={accentColor} size={60} strokeWidth={5} />
               <p className="text-xs text-white/60 mt-1">{product.stat.value}g</p>
               <p className="text-xs text-white/60">{product.stat.label}</p>
@@ -110,17 +100,15 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
             </div>
           </div>
           
-          <div className="flex items-center gap-8 mt-8 pt-6 border-t border-white/10">
-            <button className="flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white transition-colors">
-                <ShoppingCart size={18} />
-                ADD TO CART
+          <div className="flex items-center gap-4 sm:gap-8 mt-8 pt-6 border-t border-white/10">
+            <button className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white/70 hover:text-white transition-colors uppercase tracking-wider">
+                <ShoppingCart size={16} />
+                Add to Cart
             </button>
-            <Button
-                className="w-full max-w-[150px] h-11 text-sm font-bold text-black hover:opacity-90 transition-all duration-300 rounded-lg"
-                style={{ backgroundColor: accentColor }}
-            >
-              BUY NOW
-            </Button>
+            <button className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white/70 hover:text-white transition-colors uppercase tracking-wider">
+                <Heart size={16} />
+                Wishlist
+            </button>
           </div>
         </div>
       </div>
@@ -129,4 +117,3 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
 };
 
 export default BestSellerCard;
-
