@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { products } from '@/lib/products';
+import { products, bestSellers } from '@/lib/products';
+import BestSellerCard from '@/components/BestSellerCard';
 
 const ProductsSection = () => {
   return (
@@ -25,6 +26,22 @@ const ProductsSection = () => {
     </section>
   );
 };
+
+const BestSellersSection = () => {
+  return (
+    <section id="bestsellers" className="py-20 sm:py-32 bg-[#0A0A0A]">
+      <div className="container mx-auto px-5">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Best Sellers</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 md:gap-16 max-w-4xl mx-auto">
+          {bestSellers.map((product) => (
+            <BestSellerCard key={product.name} product={product} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 
 const GallerySection = () => {
   return (
@@ -130,6 +147,7 @@ export default function Home() {
   const navItems = [
     { label: 'HOME', href: '#home' },
     { label: 'PRODUCTS', href: '#products' },
+    { label: 'BEST SELLERS', href: '#bestsellers' },
     { label: 'GALLERY', href: '#gallery' },
     { label: 'CONTACT', href: '#contact' },
     { label: 'ABOUT', href: '#about' },
@@ -148,6 +166,7 @@ export default function Home() {
         </div>
         <div className="h-20 md:h-32 bg-transparent"></div>
         <ProductsSection />
+        <BestSellersSection />
         <GallerySection />
         <ContactSection />
         <AboutUsSection />
