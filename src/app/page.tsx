@@ -9,6 +9,13 @@ import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { products, bestSellers } from '@/lib/products';
 import BestSellerCard from '@/components/BestSellerCard';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 const ProductsSection = () => {
   return (
@@ -32,11 +39,25 @@ const BestSellersSection = () => {
     <section id="bestsellers" className="py-20 sm:py-32 bg-[#0A0A0A]">
       <div className="container mx-auto px-5">
         <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Best Sellers</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 md:gap-16 max-w-4xl mx-auto">
-          {bestSellers.map((product) => (
-            <BestSellerCard key={product.name} product={product} />
-          ))}
-        </div>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {bestSellers.map((product, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/1">
+                <div className="p-1">
+                  <BestSellerCard product={product} />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="text-white" />
+          <CarouselNext className="text-white" />
+        </Carousel>
       </div>
     </section>
   );
