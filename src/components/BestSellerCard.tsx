@@ -21,13 +21,13 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
   const progressValue = typeof statValue === 'string' ? parseFloat(statValue) : statValue;
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto p-4 flex items-center justify-center font-sans" style={{ height: '400px' }}>
+    <div className="relative w-full max-w-3xl mx-auto p-4 flex items-center justify-center font-sans" style={{ height: '360px' }}>
       {/* Back Card */}
       <div 
         className="absolute top-0 left-0 w-full h-[95%] sm:w-1/2 sm:h-full rounded-3xl transition-colors duration-500 flex items-center justify-center overflow-hidden"
         style={{ backgroundColor: accentColor }}
       >
-        <span className="text-[10rem] font-extrabold text-white/10 select-none -rotate-12 scale-150">
+        <span className="text-[8rem] sm:text-[9rem] font-extrabold text-white/10 select-none -rotate-12 scale-150">
           ZONE
         </span>
       </div>
@@ -37,7 +37,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         
         {/* Left Side: Product Image */}
         <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0">
-           <div className="relative w-48 h-64 sm:w-64 sm:h-96 transform sm:translate-x-4">
+           <div className="relative w-40 h-56 sm:w-56 sm:h-80 transform sm:translate-x-4">
             <Image
                 src={product.image.src}
                 alt={product.name}
@@ -50,12 +50,12 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         </div>
 
         {/* Right Side: Product Details */}
-        <div className="w-full sm:w-1/2 flex flex-col justify-between p-6 text-white -mt-10 sm:mt-0">
+        <div className="w-full sm:w-1/2 flex flex-col justify-between p-4 sm:p-6 text-white -mt-10 sm:mt-0">
           <div className="flex-grow">
-            <h3 className="text-2xl lg:text-3xl font-bold font-headline uppercase tracking-wider mb-2">{product.name}</h3>
-            <p className="text-xl lg:text-2xl font-semibold mb-6" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+            <h3 className="text-xl lg:text-2xl font-bold font-headline uppercase tracking-wider mb-2">{product.name}</h3>
+            <p className="text-lg lg:text-xl font-semibold mb-4" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
             
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex justify-between items-center mb-4">
                 <div>
                   <p className="text-xs uppercase tracking-widest text-white/50 mb-2">SIZE</p>
                   <div className="flex gap-4">
@@ -76,7 +76,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                   </div>
                 </div>
                  <div className="text-right">
-                    <CircularProgress value={progressValue} size={60} strokeWidth={4} color={accentColor} />
+                    <CircularProgress value={progressValue} size={50} strokeWidth={4} color={accentColor} />
                     <p className="text-xs uppercase tracking-widest text-white/50 mt-2">{product.stat.label}</p>
                  </div>
             </div>
@@ -90,13 +90,13 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                     onClick={() => setSelectedFlavor(flavor)}
                     title={flavor.name}
                     className={cn(
-                      "w-6 h-6 rounded-full border-2 transition-all duration-300",
+                      "w-5 h-5 rounded-full border-2 transition-all duration-300",
                       selectedFlavor.name === flavor.name ? 'scale-110 shadow-lg' : 'border-transparent opacity-70'
                     )}
                      style={{ 
                       backgroundColor: flavor.color, 
                       borderColor: selectedFlavor.name === flavor.name ? 'white' : 'transparent',
-                      boxShadow: selectedFlavor.name === flavor.name ? `0 0 12px ${flavor.color}` : 'none'
+                      boxShadow: selectedFlavor.name === flavor.name ? `0 0 10px ${flavor.color}` : 'none'
                     }}
                   />
                 ))}
@@ -104,9 +104,9 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
             </div>
           </div>
           
-          <div className="flex items-center gap-4 mt-6">
+          <div className="flex items-center gap-2 sm:gap-4 mt-4 sm:mt-6">
             <Button
-              className="w-full h-11 text-sm font-bold text-black transition-all duration-300 rounded-lg"
+              className="w-full h-10 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
               style={{ backgroundColor: accentColor }}
               onMouseOver={e => (e.currentTarget.style.filter = 'brightness(1.1)')}
               onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
@@ -115,10 +115,11 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
             </Button>
             <Button
               variant="ghost"
-              className="text-white/50 hover:text-white flex items-center gap-2"
+              size="sm"
+              className="text-white/50 hover:text-white flex items-center gap-2 p-1"
             >
-              <Heart size={16} />
-              <span className="text-xs">ADD TO WISHLIST</span>
+              <Heart size={14} />
+              <span className="text-xs hidden sm:inline">ADD TO WISHLIST</span>
             </Button>
           </div>
         </div>
