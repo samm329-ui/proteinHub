@@ -29,19 +29,21 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
       
       {/* Front Card */}
       <div 
-        className="relative bg-[#1a1c29] rounded-3xl flex flex-col sm:flex-row overflow-visible w-full shadow-2xl"
-        style={{ boxShadow: '0 0 40px rgba(255,255,255,0.05)'}}
+        className="relative bg-[#1a1c29] rounded-3xl flex flex-col sm:flex-row overflow-visible w-full"
+        style={{ boxShadow: '0 0 80px -10px rgba(255,255,255,0.05)'}}
       >
         
         {/* Left Side: Product Image */}
         <div className="relative w-full sm:w-2/5 flex items-center justify-center p-4 sm:p-0 sm:py-8">
-           <div className="relative w-60 h-72 sm:w-80 sm:h-96 -translate-y-4 sm:translate-y-0 sm:-translate-x-4">
+           <div className="relative w-64 h-80 sm:w-[22rem] sm:h-[26rem] -translate-y-4 sm:translate-y-0 sm:-translate-x-4">
             <Image
                 src={product.image.src}
                 alt={product.name}
                 fill
                 className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105 -rotate-3"
-                style={{filter: 'drop-shadow(0px 20px 20px rgba(0,0,0,0.4))'}}
+                style={{
+                  filter: `drop-shadow(0px 20px 20px rgba(0,0,0,0.4)) drop-shadow(0 0 35px ${accentColor})`
+                }}
                 data-ai-hint={product.image.hint}
                 unoptimized
             />
