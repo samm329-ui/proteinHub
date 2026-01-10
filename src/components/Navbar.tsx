@@ -12,9 +12,10 @@ type NavItem = {
 interface NavbarProps {
   navItems: NavItem[];
   onNavItemClick: (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => void;
+  suppressHydrationWarning?: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick }) => {
+const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydrationWarning }) => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -48,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick }) => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 h-16 md:h-16 flex items-center">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 h-16 md:h-16 flex items-center" suppressHydrationWarning={suppressHydrationWarning}>
         <div className="container mx-auto flex justify-between items-center px-5">
           <div className="text-xl font-bold font-headline uppercase tracking-widest text-white/75">
             ProteinZone
@@ -62,8 +63,8 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick }) => {
                     onClick={(e) => onNavItemClick(e, item.href.substring(1))}
                     className={`font-medium tracking-widest uppercase transition-colors duration-300 text-sm ${
                       activeSection === item.href.substring(1)
-                        ? 'text-[#C9A44C]'
-                        : 'text-white/75 hover:text-[#C9A44C]'
+                        ? 'text-accent'
+                        : 'text-white/75 hover:text-accent'
                     }`}
                   >
                     {item.label}
@@ -71,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick }) => {
                 </li>
               ))}
             </ul>
-            <button className="text-white/75 hover:text-[#C9A44C] transition-colors">
+            <button className="text-white/75 hover:text-accent transition-colors" suppressHydrationWarning={suppressHydrationWarning}>
               <ShoppingCart size={20} />
             </button>
           </nav>
@@ -103,8 +104,8 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick }) => {
                             onClick={(e) => handleMobileNavClick(e, item.href.substring(1))}
                             className={`font-headline tracking-[0.2em] text-2xl uppercase transition-colors duration-300 ${
                             activeSection === item.href.substring(1)
-                                ? 'text-[#C9A44C]'
-                                : 'text-white/85 hover:text-[#C9A44C]'
+                                ? 'text-accent'
+                                : 'text-white/85 hover:text-accent'
                             }`}
                         >
                             {item.label}

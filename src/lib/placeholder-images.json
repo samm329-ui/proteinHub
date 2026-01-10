@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "g1",
+      "description": "Bodybuilder posing",
+      "imageUrl": "https://images.unsplash.com/photo-1612441611175-f101b02c930d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxib2R5YnVpbGRlciUyMG11c2NsZXxlbnwwfHx8fDE3NjgwNjA2MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bodybuilder muscle"
+    },
+    {
+      "id": "g2",
+      "description": "Weightlifter lifting barbell",
+      "imageUrl": "https://images.unsplash.com/photo-1591291621164-2c6367723315?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3ZWlnaHRsaWZ0ZXIlMjBneW18ZW58MHx8fHwxNzY4MDYwNjM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "weightlifter gym"
+    },
+    {
+      "id": "g3",
+      "description": "Athlete showing muscles",
+      "imageUrl": "https://images.unsplash.com/photo-1648748571031-196114a25c62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdGhsZXRlJTIwZml0bmVzc3xlbnwwfHx8fDE3NjgwNjA2MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "athlete fitness"
+    },
+    {
+      "id": "g4",
+      "description": "Man doing pull-ups",
+      "imageUrl": "https://images.unsplash.com/photo-1634788699201-77bbb9428ab6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmaXRuZXNzJTIwd29ya291dHxlbnwwfHx8fDE3NjgwMzA4ODV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fitness workout"
+    }
+  ]
 }

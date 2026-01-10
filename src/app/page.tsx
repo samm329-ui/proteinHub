@@ -4,21 +4,20 @@
 import Navbar from '@/components/Navbar';
 import ProteinScroll from '@/components/ProteinScroll';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { products, bestSellers } from '@/lib/products';
 
 const ProductsSection = () => {
-  const products = ['Whey Protein', 'Mass Gainer', 'Pre Workout', 'Creatine'];
   return (
     <section id="products" className="py-20 sm:py-32">
       <div className="container mx-auto px-5">
         <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Our Products</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-2xl mx-auto">
           {products.map((product) => (
-            <div key={product} className="bg-[#111111] p-4 rounded-md text-center h-[56px] flex items-center justify-center">
-              <h3 className="text-sm sm:text-base uppercase tracking-wider text-white/90">{product}</h3>
+            <div key={product.name} className="bg-[#111111] p-4 rounded-md text-center h-[56px] flex items-center justify-center">
+              <h3 className="text-sm sm:text-base uppercase tracking-wider text-white/90">{product.name}</h3>
             </div>
           ))}
         </div>
@@ -27,27 +26,50 @@ const ProductsSection = () => {
   );
 };
 
+const BestSellersSection = () => {
+    return (
+        <section id="bestsellers" className="py-20 sm:py-32">
+            <div className="container mx-auto px-5">
+                <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Best Sellers</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    {bestSellers.map((product) => (
+                        <div key={product.name} className="bg-[#111111] p-6 rounded-md text-center">
+                            <div className="relative w-full h-60 mb-4">
+                                <Image
+                                    src={product.image.src}
+                                    alt={product.name}
+                                    fill
+                                    className="object-contain"
+                                    data-ai-hint={product.image.hint}
+                                    unoptimized
+                                />
+                            </div>
+                            <h3 className="text-lg uppercase tracking-wider text-white/90 mb-2">{product.name}</h3>
+                            <p className="text-white/60 text-sm mb-4">{product.description}</p>
+                            <Button variant="outline" className="w-full border-white/25 bg-transparent text-white/75 hover:bg-white/10 hover:text-white transition-all duration-300">
+                                View Product
+                            </Button>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
 const GallerySection = () => {
-    const placeholderImages = [
-        { id: 1, src: 'https://picsum.photos/seed/g1/800/1200', alt: 'Bodybuilder posing', hint: 'bodybuilder muscle' },
-        { id: 2, src: 'https://picsum.photos/seed/g2/800/1200', alt: 'Weightlifter lifting barbell', hint: 'weightlifter gym' },
-        { id: 3, src: 'https://picsum.photos/seed/g3/800/1200', alt: 'Athlete showing muscles', hint: 'athlete fitness' },
-        { id: 4, src: 'https://picsum.photos/seed/g4/800/1200', alt: 'Man doing pull-ups', hint: 'fitness workout' },
-    ];
-
-
   return (
     <section id="gallery" className="py-12 sm:py-20">
        <div className="container mx-auto px-5 sm:px-0">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
-            {placeholderImages.map(image => (
+            {PlaceHolderImages.map(image => (
                 <div key={image.id} className="relative aspect-[3/4] w-full h-full">
                     <Image 
-                        src={image.src} 
-                        alt={image.alt}
+                        src={image.imageUrl} 
+                        alt={image.description}
                         fill
                         className="object-cover grayscale"
-                        data-ai-hint={image.hint}
+                        data-ai-hint={image.imageHint}
                         unoptimized
                     />
                 </div>
@@ -98,6 +120,7 @@ const Footer = () => (
             <a href="#" className="hover:text-white/90 transition-colors">Instagram</a>
             <a href="#" className="hover:text-white/90 transition-colors">Facebook</a>
             <a href="#" className="hover:text-white/90 transition-colors">Privacy</a>
+            <a href="#" className="hover:text-white/90 transition-colors">Terms of Service</a>
         </div>
       <p>© ProteinZone</p>
     </div>
@@ -138,6 +161,7 @@ export default function Home() {
   const navItems = [
     { label: 'HOME', href: '#home' },
     { label: 'PRODUCTS', href: '#products' },
+    { label: 'BEST SELLERS', href: '#bestsellers' },
     { label: 'GALLERY', href: '#gallery' },
     { label: 'CONTACT', href: '#contact' },
   ];
@@ -155,6 +179,7 @@ export default function Home() {
         </div>
         <div className="h-20 md:h-32 bg-transparent"></div>
         <ProductsSection />
+        <BestSellersSection />
         <GallerySection />
         <ContactSection />
         <AboutUsSection />
