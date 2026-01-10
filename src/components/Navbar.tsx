@@ -80,7 +80,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
               <ShoppingCart size={20} />
             </button>
           </div>
-          <div className="md:hidden">
+          <div className="md:hidden flex-1 flex justify-end">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white/85">
               <Menu size={28} />
             </button>
