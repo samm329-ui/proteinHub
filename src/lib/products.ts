@@ -24,16 +24,16 @@ export const bestSellers = [
         oldPrice: 2999,
         weights: ['1kg', '2kg', '5kg'],
         flavors: [
-            { name: 'Double Chocolate', color: '#5C3A21' },
+            { name: 'Double Chocolate', color: '#D946EF' },
             { name: 'Vanilla Cream', color: '#F3E5AB' },
             { name: 'Strawberry', color: '#FC5A8D' },
         ],
         image: {
-            src: 'https://picsum.photos/seed/bs1/400/400',
+            src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/biozyme%20performance.png',
             hint: 'protein powder'
         },
         stat: {
-            value: '25g',
+            value: '25',
             label: 'Protein'
         }
     },
@@ -50,11 +50,11 @@ export const bestSellers = [
             { name: 'Green Apple', color: '#84DE02' },
         ],
         image: {
-            src: 'https://picsum.photos/seed/bs2/400/400',
+            src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/gold%20whey.png',
             hint: 'fitness supplement'
         },
         stat: {
-            value: '30g',
+            value: '30',
             label: 'Protein'
         }
     },
@@ -71,7 +71,7 @@ export const bestSellers = [
             { name: 'Banana', color: '#FFE135' },
         ],
         image: {
-            src: 'https://picsum.photos/seed/bs3/400/400',
+            src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/mass%20gainer.png',
             hint: 'mass gainer'
         },
         stat: {
