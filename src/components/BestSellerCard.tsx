@@ -32,15 +32,17 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
       <div className="relative w-full h-full bg-[#1A202C] rounded-3xl shadow-2xl shadow-black/60 grid grid-cols-1 md:grid-cols-2 overflow-visible">
         
         {/* Left Side: Product Image */}
-        <div className="absolute -left-4 sm:-left-12 -top-16 sm:-top-20 w-64 h-80 sm:w-80 sm:h-96 md:w-[400px] md:h-[480px] z-10">
-          <Image
-              src={product.image.src}
-              alt={product.name}
-              fill
-              className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105"
-              data-ai-hint={product.image.hint}
-              unoptimized
-          />
+        <div className="absolute -left-4 sm:-left-12 -top-16 sm:-top-20 w-64 h-80 sm:w-80 sm:h-96 md:w-[400px] md:h-[480px] z-10 flex items-center justify-center">
+          <div className="relative w-full h-full">
+            <Image
+                src={product.image.src}
+                alt={product.name}
+                fill
+                className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105"
+                data-ai-hint={product.image.hint}
+                unoptimized
+            />
+          </div>
         </div>
 
         {/* Right Side: Product Details */}
