@@ -42,7 +42,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                 fill
                 className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105 -rotate-3"
                 style={{
-                  filter: `drop-shadow(0px 10px 15px rgba(0,0,0,0.3)) drop-shadow(0 0 25px ${accentColor})`
+                  filter: `drop-shadow(0px 10px 15px rgba(0,0,0,0.3)) drop-shadow(0 0 35px ${accentColor})`
                 }}
                 data-ai-hint={product.image.hint}
                 unoptimized
@@ -55,22 +55,22 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           
           {/* Top section: Name, Price, Stat */}
           <div>
-            <h3 className="text-xl font-bold font-headline uppercase tracking-wider text-white/90">{product.name}</h3>
-            <p className="text-2xl font-semibold mt-2" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
-            <p className="text-sm text-white/60 mt-4 leading-relaxed">{product.description}</p>
+            <h3 className="text-lg font-bold font-headline uppercase tracking-wider text-white/90">{product.name}</h3>
+            <p className="text-xl font-semibold mt-1" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+            <p className="text-xs text-white/60 mt-3 leading-relaxed">{product.description}</p>
           </div>
           
-          <div className="mt-6 space-y-6">
+          <div className="mt-6 space-y-4">
             <div className="grid grid-cols-2 gap-4 items-start">
               <div>
-                <p className="text-xs uppercase tracking-widest text-white/50 mb-2">SIZE</p>
+                <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">SIZE</p>
                 <div className="flex items-center gap-2">
                     {product.weights.map(weight => (
                     <button
                         key={weight}
                         onClick={() => setSelectedWeight(weight)}
                         className={cn(
-                        "text-xs font-medium transition-colors duration-200 px-3 py-1 rounded-full",
+                        "text-[11px] font-medium transition-colors duration-200 px-2.5 py-1 rounded-full",
                         selectedWeight === weight
                             ? 'bg-white/10 text-white'
                             : 'text-white/50 hover:bg-white/5'
@@ -81,25 +81,25 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                     ))}
                 </div>
               </div>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center justify-end gap-4">
                 <div className="text-right flex flex-col items-center space-y-1">
-                    <CircularProgress value={progressValue} size={36} strokeWidth={2} color={accentColor} />
-                    <p className="text-[10px] uppercase tracking-widest text-white/50">{product.stat.label}</p>
+                    <CircularProgress value={progressValue} size={32} strokeWidth={2} color={accentColor} />
+                    <p className="text-[9px] uppercase tracking-widest text-white/50">{product.stat.label}</p>
                 </div>
               </div>
             </div>
             
           
             <div>
-              <p className="text-xs uppercase tracking-widest text-white/50 mb-2">FLAVOR</p>
-                <div className="flex gap-3">
+              <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">FLAVOR</p>
+                <div className="flex gap-2">
                 {product.flavors.map(flavor => (
                   <button
                     key={flavor.name}
                     onClick={() => setSelectedFlavor(flavor)}
                     title={flavor.name}
                     className={cn(
-                      "w-6 h-6 rounded-full border-2 transition-all duration-300",
+                      "w-5 h-5 rounded-full border-2 transition-all duration-300",
                       selectedFlavor.name === flavor.name ? 'scale-110 shadow-lg' : 'border-transparent opacity-70'
                     )}
                       style={{ 
@@ -114,18 +114,18 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           </div>
           
           {/* Bottom section: Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 pt-4 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row items-center gap-3 mt-6 pt-4 border-t border-white/10">
               <Button
-                className="w-full h-11 text-sm font-bold text-black transition-all duration-300 rounded-lg"
+                className="w-full h-10 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
                 style={{ backgroundColor: accentColor }}
                 onMouseOver={e => (e.currentTarget.style.filter = 'brightness(1.1)')}
                 onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
             >
               ADD TO CART
             </Button>
-            <Button variant="ghost" size="sm" className="w-full sm:w-auto text-white/50 hover:text-white flex items-center justify-center gap-2 p-1">
-                <Heart size={16}/>
-                <span className="text-xs">ADD TO WISHLIST</span>
+            <Button variant="ghost" size="sm" className="w-full sm:w-auto text-white/50 hover:text-white flex items-center justify-center gap-1.5 p-1">
+                <Heart size={14}/>
+                <span className="text-[10px]">ADD TO WISHLIST</span>
             </Button>
           </div>
         </div>
