@@ -24,7 +24,7 @@ export const bestSellers = [
         oldPrice: 2999,
         weights: ['1kg', '2kg', '5kg'],
         flavors: [
-            { name: 'Rich Chocolate', color: '#5C3A21' },
+            { name: 'Rich Chocolate', color: '#F26B38' },
             { name: 'Cafe Mocha', color: '#7B5E4A' },
             { name: 'Strawberry Shake', color: '#D94A64' },
         ],

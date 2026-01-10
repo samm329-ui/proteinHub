@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from '@/components/Navbar';
@@ -43,11 +44,11 @@ const BestSellersSection = () => {
             align: "start",
             loop: true,
           }}
-          className="w-full max-w-5xl mx-auto relative"
+          className="w-full max-w-4xl mx-auto relative"
         >
           <CarouselContent className="-ml-8">
             {bestSellers.map((product, index) => (
-              <CarouselItem key={index} className="pl-8 md:basis-1/1 lg:basis-1/1">
+              <CarouselItem key={index} className="pl-8 md:basis-1/1 lg:basis-1/1 flex justify-center">
                   <BestSellerCard product={product} />
               </CarouselItem>
             ))}
