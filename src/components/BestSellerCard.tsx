@@ -53,7 +53,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
 
         {/* Right Side: Product Details */}
         <div className="w-1/2 flex flex-col p-6 sm:p-8 text-white">
-          <div className="mb-auto">
+          <div className="flex-grow">
             <p className="text-xs uppercase tracking-widest text-white/40 mb-1">{product.category}</p>
             <h3 className="text-2xl font-bold font-headline uppercase tracking-wider mb-2">{product.name} - {selectedFlavor.name}</h3>
 
