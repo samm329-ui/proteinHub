@@ -123,9 +123,13 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
             >
               ADD TO CART
             </Button>
-            <Button variant="ghost" size="sm" className="w-full sm:w-auto text-white/50 hover:text-white flex items-center justify-center gap-1 p-1 h-8">
-                <Heart size={12}/>
-                <span className="text-[9px]">ADD TO WISHLIST</span>
+            <Button
+              className="w-full h-8 text-[11px] font-bold text-black transition-all duration-300 rounded-md"
+              style={{ backgroundColor: 'white' }}
+              onMouseOver={e => (e.currentTarget.style.filter = 'brightness(0.9)')}
+              onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
+            >
+              BUY NOW
             </Button>
           </div>
         </div>
