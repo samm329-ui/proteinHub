@@ -40,7 +40,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
            <div
             className="absolute inset-0 z-0 opacity-50 blur-2xl"
             style={{
-              boxShadow: `0 0 80px 30px ${accentColor}`,
+              boxShadow: `0 0 60px 15px ${accentColor}`,
               transition: 'box-shadow 0.5s ease-in-out',
             }}
           />
