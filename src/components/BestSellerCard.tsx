@@ -35,7 +35,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         
         {/* Left Side: Product Image */}
         <div className="relative w-full sm:w-2/5 flex items-center justify-center p-4 sm:p-0 sm:py-8">
-           <div className="relative w-64 h-80 sm:w-[22rem] sm:h-[26rem] -translate-y-4 sm:translate-y-0 sm:-translate-x-4">
+           <div className="relative w-56 h-72 sm:w-[20rem] sm:h-[24rem] -translate-y-4 sm:translate-y-0 sm:-translate-x-4">
             <Image
                 src={product.image.src}
                 alt={product.name}
@@ -55,22 +55,22 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           
           {/* Top section: Name, Price, Stat */}
           <div>
-            <h3 className="text-lg font-bold font-headline uppercase tracking-wider text-white/90">{product.name}</h3>
-            <p className="text-xl font-semibold mt-1" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
-            <p className="text-xs text-white/60 mt-3 leading-relaxed">{product.description}</p>
+            <h3 className="text-base font-bold font-headline uppercase tracking-wider text-white/90">{product.name}</h3>
+            <p className="text-lg font-semibold mt-1" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+            <p className="text-[11px] text-white/60 mt-2 leading-relaxed">{product.description}</p>
           </div>
           
-          <div className="mt-6 space-y-4">
+          <div className="mt-4 space-y-3">
             <div className="grid grid-cols-2 gap-4 items-start">
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">SIZE</p>
-                <div className="flex items-center gap-2">
+                <p className="text-[9px] uppercase tracking-widest text-white/50 mb-1.5">SIZE</p>
+                <div className="flex items-center gap-1.5">
                     {product.weights.map(weight => (
                     <button
                         key={weight}
                         onClick={() => setSelectedWeight(weight)}
                         className={cn(
-                        "text-[11px] font-medium transition-colors duration-200 px-2.5 py-1 rounded-full",
+                        "text-[10px] font-medium transition-colors duration-200 px-2 py-0.5 rounded-full",
                         selectedWeight === weight
                             ? 'bg-white/10 text-white'
                             : 'text-white/50 hover:bg-white/5'
@@ -83,29 +83,29 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
               </div>
               <div className="flex items-center justify-end gap-4">
                 <div className="text-right flex flex-col items-center space-y-1">
-                    <CircularProgress value={progressValue} size={32} strokeWidth={2} color={accentColor} />
-                    <p className="text-[9px] uppercase tracking-widest text-white/50">{product.stat.label}</p>
+                    <CircularProgress value={progressValue} size={28} strokeWidth={2} color={accentColor} />
+                    <p className="text-[8px] uppercase tracking-widest text-white/50">{product.stat.label}</p>
                 </div>
               </div>
             </div>
             
           
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">FLAVOR</p>
-                <div className="flex gap-2">
+              <p className="text-[9px] uppercase tracking-widest text-white/50 mb-1.5">FLAVOR</p>
+                <div className="flex gap-1.5">
                 {product.flavors.map(flavor => (
                   <button
                     key={flavor.name}
                     onClick={() => setSelectedFlavor(flavor)}
                     title={flavor.name}
                     className={cn(
-                      "w-5 h-5 rounded-full border-2 transition-all duration-300",
+                      "w-4 h-4 rounded-full border-2 transition-all duration-300",
                       selectedFlavor.name === flavor.name ? 'scale-110 shadow-lg' : 'border-transparent opacity-70'
                     )}
                       style={{ 
                       backgroundColor: flavor.color, 
                       borderColor: selectedFlavor.name === flavor.name ? 'white' : 'transparent',
-                      boxShadow: selectedFlavor.name === flavor.name ? `0 0 10px ${flavor.color}` : 'none'
+                      boxShadow: selectedFlavor.name === flavor.name ? `0 0 8px ${flavor.color}` : 'none'
                     }}
                   />
                 ))}
@@ -114,18 +114,18 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           </div>
           
           {/* Bottom section: Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-3 mt-6 pt-4 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row items-center gap-2 mt-4 pt-3 border-t border-white/10">
               <Button
-                className="w-full h-10 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
+                className="w-full h-8 text-[11px] font-bold text-black transition-all duration-300 rounded-md"
                 style={{ backgroundColor: accentColor }}
                 onMouseOver={e => (e.currentTarget.style.filter = 'brightness(1.1)')}
                 onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
             >
               ADD TO CART
             </Button>
-            <Button variant="ghost" size="sm" className="w-full sm:w-auto text-white/50 hover:text-white flex items-center justify-center gap-1.5 p-1">
-                <Heart size={14}/>
-                <span className="text-[10px]">ADD TO WISHLIST</span>
+            <Button variant="ghost" size="sm" className="w-full sm:w-auto text-white/50 hover:text-white flex items-center justify-center gap-1 p-1 h-8">
+                <Heart size={12}/>
+                <span className="text-[9px]">ADD TO WISHLIST</span>
             </Button>
           </div>
         </div>
