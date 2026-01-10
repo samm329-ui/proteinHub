@@ -34,34 +34,6 @@ const ProductsSection = () => {
   );
 };
 
-const BestSellersSection = () => {
-  return (
-    <section id="bestsellers" className="py-20 sm:py-32 bg-[#0A0A0A] overflow-hidden">
-      <div className="container mx-auto px-5">
-        <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-16 sm:mb-24 text-white/90">Best Sellers</h2>
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full max-w-4xl mx-auto relative"
-        >
-          <CarouselContent className="-ml-8">
-            {bestSellers.map((product, index) => (
-              <CarouselItem key={index} className="pl-8 md:basis-1/1 lg:basis-1/1 flex justify-center">
-                  <BestSellerCard product={product} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute left-[-1rem] sm:left-[-2rem] top-1/2 -translate-y-1/2 text-white bg-white/10 border-white/20 hover:bg-white/20" />
-          <CarouselNext className="absolute right-[-1rem] sm:right-[-2rem] top-1/2 -translate-y-1/2 text-white bg-white/10 border-white/20 hover:bg-white/20" />
-        </Carousel>
-      </div>
-    </section>
-  );
-};
-
-
 const GallerySection = () => {
   return (
     <section id="gallery" className="py-12 sm:py-20">
@@ -166,7 +138,6 @@ export default function Home() {
   const navItems = [
     { label: 'HOME', href: '#home' },
     { label: 'PRODUCTS', href: '#products' },
-    { label: 'BEST SELLERS', href: '#bestsellers' },
     { label: 'GALLERY', href: '#gallery' },
     { label: 'CONTACT', href: '#contact' },
     { label: 'ABOUT', href: '#about' },
@@ -185,7 +156,6 @@ export default function Home() {
         </div>
         <div className="h-20 md:h-32 bg-transparent"></div>
         <ProductsSection />
-        <BestSellersSection />
         <GallerySection />
         <ContactSection />
         <AboutUsSection />
