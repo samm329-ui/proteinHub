@@ -23,10 +23,10 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         
         {/* Left Side: Product Image */}
         <div 
-          className="relative w-full md:w-2/5 flex items-center justify-center p-8 transition-colors duration-300 min-h-[400px] md:min-h-0"
+          className="relative w-full md:w-2/5 flex items-center justify-center p-6 transition-colors duration-300 min-h-[300px] md:min-h-0"
           style={{ backgroundColor: accentColor }}
         >
-           <div className="relative w-64 h-80 md:w-full md:h-full md:min-h-[28rem]">
+           <div className="relative w-48 h-64 md:w-full md:h-full md:min-h-[20rem]">
             <Image
                 src={product.image.src}
                 alt={product.name}
@@ -43,7 +43,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         </div>
 
         {/* Right Side: Product Details */}
-        <div className="w-full md:w-3/5 flex flex-col justify-between p-8 text-white/90">
+        <div className="w-full md:w-3/5 flex flex-col justify-between p-6 text-white/90">
           
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-1">{product.category}</p>
