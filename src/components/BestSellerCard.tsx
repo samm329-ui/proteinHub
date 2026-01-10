@@ -35,12 +35,12 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
       <div 
         className="relative bg-[#1A1C29]/80 backdrop-blur-sm rounded-3xl flex flex-col sm:flex-row overflow-hidden w-full sm:w-[90%] sm:ml-auto"
         style={{
-          boxShadow: '0 0 120px -30px rgba(255, 255, 255, 0.25)'
+            boxShadow: '0 0 120px -30px rgba(255, 255, 255, 0.15)'
         }}
       >
         
         {/* Left Side: Product Image */}
-        <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0 min-h-[320px] sm:min-h-0">
+        <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0 min-h-[300px] sm:min-h-0">
            <div className="relative w-48 h-60 sm:w-56 sm:h-72">
             <Image
                 src={product.image.src}
@@ -55,38 +55,38 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
 
         {/* Right Side: Product Details */}
         <div className="w-full sm:w-1/2 flex flex-col p-4 sm:p-6 text-white">
-          <div className="flex-grow space-y-4">
+          <div className="flex-grow space-y-3">
             {/* Name & Price */}
-            <div>
-              <h3 className="text-base lg:text-lg font-bold font-headline uppercase tracking-wider">{product.name}</h3>
-              <p className="text-lg lg:text-xl font-semibold mt-1" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+            <div className="flex justify-between items-start">
+              <div>
+                <h3 className="text-sm lg:text-base font-bold font-headline uppercase tracking-wider">{product.name}</h3>
+                <p className="text-md lg:text-lg font-semibold mt-1" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+              </div>
+              <div className="text-right flex flex-col items-center space-y-1 flex-shrink-0 ml-2">
+                 <CircularProgress value={progressValue} size={28} strokeWidth={2} color={accentColor} />
+                 <p className="text-[8px] uppercase tracking-widest text-white/50">{product.stat.label}</p>
+              </div>
             </div>
             
-            {/* Size & Stat */}
-            <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-white/50 mb-2">SIZE</p>
-                  <div className="flex gap-4">
-                    {product.weights.map(weight => (
-                      <button
-                        key={weight}
-                        onClick={() => setSelectedWeight(weight)}
-                        className={cn(
-                          "text-xs font-medium transition-colors duration-200",
-                          selectedWeight === weight
-                            ? 'text-white'
-                            : 'text-white/40 hover:text-white'
-                        )}
-                      >
-                        {weight}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                 <div className="text-right flex flex-col items-center">
-                    <CircularProgress value={progressValue} size={28} strokeWidth={2} color={accentColor} />
-                    <p className="text-[8px] uppercase tracking-widest text-white/50 mt-1">{product.stat.label}</p>
-                 </div>
+            {/* Size */}
+            <div>
+              <p className="text-xs uppercase tracking-widest text-white/50 mb-2">SIZE</p>
+              <div className="flex gap-4">
+                {product.weights.map(weight => (
+                  <button
+                    key={weight}
+                    onClick={() => setSelectedWeight(weight)}
+                    className={cn(
+                      "text-xs font-medium transition-colors duration-200",
+                      selectedWeight === weight
+                        ? 'text-white'
+                        : 'text-white/40 hover:text-white'
+                    )}
+                  >
+                    {weight}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Flavor */}
