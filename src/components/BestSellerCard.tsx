@@ -50,7 +50,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         </div>
 
         {/* Right Side: Product Details */}
-        <div className="w-full sm:w-1/2 flex flex-col justify-between p-4 sm:p-6 text-white -mt-10 sm:mt-0">
+        <div className="w-full sm:w-1/2 flex flex-col p-4 sm:p-6 text-white">
           <div className="flex-grow">
             <h3 className="text-xl lg:text-xl font-bold font-headline uppercase tracking-wider mb-2">{product.name}</h3>
             <p className="text-lg lg:text-lg font-semibold mb-4" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
@@ -104,7 +104,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
             </div>
           </div>
           
-          <div className="flex items-center gap-2 sm:gap-4 mt-4 sm:mt-6">
+          <div className="flex items-center gap-2 sm:gap-4 mt-auto pt-4">
             <Button
               className="w-full h-10 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
               style={{ backgroundColor: accentColor }}
