@@ -8,6 +8,7 @@ interface CircularProgressProps {
   strokeWidth?: number;
   color?: string;
   className?: string;
+  showValue?: boolean;
 }
 
 export const CircularProgress: React.FC<CircularProgressProps> = ({
@@ -16,6 +17,7 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
   strokeWidth = 5,
   color = 'hsl(var(--primary))',
   className,
+  showValue = true,
 }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -46,9 +48,11 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
           style={{ transition: 'stroke-dashoffset 0.5s ease-out' }}
         />
       </svg>
-      <span className="absolute text-xs font-semibold text-white/80">
-        {value}%
-      </span>
+      {showValue && (
+        <span className="absolute text-xs font-semibold text-white/80">
+          {value}%
+        </span>
+      )}
     </div>
   );
 };
