@@ -30,7 +30,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
       {/* Front Card */}
       <div 
         className="relative bg-[#1a1c29] rounded-3xl flex flex-col sm:flex-row overflow-visible w-full"
-        style={{ boxShadow: '0 0 80px -10px rgba(255,255,255,0.05)'}}
+        style={{ boxShadow: '0 0 80px -10px rgba(0,0,0,0.5)'}}
       >
         
         {/* Left Side: Product Image */}
@@ -42,7 +42,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                 fill
                 className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105 -rotate-3"
                 style={{
-                  filter: `drop-shadow(0px 20px 20px rgba(0,0,0,0.4)) drop-shadow(0 0 35px ${accentColor})`
+                  filter: `drop-shadow(0px 20px 20px rgba(0,0,0,0.4)) drop-shadow(0 0 25px ${accentColor})`
                 }}
                 data-ai-hint={product.image.hint}
                 unoptimized
