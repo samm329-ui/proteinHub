@@ -37,6 +37,13 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         
         {/* Left Side: Product Image */}
         <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0">
+           <div
+            className="absolute inset-0 z-0 opacity-50 blur-2xl"
+            style={{
+              boxShadow: `0 0 80px 30px ${accentColor}`,
+              transition: 'box-shadow 0.5s ease-in-out',
+            }}
+          />
            <div className="relative w-40 h-56 sm:w-56 sm:h-80 transform sm:translate-x-4">
             <Image
                 src={product.image.src}
