@@ -1,3 +1,4 @@
+
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
@@ -22,11 +23,11 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
 
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto font-sans">
+    <div className="relative w-full max-w-2xl mx-auto font-sans p-4">
       {/* Background Accent Card */}
       <div 
-        className="absolute top-0 left-0 w-[95%] h-full rounded-2xl transition-colors duration-300"
-        style={{ backgroundColor: accentColor, opacity: 0.8 }}
+        className="absolute top-0 left-0 w-full h-full rounded-2xl transition-colors duration-300"
+        style={{ backgroundColor: accentColor }}
       />
       
       {/* Main Content Card */}
@@ -51,7 +52,10 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
             <p className="text-xs font-medium uppercase tracking-wider text-white/50 mb-2">{product.category}</p>
             <h3 className="text-3xl font-bold uppercase tracking-wide leading-tight">{product.name}</h3>
             
-            <p className="text-3xl font-bold my-4">₹{product.price.toLocaleString()}</p>
+            <div className="flex items-baseline gap-3 my-4">
+                <p className="text-3xl font-bold">₹{product.price.toLocaleString()}</p>
+                <p className="text-lg font-medium text-white/40 line-through">₹{product.oldPrice.toLocaleString()}</p>
+            </div>
             
             <div className="flex items-center gap-12 text-sm mt-4">
               <div>
