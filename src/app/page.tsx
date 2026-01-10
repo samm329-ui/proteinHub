@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 const ProductsSection = () => {
   const products = ['Whey Protein', 'Mass Gainer', 'Pre Workout', 'Creatine'];
@@ -56,18 +57,36 @@ const GallerySection = () => {
 };
 
 const ContactSection = () => (
-  <section id="contact" className="py-20 sm:py-32">
-    <div className="container mx-auto px-5 max-w-3xl">
-      <h2 className="text-5xl md:text-7xl text-center mb-16 text-white/90">Contact Us</h2>
-      <form className="space-y-4" suppressHydrationWarning>
-        <Input suppressHydrationWarning type="text" placeholder="Name" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 h-12 rounded-md" />
-        <Input suppressHydrationWarning type="email" placeholder="Email" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 h-12 rounded-md" />
-        <Textarea suppressHydrationWarning placeholder="Message" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 rounded-md" rows={5} />
-        <Button suppressHydrationWarning type="submit" className="w-full bg-white text-black font-medium uppercase tracking-wider py-3 h-auto hover:bg-white/90">Submit</Button>
-      </form>
-    </div>
-  </section>
-);
+    <section id="contact" className="py-20 sm:py-32">
+      <div className="container mx-auto px-5">
+        <h2 className="text-5xl md:text-7xl text-center mb-16 text-white/90">Contact Us</h2>
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <form className="space-y-4" suppressHydrationWarning>
+              <Input suppressHydrationWarning type="text" placeholder="Name" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 h-12 rounded-md" />
+              <Input suppressHydrationWarning type="email" placeholder="Email" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 h-12 rounded-md" />
+              <Textarea suppressHydrationWarning placeholder="Message" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 rounded-md" rows={5} />
+              <Button suppressHydrationWarning type="submit" className="w-full bg-white text-black font-medium uppercase tracking-wider py-3 h-auto hover:bg-white/90">Submit</Button>
+            </form>
+          </div>
+          <div className="space-y-8 text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-4">
+              <Phone className="w-6 h-6 text-white/75" />
+              <span className="text-white/90">+1 (555) 123-4567</span>
+            </div>
+            <div className="flex items-center justify-center md:justify-start gap-4">
+              <Mail className="w-6 h-6 text-white/75" />
+              <span className="text-white/90">contact@proteinzone.com</span>
+            </div>
+            <div className="flex items-center justify-center md:justify-start gap-4">
+              <MapPin className="w-6 h-6 text-white/75" />
+              <span className="text-white/90">123 Fitness Ave, Muscle Beach, CA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 
 const AboutUsSection = () => (
     <section id="about" className="py-20 sm:py-32 text-center text-white/90 container mx-auto px-5">
