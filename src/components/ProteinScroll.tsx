@@ -33,6 +33,7 @@ const lerp = (start: number, end: number, amt: number) => (1 - amt) * start + am
 
 export default function ProteinScroll() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isReady, setIsReady] = useState(false);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -51,7 +52,11 @@ export default function ProteinScroll() {
       .catch((error) => {
         console.error("Error preloading images:", error);
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+          setIsLoading(false);
+          // Add a short delay before fading in to ensure everything is ready
+          setTimeout(() => setIsReady(true), 250);
+      });
   }, []);
 
   useEffect(() => {
@@ -131,6 +136,17 @@ export default function ProteinScroll() {
           <div className="h-12 w-12 animate-spin rounded-full border-4 border-white/20 border-t-white"></div>
         </div>
       )}
+        <motion.div
+            className="fixed inset-0 z-[60] bg-black"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: isReady ? 0 : 1 }}
+            transition={{ duration: 1.5, ease: 'easeInOut' }}
+            onAnimationComplete={() => {
+                const el = document.querySelector('[data-fade-in-overlay]');
+                if (el) (el as HTMLElement).style.display = 'none';
+            }}
+            data-fade-in-overlay
+        />
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <motion.canvas
           ref={canvasRef}
