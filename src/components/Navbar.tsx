@@ -54,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
           <div className="text-xl font-bold font-headline uppercase tracking-widest text-white/75">
             ProteinZone
           </div>
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex flex-1 justify-center">
             <ul className="flex items-center space-x-8">
               {navItems.map(item => (
                 <li key={item.label}>
@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
               ))}
             </ul>
           </nav>
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center justify-end" style={{minWidth: '125px'}}>
             <button className="text-white/75 hover:text-accent transition-colors" suppressHydrationWarning={suppressHydrationWarning}>
               <ShoppingCart size={20} />
             </button>
