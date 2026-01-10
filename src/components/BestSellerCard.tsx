@@ -104,7 +104,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
             </div>
           </div>
           
-          <div className="flex items-center gap-2 sm:gap-4 mt-auto pt-4">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 mt-auto pt-4">
             <Button
               className="w-full h-10 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
               style={{ backgroundColor: 'white', color: 'black' }}
