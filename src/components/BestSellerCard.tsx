@@ -55,8 +55,12 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           
           {/* Top section: Name, Price, Stat */}
           <div>
+            <p className="text-[10px] uppercase tracking-widest text-white/50 mb-1">{product.category}</p>
             <h3 className="text-base font-bold font-headline uppercase tracking-wider text-white/90">{product.name}</h3>
-            <p className="text-lg font-semibold mt-1" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+            <div className="flex items-baseline gap-2 mt-1">
+                <p className="text-lg font-semibold" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+                <p className="text-sm font-medium text-white/40 line-through">₹{product.oldPrice.toLocaleString()}</p>
+            </div>
             <p className="text-[11px] text-white/60 mt-2 leading-relaxed">{product.description}</p>
           </div>
           
