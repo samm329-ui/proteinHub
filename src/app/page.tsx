@@ -60,8 +60,11 @@ const GallerySection = () => {
 
 const ContactSection = () => (
     <section id="contact" className="py-20 sm:py-32">
-      <div className="container mx-auto px-5">
-        <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Contact Us</h2>
+      <div className="container mx-auto px-5 text-center">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-8 text-white/90">Contact Us</h2>
+        <p className="text-base text-white/60 leading-relaxed max-w-md mx-auto mb-12">
+            Have questions about our products, training, or anything else? We're here to help. Reach out and let's talk.
+        </p>
         <div className="flex justify-center items-center gap-8 md:gap-12">
             <a href="tel:+15551234567" className="text-white/75 hover:text-white/90 transition-colors">
                 <Phone className="w-8 h-8 sm:w-10 sm:h-10" />
