@@ -63,7 +63,7 @@ const ContactSection = () => (
       <div className="container mx-auto px-5 text-center">
         <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-8 text-white/90">Contact Us</h2>
         <p className="text-base text-white/60 leading-relaxed max-w-md mx-auto mb-12">
-            Have questions about our products, training, or anything else? We're here to help. Reach out and let's talk.
+            Whether you have questions about our premium supplements, need guidance on your training regimen, or have any other inquiries, our dedicated team is here and ready to assist you. Please feel free to reach out, and let's start a conversation about how we can help you achieve your fitness goals.
         </p>
         <div className="flex justify-center items-center gap-8 md:gap-12">
             <a href="tel:+15551234567" className="text-white/75 hover:text-white/90 transition-colors">
@@ -140,7 +140,6 @@ export default function Home() {
     { label: 'PRODUCTS', href: '#products' },
     { label: 'GALLERY', href: '#gallery' },
     { label: 'CONTACT', href: '#contact' },
-    { label: 'ABOUT', href: '#about' },
   ];
 
   return (
