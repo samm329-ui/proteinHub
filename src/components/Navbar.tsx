@@ -72,10 +72,12 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
                 </li>
               ))}
             </ul>
+          </nav>
+          <div className="hidden md:flex items-center">
             <button className="text-white/75 hover:text-accent transition-colors" suppressHydrationWarning={suppressHydrationWarning}>
               <ShoppingCart size={20} />
             </button>
-          </nav>
+          </div>
           <div className="md:hidden">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white/85">
               <Menu size={28} />
