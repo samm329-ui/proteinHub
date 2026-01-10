@@ -14,7 +14,7 @@ const ProductsSection = () => {
     <section id="products" className="py-20 sm:py-32">
       <div className="container mx-auto px-5">
         <h2 className="text-5xl md:text-7xl text-center mb-16 text-white/90">Our Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           {products.map((product) => (
             <div key={product} className="bg-[#111111] p-4 rounded-md text-center h-[56px] flex items-center justify-center">
               <h3 className="text-lg uppercase tracking-wider text-white/90">{product}</h3>
@@ -129,7 +129,6 @@ export default function Home() {
     { label: 'PRODUCTS', href: '#products' },
     { label: 'GALLERY', href: '#gallery' },
     { label: 'CONTACT', href: '#contact' },
-    { label: 'ABOUT', href: '#about' },
   ];
 
   return (
