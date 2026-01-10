@@ -32,7 +32,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
       
       {/* Front Card */}
       <div 
-        className="relative bg-[#1A1C29]/80 backdrop-blur-sm rounded-3xl flex flex-col sm:flex-row overflow-hidden w-full sm:w-[90%] sm:ml-auto"
+        className="relative bg-[#1A1C29]/80 backdrop-blur-sm rounded-3xl flex flex-col sm:flex-row overflow-hidden w-full sm:ml-auto"
         style={{
             boxShadow: '0 0 120px -30px rgba(255, 255, 255, 0.15)'
         }}
@@ -40,7 +40,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         
         {/* Left Side: Product Image */}
         <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0 min-h-[300px] sm:min-h-0">
-           <div className="relative w-48 h-60 sm:w-56 sm:h-72">
+           <div className="relative w-52 h-64 sm:w-64 sm:h-80">
             <Image
                 src={product.image.src}
                 alt={product.name}
@@ -57,8 +57,8 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           {/* Top section: Name, Price, Stat */}
           <div className="flex justify-between items-start mb-4">
             <div className="flex-1">
-              <h3 className="text-sm font-bold font-headline uppercase tracking-wider">{product.name}</h3>
-              <p className="text-lg font-semibold mt-1" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+              <h3 className="text-xs font-bold font-headline uppercase tracking-wider">{product.name}</h3>
+              <p className="text-base font-semibold mt-1" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
             </div>
             <div className="text-right flex flex-col items-center space-y-1 flex-shrink-0 ml-2">
                 <CircularProgress value={progressValue} size={28} strokeWidth={2} color={accentColor} />
@@ -67,10 +67,10 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           </div>
           
           {/* Middle section: Size & Flavor */}
-          <div className="flex-grow space-y-4 mb-4">
+          <div className="flex-grow grid grid-cols-2 gap-4 mb-4">
             <div>
               <p className="text-xs uppercase tracking-widest text-white/50 mb-2">SIZE</p>
-              <div className="flex gap-4">
+              <div className="flex flex-col items-start gap-1">
                 {product.weights.map(weight => (
                   <button
                     key={weight}
