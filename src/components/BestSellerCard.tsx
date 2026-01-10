@@ -37,7 +37,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         
         {/* Left Side: Product Image */}
         <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0 h-48 sm:h-auto">
-           <div className="relative w-36 h-48 sm:w-48 sm:h-64">
+           <div className="relative w-32 h-44 sm:w-40 sm:h-56">
             <Image
                 src={product.image.src}
                 alt={product.name}
@@ -52,10 +52,10 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         {/* Right Side: Product Details */}
         <div className="w-full sm:w-1/2 flex flex-col p-4 sm:p-6 text-white">
           <div className="flex-grow">
-            <h3 className="text-xl lg:text-xl font-bold font-headline uppercase tracking-wider mb-2">{product.name}</h3>
-            <p className="text-lg lg:text-lg font-semibold mb-4" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+            <h3 className="text-lg lg:text-xl font-bold font-headline uppercase tracking-wider mb-1">{product.name}</h3>
+            <p className="text-base lg:text-lg font-semibold mb-3" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
             
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-between items-center mb-3">
                 <div>
                   <p className="text-xs uppercase tracking-widest text-white/50 mb-2">SIZE</p>
                   <div className="flex gap-4">
@@ -64,7 +64,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                         key={weight}
                         onClick={() => setSelectedWeight(weight)}
                         className={cn(
-                          "text-sm font-medium transition-colors duration-200",
+                          "text-xs font-medium transition-colors duration-200",
                           selectedWeight === weight
                             ? 'text-white'
                             : 'text-white/40 hover:text-white'
@@ -76,8 +76,8 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                   </div>
                 </div>
                  <div className="text-right">
-                    <CircularProgress value={progressValue} size={50} strokeWidth={4} color={accentColor} />
-                    <p className="text-xs uppercase tracking-widest text-white/50 mt-2">{product.stat.label}</p>
+                    <CircularProgress value={progressValue} size={40} strokeWidth={3} color={accentColor} />
+                    <p className="text-[10px] uppercase tracking-widest text-white/50 mt-1">{product.stat.label}</p>
                  </div>
             </div>
 
@@ -96,7 +96,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                      style={{ 
                       backgroundColor: flavor.color, 
                       borderColor: selectedFlavor.name === flavor.name ? 'white' : 'transparent',
-                      boxShadow: selectedFlavor.name === flavor.name ? `0 0 10px ${flavor.color}` : 'none'
+                      boxShadow: selectedFlavor.name === flavor.name ? `0 0 8px ${flavor.color}` : 'none'
                     }}
                   />
                 ))}
@@ -104,9 +104,9 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 mt-auto pt-4">
+          <div className="flex flex-col sm:flex-row items-center gap-2 mt-auto pt-4">
             <Button
-              className="w-full h-10 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
+              className="w-full h-9 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
               style={{ backgroundColor: 'white', color: 'black' }}
               onMouseOver={e => (e.currentTarget.style.filter = 'brightness(0.9)')}
               onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
@@ -114,7 +114,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
               BUY NOW
             </Button>
             <Button
-              className="w-full h-10 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
+              className="w-full h-9 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
               style={{ backgroundColor: accentColor }}
               onMouseOver={e => (e.currentTarget.style.filter = 'brightness(1.1)')}
               onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
