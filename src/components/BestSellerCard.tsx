@@ -18,7 +18,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
   const accentColor = selectedFlavor.color;
 
   return (
-    <div className="w-full max-w-4xl mx-auto font-sans bg-[#0A0A0A] rounded-3xl shadow-2xl shadow-black/20 overflow-hidden">
+    <div className="w-full max-w-xl mx-auto font-sans bg-[#0A0A0A] rounded-3xl shadow-2xl shadow-black/20 overflow-hidden">
       <div className="flex flex-col md:flex-row">
         
         {/* Left Side: Product Image */}
@@ -34,7 +34,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                 className="object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-105"
                 style={{ 
                   transform: 'rotate(-5deg)',
-                  filter: 'contrast(1.1)',
+                  filter: 'contrast(1.1) drop-shadow(0 35px 35px rgba(0,0,0,0.5))',
                 }}
                 data-ai-hint={product.image.hint}
                 unoptimized
