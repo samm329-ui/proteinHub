@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { bestSellers } from '@/lib/products';
-import { ShoppingCart, ShoppingBag } from 'lucide-react';
+import { ShoppingCart, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 type BestSellerCardProps = {
@@ -16,13 +16,24 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
   const accentColor = selectedFlavor.color;
 
   return (
-    <div className="font-sans bg-[#1a1e29] rounded-xl shadow-2xl shadow-black/40 w-full max-w-4xl mx-auto flex flex-col md:flex-row text-white/90 overflow-hidden">
+    <div className="font-sans bg-[#1a1e29] rounded-xl shadow-2xl shadow-black/40 w-full max-w-4xl mx-auto flex flex-col md:flex-row text-white/90 overflow-hidden my-10">
       
       {/* Left Panel: Visual */}
-      <div className="relative w-full md:w-1/2 flex items-center justify-center p-6 bg-[#1a1e29] overflow-hidden min-h-[350px] md:min-h-0 rounded-t-xl md:rounded-l-xl md:rounded-r-none">
+      <div className="relative w-full md:w-1/2 flex items-center justify-center p-6 bg-transparent overflow-hidden min-h-[350px] md:min-h-0">
         <div 
-          className="absolute -right-1/4 top-1/2 -translate-y-1/2 w-[110%] h-[110%] rounded-full"
-          style={{ backgroundColor: accentColor }}
+          className="absolute -right-1/4 -translate-y-1/2 top-1/2 w-[110%] h-[110%] rounded-full opacity-80"
+          style={{ 
+            backgroundColor: accentColor,
+            filter: 'blur(40px)',
+          }}
+        />
+        <div 
+          className="absolute w-full h-full rounded-full"
+          style={{ 
+            background: `radial-gradient(circle at center, ${accentColor}00 0%, ${accentColor}33 100%)`,
+            transform: 'scale(1.5)',
+            opacity: 0.2,
+          }}
         />
         <div className="relative w-4/5 aspect-[1/1] drop-shadow-[0_25px_20px_rgba(0,0,0,0.4)] z-10">
           <Image
@@ -36,10 +47,11 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
       </div>
 
       {/* Right Panel: Details */}
-      <div className="w-full md:w-1/2 flex flex-col p-8 justify-center bg-[#1a1e29]">
+      <div className="w-full md:w-1/2 flex flex-col p-6 sm:p-8 justify-center">
         <div className="flex-grow flex flex-col">
           <p className="text-xs font-medium uppercase tracking-wider text-white/50 mb-2">{product.category}</p>
           <h3 className="text-3xl lg:text-4xl font-bold uppercase tracking-wide leading-tight">{product.name}</h3>
+          <p className="text-white/60 mt-3 text-sm max-w-md leading-relaxed">{product.description}</p>
           
           <div className="flex items-baseline gap-4 my-6">
             <p className="text-4xl font-bold">₹{product.price.toLocaleString()}</p>
@@ -87,14 +99,17 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         </div>
         
         <div className="flex items-center gap-8 pt-8 mt-8 border-t border-white/10">
-           <button className="flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition-colors uppercase tracking-wider">
-            <ShoppingBag size={16} />
-            Buy Now
-          </button>
-          <button className="flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition-colors uppercase tracking-wider">
-            <ShoppingCart size={16} />
+           <Button
+            style={{ backgroundColor: accentColor, color: '#000' }}
+            className="flex-1 font-bold uppercase tracking-wider"
+            size="lg"
+          >
+            <ShoppingCart size={16} className="mr-2"/>
             Add to Cart
-          </button>
+          </Button>
+          <Button variant="ghost" size="icon" className="text-white/70 hover:text-white">
+            <Heart size={20} />
+          </Button>
         </div>
       </div>
     </div>
