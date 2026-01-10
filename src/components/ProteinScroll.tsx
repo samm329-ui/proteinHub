@@ -155,9 +155,6 @@ export default function ProteinScroll() {
         <motion.canvas
           ref={canvasRef}
           className="absolute inset-0 h-full w-full"
-          initial={{ scale: 1.05 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
           style={{ 
             filter: useTransform(
               [saturation, blur],
@@ -223,3 +220,4 @@ export default function ProteinScroll() {
     </div>
   );
 }
+
