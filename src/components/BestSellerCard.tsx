@@ -110,7 +110,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           
           <div className="flex flex-col sm:flex-row items-center gap-2 mt-auto pt-4">
              <Button
-                className="w-full h-10 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
+                className="w-full h-9 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
                 style={{ backgroundColor: accentColor }}
                 onMouseOver={e => (e.currentTarget.style.filter = 'brightness(1.1)')}
                 onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
@@ -118,7 +118,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
               BUY NOW
             </Button>
             <Button
-              className="w-full h-10 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
+              className="w-full h-9 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
               style={{ backgroundColor: 'white' }}
                onMouseOver={e => (e.currentTarget.style.filter = 'brightness(0.9)')}
                 onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
