@@ -51,10 +51,12 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 h-16 md:h-16 flex items-center" suppressHydrationWarning={suppressHydrationWarning}>
         <div className="container mx-auto flex justify-between items-center px-5">
-          <div className="text-xl font-bold font-headline uppercase tracking-widest text-white/75">
-            ProteinZone
+          <div className="flex-1 flex justify-start">
+            <div className="text-xl font-bold font-headline uppercase tracking-widest text-white/75">
+              ProteinZone
+            </div>
           </div>
-          <nav className="hidden md:flex flex-1 justify-center">
+          <nav className="hidden md:flex flex-auto justify-center">
             <ul className="flex items-center space-x-8">
               {navItems.map(item => (
                 <li key={item.label}>
@@ -73,7 +75,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
               ))}
             </ul>
           </nav>
-          <div className="hidden md:flex items-center justify-end" style={{minWidth: '125px'}}>
+          <div className="hidden md:flex flex-1 items-center justify-end">
             <button className="text-white/75 hover:text-accent transition-colors" suppressHydrationWarning={suppressHydrationWarning}>
               <ShoppingCart size={20} />
             </button>
