@@ -40,13 +40,13 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
       >
         
         {/* Left Side: Product Image */}
-        <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0 min-h-[240px] sm:min-h-0">
-           <div className="relative w-36 h-48 sm:w-48 sm:h-64">
+        <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0 min-h-[280px] sm:min-h-0">
+           <div className="relative w-40 h-52 sm:w-52 sm:h-64">
             <Image
                 src={product.image.src}
                 alt={product.name}
                 fill
-                className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105 contrast-125"
+                className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105 contrast-125 -rotate-6"
                 data-ai-hint={product.image.hint}
                 unoptimized
             />
