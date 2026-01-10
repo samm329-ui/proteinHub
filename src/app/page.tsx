@@ -62,7 +62,7 @@ const ContactSection = () => (
       <form className="space-y-4" suppressHydrationWarning>
         <Input suppressHydrationWarning type="text" placeholder="Name" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 h-12 rounded-md" />
         <Input suppressHydrationWarning type="email" placeholder="Email" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 h-12 rounded-md" />
-        <Textarea placeholder="Message" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 rounded-md" rows={5} />
+        <Textarea suppressHydrationWarning placeholder="Message" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 rounded-md" rows={5} />
         <Button suppressHydrationWarning type="submit" className="w-full bg-white text-black font-medium uppercase tracking-wider py-3 h-auto hover:bg-white/90">Submit</Button>
       </form>
     </div>
@@ -81,7 +81,7 @@ const AboutUsSection = () => (
 );
 
 const Footer = () => (
-  <footer className="py-12">
+  <footer className="py-12" suppressHydrationWarning>
     <div className="container mx-auto px-5 text-center text-white/60 text-sm space-y-4">
         <div className="flex flex-col md:flex-row justify-center items-center md:space-x-6 space-y-2 md:space-y-0">
             <a href="#" className="hover:text-white/90 transition-colors">Instagram</a>
@@ -132,7 +132,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-[#050505]">
+    <div className="bg-[#050505]" suppressHydrationWarning>
       <Navbar
         navItems={navItems}
         onNavItemClick={handleScroll}
