@@ -67,13 +67,13 @@ const ContactSection = () => (
         </p>
         <div className="flex justify-center items-center gap-8 md:gap-12">
             <a href="tel:+15551234567" className="text-white/75 hover:text-white/90 transition-colors">
-                <Phone className="w-8 h-8 sm:w-10 sm:h-10" />
+                <Phone className="w-6 h-6 sm:w-8 sm:h-8" />
             </a>
             <a href="mailto:contact@proteinzone.com" className="text-white/75 hover:text-white/90 transition-colors">
-                <Mail className="w-8 h-8 sm:w-10 sm:h-10" />
+                <Mail className="w-6 h-6 sm:w-8 sm:h-8" />
             </a>
             <a href="#" className="text-white/75 hover:text-white/90 transition-colors">
-                <MapPin className="w-8 h-8 sm:w-10 sm:h-10" />
+                <MapPin className="w-6 h-6 sm:w-8 sm:h-8" />
             </a>
         </div>
       </div>
