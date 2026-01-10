@@ -1,3 +1,4 @@
+
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
@@ -20,7 +21,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
   const progressValue = typeof statValue === 'string' ? parseFloat(statValue) : statValue;
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto font-sans">
+    <div className="relative w-full max-w-5xl mx-auto font-sans p-3">
       {/* Back Card */}
       <div
         className="absolute top-0 left-0 w-full h-full rounded-3xl transition-colors duration-500"
