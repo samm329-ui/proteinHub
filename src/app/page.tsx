@@ -14,11 +14,11 @@ const ProductsSection = () => {
   return (
     <section id="products" className="py-20 sm:py-32">
       <div className="container mx-auto px-5">
-        <h2 className="text-5xl md:text-7xl text-center mb-16 text-white/90">Our Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Our Products</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-2xl mx-auto">
           {products.map((product) => (
             <div key={product} className="bg-[#111111] p-4 rounded-md text-center h-[56px] flex items-center justify-center">
-              <h3 className="text-lg uppercase tracking-wider text-white/90">{product}</h3>
+              <h3 className="text-sm sm:text-base uppercase tracking-wider text-white/90">{product}</h3>
             </div>
           ))}
         </div>
@@ -37,20 +37,22 @@ const GallerySection = () => {
 
 
   return (
-    <section id="gallery" className="py-12">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
-        {placeholderImages.map(image => (
-            <div key={image.id} className="relative aspect-[3/4] w-full h-full">
-                <Image 
-                    src={image.src} 
-                    alt={image.alt}
-                    fill
-                    className="object-cover grayscale"
-                    data-ai-hint={image.hint}
-                    unoptimized
-                />
-            </div>
-        ))}
+    <section id="gallery" className="py-12 sm:py-20">
+       <div className="container mx-auto px-5 sm:px-0">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
+            {placeholderImages.map(image => (
+                <div key={image.id} className="relative aspect-[3/4] w-full h-full">
+                    <Image 
+                        src={image.src} 
+                        alt={image.alt}
+                        fill
+                        className="object-cover grayscale"
+                        data-ai-hint={image.hint}
+                        unoptimized
+                    />
+                </div>
+            ))}
+        </div>
       </div>
     </section>
   );
@@ -59,40 +61,27 @@ const GallerySection = () => {
 const ContactSection = () => (
     <section id="contact" className="py-20 sm:py-32">
       <div className="container mx-auto px-5">
-        <h2 className="text-5xl md:text-7xl text-center mb-16 text-white/90">Contact Us</h2>
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <form className="space-y-4" suppressHydrationWarning>
-              <Input suppressHydrationWarning type="text" placeholder="Name" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 h-12 rounded-md" />
-              <Input suppressHydrationWarning type="email" placeholder="Email" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 h-12 rounded-md" />
-              <Textarea suppressHydrationWarning placeholder="Message" className="bg-[#111111] border-none text-white/90 placeholder:text-white/60 rounded-md" rows={5} />
-              <Button suppressHydrationWarning type="submit" className="w-full bg-white text-black font-medium uppercase tracking-wider py-3 h-auto hover:bg-white/90">Submit</Button>
-            </form>
-          </div>
-          <div className="space-y-8 text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-4">
-              <Phone className="w-6 h-6 text-white/75" />
-              <span className="text-white/90">+1 (555) 123-4567</span>
-            </div>
-            <div className="flex items-center justify-center md:justify-start gap-4">
-              <Mail className="w-6 h-6 text-white/75" />
-              <span className="text-white/90">contact@proteinzone.com</span>
-            </div>
-            <div className="flex items-center justify-center md:justify-start gap-4">
-              <MapPin className="w-6 h-6 text-white/75" />
-              <span className="text-white/90">123 Fitness Ave, Muscle Beach, CA</span>
-            </div>
-          </div>
+        <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Contact Us</h2>
+        <div className="flex justify-center items-center gap-8 md:gap-12">
+            <a href="tel:+15551234567" className="text-white/75 hover:text-white/90 transition-colors">
+                <Phone className="w-8 h-8 sm:w-10 sm:h-10" />
+            </a>
+            <a href="mailto:contact@proteinzone.com" className="text-white/75 hover:text-white/90 transition-colors">
+                <Mail className="w-8 h-8 sm:w-10 sm:h-10" />
+            </a>
+            <a href="#" className="text-white/75 hover:text-white/90 transition-colors">
+                <MapPin className="w-8 h-8 sm:w-10 sm:h-10" />
+            </a>
         </div>
       </div>
     </section>
-  );
+);
 
 const AboutUsSection = () => (
     <section id="about" className="py-20 sm:py-32 text-center text-white/90 container mx-auto px-5">
         <div className="max-w-2xl mx-auto">
-            <h2 className="text-5xl md:text-7xl mb-8">About Us</h2>
-            <p className="text-base text-white/60 leading-relaxed">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl mb-8">About Us</h2>
+            <p className="text-base text-white/60 leading-relaxed max-w-md mx-auto">
                 We are a premium fitness brand dedicated to providing the highest quality supplements to help you achieve your strength and conditioning goals.
             </p>
         </div>
@@ -102,7 +91,7 @@ const AboutUsSection = () => (
 const Footer = () => (
   <footer className="py-12" suppressHydrationWarning>
     <div className="container mx-auto px-5 text-center text-white/60 text-sm space-y-4">
-        <div className="flex flex-col md:flex-row justify-center items-center md:space-x-6 space-y-2 md:space-y-0">
+        <div className="flex flex-col md:flex-row justify-center items-center md:space-x-6 space-y-4 md:space-y-0">
             <a href="#" className="hover:text-white/90 transition-colors">Instagram</a>
             <a href="#" className="hover:text-white/90 transition-colors">Facebook</a>
             <a href="#" className="hover:text-white/90 transition-colors">Privacy</a>
@@ -148,6 +137,7 @@ export default function Home() {
     { label: 'PRODUCTS', href: '#products' },
     { label: 'GALLERY', href: '#gallery' },
     { label: 'CONTACT', href: '#contact' },
+    { label: 'ABOUT', href: '#about' },
   ];
 
   return (
@@ -156,7 +146,7 @@ export default function Home() {
         navItems={navItems}
         onNavItemClick={handleScroll}
       />
-      <main>
+      <main suppressHydrationWarning>
         <div id="home">
           <ProteinScroll />
         </div>
