@@ -24,9 +24,9 @@ export const bestSellers = [
         oldPrice: 2999,
         weights: ['1kg', '2kg', '5kg'],
         flavors: [
-            { name: 'Rich Chocolate', color: '#e2d6cf' },
-            { name: 'Cafe Mocha', color: '#d1bdaf' },
-            { name: 'Strawberry Shake', color: '#f5d4d4' },
+            { name: 'Rich Chocolate', color: '#5C3A21' },
+            { name: 'Cafe Mocha', color: '#7B5E4A' },
+            { name: 'Strawberry Shake', color: '#D94A64' },
         ],
         image: {
             src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/biozyme%20performance.png',
@@ -45,9 +45,9 @@ export const bestSellers = [
         oldPrice: 3899,
         weights: ['1kg', '2kg'],
         flavors: [
-            { name: 'Blue Raspberry', color: '#cce6ff' },
-            { name: 'Fruit Punch', color: '#f5d0d4' },
-            { name: 'Green Apple', color: '#dff0d0' },
+            { name: 'Blue Raspberry', color: '#0073e6' },
+            { name: 'Fruit Punch', color: '#e60026' },
+            { name: 'Green Apple', color: '#8cd900' },
         ],
         image: {
             src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/gold%20whey.png',
@@ -66,9 +66,9 @@ export const bestSellers = [
         oldPrice: 2299,
         weights: ['1.5kg', '3kg'],
         flavors: [
-            { name: 'Chocolate Fudge', color: '#d9c5bA' },
-            { name: 'Peanut Butter', color: '#f0e5c2' },
-            { name: 'Banana', color: '#f8f4d5' },
+            { name: 'Chocolate Fudge', color: '#663300' },
+            { name: 'Peanut Butter', color: '#c68642' },
+            { name: 'Banana', color: '#ffcc00' },
         ],
         image: {
             src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/mass%20gainer.png',
