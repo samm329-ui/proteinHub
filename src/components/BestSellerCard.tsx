@@ -42,7 +42,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                 fill
                 className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105 -rotate-3"
                 style={{
-                  filter: `drop-shadow(0px 20px 20px rgba(0,0,0,0.4)) drop-shadow(0 0 25px ${accentColor})`
+                  filter: `drop-shadow(0px 10px 15px rgba(0,0,0,0.3)) drop-shadow(0 0 25px ${accentColor})`
                 }}
                 data-ai-hint={product.image.hint}
                 unoptimized
