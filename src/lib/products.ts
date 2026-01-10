@@ -19,14 +19,14 @@ export const bestSellers = [
     {
         name: 'Biozyme Performance Whey',
         category: 'Performance Nutrition',
-        description: 'Clinically tested on Indian bodies for 50% higher protein absorption and 60% higher BCAA absorption.',
+        description: 'Clinically tested for 50% higher protein absorption and 60% higher BCAA absorption, making it perfect for Indian bodies.',
         price: 2499,
         oldPrice: 2999,
         weights: ['1kg', '2kg', '5kg'],
         flavors: [
-            { name: 'Rich Chocolate', color: '#D946EF' },
-            { name: 'Cafe Mocha', color: '#00F5D4' },
-            { name: 'Strawberry Shake', color: '#f75b83' },
+            { name: 'Rich Chocolate', color: '#e2d6cf' },
+            { name: 'Cafe Mocha', color: '#d1bdaf' },
+            { name: 'Strawberry Shake', color: '#f5d4d4' },
         ],
         image: {
             src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/biozyme%20performance.png',
@@ -40,14 +40,14 @@ export const bestSellers = [
     {
         name: 'Whey Gold',
         category: '100% Whey Isolate',
-        description: 'Pure whey protein isolate enriched with DigeZyme for enhanced digestibility and lean muscle building.',
+        description: 'Pure whey protein isolate enriched with DigeZyme for enhanced digestibility and superior lean muscle building.',
         price: 3299,
         oldPrice: 3899,
         weights: ['1kg', '2kg'],
         flavors: [
-            { name: 'Blue Raspberry', color: '#0096FF' },
-            { name: 'Fruit Punch', color: '#E04156' },
-            { name: 'Green Apple', color: '#84DE02' },
+            { name: 'Blue Raspberry', color: '#cce6ff' },
+            { name: 'Fruit Punch', color: '#f5d0d4' },
+            { name: 'Green Apple', color: '#dff0d0' },
         ],
         image: {
             src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/gold%20whey.png',
@@ -61,14 +61,14 @@ export const bestSellers = [
     {
         name: 'Mass Gainer XXL',
         category: 'High-Calorie Formula',
-        description: 'High-calorie formulation with a 1:5 protein-to-carb ratio to help build muscle mass and gain weight.',
+        description: 'Features a 1:5 protein-to-carb ratio, designed to help you build significant muscle mass and accelerate weight gain.',
         price: 1899,
         oldPrice: 2299,
         weights: ['1.5kg', '3kg'],
         flavors: [
-            { name: 'Chocolate Fudge', color: '#a0522d' },
-            { name: 'Peanut Butter', color: '#e6b800' },
-            { name: 'Banana', color: '#FFD700' },
+            { name: 'Chocolate Fudge', color: '#d9c5bA' },
+            { name: 'Peanut Butter', color: '#f0e5c2' },
+            { name: 'Banana', color: '#f8f4d5' },
         ],
         image: {
             src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/mass%20gainer.png',

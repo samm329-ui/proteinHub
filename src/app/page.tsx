@@ -45,9 +45,9 @@ const BestSellersSection = () => {
           }}
           className="w-full max-w-5xl mx-auto relative"
         >
-          <CarouselContent className="-ml-4">
+          <CarouselContent className="-ml-8">
             {bestSellers.map((product, index) => (
-              <CarouselItem key={index} className="pl-4 md:basis-1/1 lg:basis-1/1">
+              <CarouselItem key={index} className="pl-8 md:basis-1/1 lg:basis-1/1">
                   <BestSellerCard product={product} />
               </CarouselItem>
             ))}
