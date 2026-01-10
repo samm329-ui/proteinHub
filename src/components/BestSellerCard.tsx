@@ -21,7 +21,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
   const progressValue = typeof statValue === 'string' ? parseFloat(statValue) : statValue;
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto p-4 flex items-center justify-center font-sans" style={{ height: '360px' }}>
+    <div className="relative w-full max-w-2xl mx-auto p-4 flex items-center justify-center font-sans" style={{ height: '320px' }}>
       {/* Back Card */}
       <div 
         className="absolute top-0 left-0 w-full h-[95%] sm:w-1/2 sm:h-full rounded-3xl transition-colors duration-500 flex items-center justify-center overflow-hidden"
@@ -38,18 +38,18 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         {/* Left Side: Product Image */}
         <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0">
            <div
-            className="absolute inset-0 z-0 opacity-50 blur-2xl"
+            className="absolute inset-0 z-0 opacity-50 blur-xl"
             style={{
-              boxShadow: `0 0 60px 15px ${accentColor}`,
+              boxShadow: `0 0 40px 10px ${accentColor}`,
               transition: 'box-shadow 0.5s ease-in-out',
             }}
           />
-           <div className="relative w-40 h-56 sm:w-56 sm:h-80 transform sm:translate-x-4">
+           <div className="relative w-36 h-48 sm:w-48 sm:h-64">
             <Image
                 src={product.image.src}
                 alt={product.name}
                 fill
-                className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105"
+                className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105 contrast-125"
                 data-ai-hint={product.image.hint}
                 unoptimized
             />
@@ -59,8 +59,8 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         {/* Right Side: Product Details */}
         <div className="w-full sm:w-1/2 flex flex-col justify-between p-4 sm:p-6 text-white -mt-10 sm:mt-0">
           <div className="flex-grow">
-            <h3 className="text-xl lg:text-2xl font-bold font-headline uppercase tracking-wider mb-2">{product.name}</h3>
-            <p className="text-lg lg:text-xl font-semibold mb-4" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+            <h3 className="text-xl lg:text-xl font-bold font-headline uppercase tracking-wider mb-2">{product.name}</h3>
+            <p className="text-lg lg:text-lg font-semibold mb-4" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
             
             <div className="flex justify-between items-center mb-4">
                 <div>
