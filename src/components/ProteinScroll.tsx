@@ -41,6 +41,10 @@ export default function ProteinScroll() {
   const { scrollYProgress } = useScroll({
     target: scrollRef,
     offset: ['start start', 'end end'],
+    ...({
+      smooth: 200,
+      passive: true,
+    } as any)
   });
 
   const frameIndex = useTransform(scrollYProgress, [0, 1], [0, TOTAL_FRAMES - 1]);
@@ -151,12 +155,15 @@ export default function ProteinScroll() {
         <motion.canvas
           ref={canvasRef}
           className="absolute inset-0 h-full w-full"
+          initial={{ scale: 1.05 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2, ease: "easeOut" }}
           style={{ 
             filter: useTransform(
               [saturation, blur],
               ([s, b]) => `saturate(${s}) blur(${b}px)`
             ),
-            willChange: 'transform',
+            willChange: 'transform, filter',
             pointerEvents: 'none',
           }}
         />
@@ -175,9 +182,9 @@ export default function ProteinScroll() {
         />
         
         <div className="absolute inset-0 z-10 text-white/90">
-            <motion.div style={{ opacity: opacityText1 }} className="flex h-full flex-col items-center justify-end pb-32 space-y-4 text-center">
+            <motion.div style={{ opacity: opacityText1 }} className="flex h-full flex-col items-center justify-end pb-20 space-y-4 text-center">
                 <h1 className="text-5xl font-bold text-white md:text-7xl font-headline">Protein Zone</h1>
-                <p className="text-lg text-white/80 md:text-xl font-body" style={{fontFamily: "'Montserrat', sans-serif", fontWeight: 500}}>Fuel Your Strength</p>
+                <p className="text-base text-white/80 md:text-lg font-body" style={{fontFamily: "'Montserrat', sans-serif", fontWeight: 500}}>Fuel Your Strength</p>
             </motion.div>
 
             <motion.div 
