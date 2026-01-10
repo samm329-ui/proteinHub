@@ -21,7 +21,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
   const progressValue = typeof statValue === 'string' ? parseFloat(statValue) : statValue;
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto p-4 flex items-center justify-center font-sans">
+    <div className="relative w-full max-w-2xl mx-auto flex items-center justify-center font-sans">
       {/* Back Card */}
       <div 
         className="absolute top-0 left-0 w-full h-[95%] sm:w-1/2 sm:h-full rounded-3xl transition-colors duration-500 flex items-center justify-center overflow-hidden"
@@ -33,11 +33,16 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
       </div>
       
       {/* Front Card */}
-      <div className="relative w-full sm:w-[85%] md:w-[80%] bg-[#1A1C29] rounded-3xl shadow-2xl shadow-black/40 flex flex-col sm:flex-row overflow-hidden">
+      <div 
+        className="relative w-full sm:w-[85%] md:w-[80%] bg-[#1A1C29] rounded-3xl flex flex-col sm:flex-row overflow-hidden"
+        style={{
+          boxShadow: '0 0 40px rgba(255, 255, 255, 0.1), 0 10px 30px -15px rgba(0, 0, 0, 0.5)'
+        }}
+      >
         
         {/* Left Side: Product Image */}
         <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0 h-48 sm:h-auto">
-           <div className="relative w-32 h-44 sm:w-40 sm:h-56">
+           <div className="relative w-28 h-40 sm:w-32 sm:h-48">
             <Image
                 src={product.image.src}
                 alt={product.name}
@@ -52,8 +57,8 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         {/* Right Side: Product Details */}
         <div className="w-full sm:w-1/2 flex flex-col p-4 sm:p-6 text-white">
           <div className="flex-grow">
-            <h3 className="text-lg lg:text-xl font-bold font-headline uppercase tracking-wider mb-1">{product.name}</h3>
-            <p className="text-base lg:text-lg font-semibold mb-3" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+            <h3 className="text-base lg:text-lg font-bold font-headline uppercase tracking-wider mb-1">{product.name}</h3>
+            <p className="text-sm lg:text-base font-semibold mb-3" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
             
             <div className="flex justify-between items-center mb-3">
                 <div>
@@ -76,8 +81,8 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                   </div>
                 </div>
                  <div className="text-right">
-                    <CircularProgress value={progressValue} size={40} strokeWidth={3} color={accentColor} />
-                    <p className="text-[10px] uppercase tracking-widest text-white/50 mt-1">{product.stat.label}</p>
+                    <CircularProgress value={progressValue} size={32} strokeWidth={2.5} color={accentColor} />
+                    <p className="text-[9px] uppercase tracking-widest text-white/50 mt-1">{product.stat.label}</p>
                  </div>
             </div>
 
@@ -105,16 +110,16 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           </div>
           
           <div className="flex flex-col sm:flex-row items-center gap-2 mt-auto pt-4">
-            <Button
-              className="w-full h-9 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
-              style={{ backgroundColor: 'white', color: 'black' }}
-              onMouseOver={e => (e.currentTarget.style.filter = 'brightness(0.9)')}
-              onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
+             <Button
+                className="w-full h-9 text-xs font-bold text-black transition-all duration-300 rounded-lg"
+                style={{ backgroundColor: 'white', color: 'black' }}
+                onMouseOver={e => (e.currentTarget.style.filter = 'brightness(0.9)')}
+                onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
             >
               BUY NOW
             </Button>
             <Button
-              className="w-full h-9 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
+              className="w-full h-9 text-xs font-bold text-black transition-all duration-300 rounded-lg"
               style={{ backgroundColor: accentColor }}
               onMouseOver={e => (e.currentTarget.style.filter = 'brightness(1.1)')}
               onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
