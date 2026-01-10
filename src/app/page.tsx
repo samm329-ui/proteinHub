@@ -62,7 +62,7 @@ const ContactSection = () => (
     <section id="contact" className="py-20 sm:py-32">
       <div className="container mx-auto px-5 text-center">
         <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-8 text-white/90">Contact Us</h2>
-        <p className="text-base text-white/60 leading-relaxed max-w-md mx-auto mb-12">
+        <p className="text-base text-white/60 leading-relaxed max-w-2xl mx-auto mb-12">
             Whether you have questions about our premium supplements, need guidance on your training regimen, or have any other inquiries, our dedicated team is here and ready to assist you. Please feel free to reach out, and let's start a conversation about how we can help you achieve your fitness goals.
         </p>
         <div className="flex justify-center items-center gap-8 md:gap-12">
@@ -147,6 +147,7 @@ export default function Home() {
       <Navbar
         navItems={navItems}
         onNavItemClick={handleScroll}
+        suppressHydrationWarning
       />
       <main suppressHydrationWarning>
         <div id="home">
