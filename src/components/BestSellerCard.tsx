@@ -55,10 +55,10 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
         <div className="w-1/2 flex flex-col p-6 sm:p-8 text-white">
           <div className="flex-grow">
             <p className="text-xs uppercase tracking-widest text-white/40 mb-1">{product.category}</p>
-            <h3 className="text-2xl font-bold font-headline uppercase tracking-wider mb-2">{product.name} - {selectedFlavor.name}</h3>
+            <h3 className="text-xl font-bold font-headline uppercase tracking-wider mb-2">{product.name} - {selectedFlavor.name}</h3>
 
             <div className="flex items-baseline gap-3 mb-4">
-              <p className="text-2xl font-bold" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+              <p className="text-xl font-bold" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
               {product.oldPrice && (
                 <p className="text-base text-white/40 line-through">₹{product.oldPrice.toLocaleString()}</p>
               )}
