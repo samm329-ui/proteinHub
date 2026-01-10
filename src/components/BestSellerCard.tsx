@@ -35,13 +35,13 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
       <div 
         className="relative bg-[#1A1C29]/80 backdrop-blur-sm rounded-3xl flex flex-col sm:flex-row overflow-hidden w-full sm:w-[90%] sm:ml-auto"
         style={{
-          boxShadow: '0 0 80px rgba(255, 255, 255, 0.1), 0 10px 30px -15px rgba(0, 0, 0, 0.5)'
+          boxShadow: '0 0 120px -30px rgba(255, 255, 255, 0.25)'
         }}
       >
         
         {/* Left Side: Product Image */}
-        <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0 min-h-[280px] sm:min-h-0">
-           <div className="relative w-40 h-52 sm:w-52 sm:h-64">
+        <div className="relative w-full sm:w-1/2 flex items-center justify-center p-4 sm:p-0 min-h-[320px] sm:min-h-0">
+           <div className="relative w-48 h-60 sm:w-56 sm:h-72">
             <Image
                 src={product.image.src}
                 alt={product.name}
@@ -55,11 +55,15 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
 
         {/* Right Side: Product Details */}
         <div className="w-full sm:w-1/2 flex flex-col p-4 sm:p-6 text-white">
-          <div className="flex-grow">
-            <h3 className="text-base lg:text-md font-bold font-headline uppercase tracking-wider mb-1">{product.name}</h3>
-            <p className="text-sm lg:text-base font-semibold mb-3" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+          <div className="flex-grow space-y-4">
+            {/* Name & Price */}
+            <div>
+              <h3 className="text-base lg:text-lg font-bold font-headline uppercase tracking-wider">{product.name}</h3>
+              <p className="text-lg lg:text-xl font-semibold mt-1" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+            </div>
             
-            <div className="flex justify-between items-center mb-3">
+            {/* Size & Stat */}
+            <div className="flex justify-between items-start">
                 <div>
                   <p className="text-xs uppercase tracking-widest text-white/50 mb-2">SIZE</p>
                   <div className="flex gap-4">
@@ -79,12 +83,13 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                     ))}
                   </div>
                 </div>
-                 <div className="text-right">
+                 <div className="text-right flex flex-col items-center">
                     <CircularProgress value={progressValue} size={28} strokeWidth={2} color={accentColor} />
                     <p className="text-[8px] uppercase tracking-widest text-white/50 mt-1">{product.stat.label}</p>
                  </div>
             </div>
 
+            {/* Flavor */}
             <div>
               <p className="text-xs uppercase tracking-widest text-white/50 mb-2">FLAVOR</p>
                <div className="flex gap-3">
@@ -108,6 +113,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
             </div>
           </div>
           
+          {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-2 mt-auto pt-4">
              <Button
                 className="w-full h-9 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
