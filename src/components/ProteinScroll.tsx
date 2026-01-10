@@ -5,7 +5,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
-const TOTAL_FRAMES = 40;
+const TOTAL_FRAMES = 240;
 
 const framePath = (frame: number) =>
   `https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/png/ezgif-frame-${(
