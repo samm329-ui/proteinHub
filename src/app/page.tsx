@@ -151,9 +151,7 @@ export default function Home() {
         suppressHydrationWarning
       />
       <main suppressHydrationWarning>
-        <div id="home">
-          <ProteinScroll />
-        </div>
+        <ProteinScroll />
         <div className="h-20 md:h-32 bg-transparent"></div>
         <ProductsSection />
         <GallerySection />
