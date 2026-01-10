@@ -6,11 +6,9 @@ import ProteinScroll from '@/components/ProteinScroll';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
-import { Phone, Mail, MapPin, Plus, Minus, ArrowRight, ArrowLeft, Heart, CheckCircle } from 'lucide-react';
-import { products, bestSellers, type Flavor } from '@/lib/products';
-import { useState } from 'react';
-import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
+import { Phone, Mail, MapPin } from 'lucide-react';
+import { products, bestSellers } from '@/lib/products';
+import BestSellerCard from '@/components/BestSellerCard';
 
 const ProductsSection = () => {
   return (
@@ -39,143 +37,6 @@ const BestSellersSection = () => {
                 </div>
             </div>
         </section>
-    );
-};
-
-const BestSellerCard = ({ product }: { product: (typeof bestSellers)[0] }) => {
-    const [selectedWeight, setSelectedWeight] = useState(product.weights[0]);
-    const [selectedFlavor, setSelectedFlavor] = useState(product.flavors[0]);
-
-    return (
-        <div className="relative w-full max-w-lg md:max-w-4xl mx-auto flex items-center justify-center">
-            {/* Navigation Arrows */}
-            <Button variant="ghost" size="icon" className="absolute -left-4 md:-left-16 text-white/50 hover:text-white hover:bg-white/10 rounded-full">
-                <ArrowLeft size={24} />
-            </Button>
-            <Button variant="ghost" size="icon" className="absolute -right-4 md:-right-16 text-white/50 hover:text-white hover:bg-white/10 rounded-full">
-                <ArrowRight size={24} />
-            </Button>
-
-            {/* Card Structure */}
-            <div className="relative w-full">
-                {/* Back Card */}
-                <motion.div 
-                    className="absolute inset-0 bg-red-800/80 rounded-3xl -translate-x-2 -translate-y-2"
-                    style={{ filter: 'blur(2px)'}}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                />
-
-                {/* Front Card */}
-                <div className="relative bg-gradient-to-br from-[#181a2e] to-[#0e101b] rounded-3xl shadow-2xl shadow-black/50 overflow-hidden backdrop-blur-sm border border-white/5 p-4 md:p-0">
-                    <div className="flex flex-col md:flex-row items-center">
-                        {/* Left side - Image */}
-                        <div className="relative md:w-1/2 p-4 md:p-8 flex items-center justify-center min-h-[300px] md:min-h-[450px]">
-                            <motion.div 
-                                className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 z-10"
-                                initial={{ y: 20, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                            >
-                                <Image
-                                    src={product.image.src}
-                                    alt={product.name}
-                                    fill
-                                    className="object-contain drop-shadow-[0_20px_20px_rgba(0,0,0,0.4)]"
-                                    data-ai-hint={product.image.hint}
-                                    unoptimized
-                                />
-                            </motion.div>
-                        </div>
-                        
-                        {/* Right side - Content */}
-                        <div className="w-full md:w-1/2 p-6 text-white/90 flex flex-col justify-center">
-                            <h3 className="text-2xl lg:text-3xl font-bold uppercase tracking-wider mb-2">
-                                Whey Protein Isolate
-                            </h3>
-                            <p className="text-2xl lg:text-3xl font-semibold text-white mb-6">₹2,499</p>
-
-                            <div className="mb-6">
-                                <p className="text-sm uppercase tracking-widest text-white/50 mb-3">Weight</p>
-                                <div className="flex gap-2">
-                                    {product.weights.map(weight => (
-                                        <button 
-                                            key={weight}
-                                            onClick={() => setSelectedWeight(weight)}
-                                            className={cn(
-                                                "px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 border",
-                                                selectedWeight === weight 
-                                                    ? 'bg-red-700 text-white border-red-700' 
-                                                    : 'bg-white/5 border-white/10 hover:bg-white/10'
-                                            )}
-                                        >
-                                            {weight}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-6 mb-8">
-                                <div>
-                                    <p className="text-sm uppercase tracking-widest text-white/50 mb-3">Flavor</p>
-                                    <div className="flex gap-3">
-                                        {product.flavors.map(flavor => (
-                                            <button
-                                                key={flavor.name}
-                                                onClick={() => setSelectedFlavor(flavor)}
-                                                title={flavor.name}
-                                                className={cn(
-                                                    "w-8 h-8 rounded-full border-2 transition-all duration-200",
-                                                    selectedFlavor.name === flavor.name ? 'border-red-600 scale-110' : 'border-white/20'
-                                                )}
-                                                style={{ backgroundColor: flavor.color }}
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="text-center">
-                                     <div className="relative w-20 h-20 flex items-center justify-center">
-                                        <svg className="w-full h-full" viewBox="0 0 100 100">
-                                            <circle className="text-white/10" strokeWidth="7" stroke="currentColor" fill="transparent" r="45" cx="50" cy="50"/>
-                                            <motion.circle 
-                                                className="text-red-600"
-                                                strokeWidth="7" 
-                                                strokeLinecap="round" 
-                                                stroke="currentColor" 
-                                                fill="transparent" 
-                                                r="45" 
-                                                cx="50" 
-                                                cy="50"
-                                                strokeDasharray={2 * Math.PI * 45}
-                                                strokeDashoffset={2 * Math.PI * 45 * (1 - 0.78)}
-                                                initial={{ strokeDashoffset: 2 * Math.PI * 45 }}
-                                                animate={{ strokeDashoffset: 2 * Math.PI * 45 * (1 - 0.78) }}
-                                                transition={{ duration: 1, ease: "circOut", delay: 0.5}}
-                                            />
-                                        </svg>
-                                        <div className="absolute flex flex-col items-center justify-center">
-                                            <span className="text-lg font-bold">78%</span>
-                                            <span className="text-xs text-white/50">Protein</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className="flex flex-col gap-3">
-                                <Button className="w-full bg-red-700 hover:bg-red-600 text-white font-bold text-base py-6 rounded-lg transition-colors duration-300">
-                                    Add to Cart
-                                </Button>
-                                <Button variant="ghost" className="w-full text-white/60 hover:text-white hover:bg-transparent">
-                                    <Heart size={16} className="mr-2"/>
-                                    Add to Wishlist
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     );
 };
 
@@ -311,5 +172,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
