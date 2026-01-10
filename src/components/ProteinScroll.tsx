@@ -135,10 +135,14 @@ export default function ProteinScroll() {
         <motion.canvas
           ref={canvasRef}
           className="absolute inset-0 h-full w-full"
-          style={{ filter: useTransform(
-            [saturation, blur],
-            ([s, b]) => `saturate(${s}) blur(${b}px)`
-          ) }}
+          style={{ 
+            filter: useTransform(
+              [saturation, blur],
+              ([s, b]) => `saturate(${s}) blur(${b}px)`
+            ),
+            willChange: 'transform',
+            pointerEvents: 'none',
+          }}
         />
         <div className="absolute inset-0 z-0 bg-black/40"></div>
         <div 
