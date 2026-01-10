@@ -107,19 +107,19 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           <div className="flex items-center gap-2 sm:gap-4 mt-auto pt-4">
             <Button
               className="w-full h-10 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
+              style={{ backgroundColor: 'white', color: 'black' }}
+              onMouseOver={e => (e.currentTarget.style.filter = 'brightness(0.9)')}
+              onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
+            >
+              BUY NOW
+            </Button>
+            <Button
+              className="w-full h-10 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
               style={{ backgroundColor: accentColor }}
               onMouseOver={e => (e.currentTarget.style.filter = 'brightness(1.1)')}
               onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
             >
               ADD TO CART
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-white/50 hover:text-white flex items-center gap-2 p-1"
-            >
-              <Heart size={14} />
-              <span className="text-xs hidden sm:inline">ADD TO WISHLIST</span>
             </Button>
           </div>
         </div>
