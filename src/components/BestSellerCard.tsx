@@ -20,7 +20,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
   const progressValue = typeof statValue === 'string' ? parseFloat(statValue) : statValue;
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto font-sans">
+    <div className="relative w-full max-w-5xl mx-auto font-sans">
       {/* Back Card */}
       <div
         className="absolute top-0 left-0 w-full h-full rounded-3xl transition-colors duration-500"
@@ -40,9 +40,10 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                 src={product.image.src}
                 alt={product.name}
                 fill
-                className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105 -rotate-3"
+                className="object-contain drop-shadow-2xl transition-transform duration-300 hover:scale-105"
                 style={{
-                  filter: `drop-shadow(0px 10px 15px rgba(0,0,0,0.3)) drop-shadow(0 0 35px ${accentColor})`
+                  transform: 'rotate(-3deg)',
+                  filter: `drop-shadow(0 0 35px ${accentColor}) contrast(1.15)`
                 }}
                 data-ai-hint={product.image.hint}
                 unoptimized
@@ -56,25 +57,25 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           {/* Top section: Name, Price, Stat */}
           <div>
             <p className="text-[10px] uppercase tracking-widest text-white/50 mb-1">{product.category}</p>
-            <h3 className="text-base font-bold font-headline uppercase tracking-wider text-white/90">{product.name}</h3>
+            <h3 className="text-xl font-bold font-headline uppercase tracking-wider text-white/90">{product.name}</h3>
             <div className="flex items-baseline gap-2 mt-1">
-                <p className="text-lg font-semibold" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
+                <p className="text-2xl font-semibold" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
                 <p className="text-sm font-medium text-white/40 line-through">₹{product.oldPrice.toLocaleString()}</p>
             </div>
-            <p className="text-[11px] text-white/60 mt-2 leading-relaxed">{product.description}</p>
+            <p className="text-xs text-white/60 mt-2 leading-relaxed">{product.description}</p>
           </div>
           
-          <div className="mt-4 space-y-3">
+          <div className="mt-4 space-y-4">
             <div className="grid grid-cols-2 gap-4 items-start">
               <div>
-                <p className="text-[9px] uppercase tracking-widest text-white/50 mb-1.5">SIZE</p>
+                <p className="text-[10px] uppercase tracking-widest text-white/50 mb-1.5">SIZE</p>
                 <div className="flex items-center gap-1.5">
                     {product.weights.map(weight => (
                     <button
                         key={weight}
                         onClick={() => setSelectedWeight(weight)}
                         className={cn(
-                        "text-[10px] font-medium transition-colors duration-200 px-2 py-0.5 rounded-full",
+                        "text-xs font-medium transition-colors duration-200 px-2.5 py-1 rounded-full",
                         selectedWeight === weight
                             ? 'bg-white/10 text-white'
                             : 'text-white/50 hover:bg-white/5'
@@ -87,29 +88,29 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
               </div>
               <div className="flex items-center justify-end gap-4">
                 <div className="text-right flex flex-col items-center space-y-1">
-                    <CircularProgress value={progressValue} size={28} strokeWidth={2} color={accentColor} />
-                    <p className="text-[8px] uppercase tracking-widest text-white/50">{product.stat.label}</p>
+                    <CircularProgress value={progressValue} size={40} strokeWidth={3} color={accentColor} />
+                    <p className="text-[9px] uppercase tracking-widest text-white/50">{product.stat.label}</p>
                 </div>
               </div>
             </div>
             
           
             <div>
-              <p className="text-[9px] uppercase tracking-widest text-white/50 mb-1.5">FLAVOR</p>
-                <div className="flex gap-1.5">
+              <p className="text-[10px] uppercase tracking-widest text-white/50 mb-1.5">FLAVOR</p>
+                <div className="flex gap-2">
                 {product.flavors.map(flavor => (
                   <button
                     key={flavor.name}
                     onClick={() => setSelectedFlavor(flavor)}
                     title={flavor.name}
                     className={cn(
-                      "w-4 h-4 rounded-full border-2 transition-all duration-300",
+                      "w-5 h-5 rounded-full border-2 transition-all duration-300",
                       selectedFlavor.name === flavor.name ? 'scale-110 shadow-lg' : 'border-transparent opacity-70'
                     )}
                       style={{ 
                       backgroundColor: flavor.color, 
                       borderColor: selectedFlavor.name === flavor.name ? 'white' : 'transparent',
-                      boxShadow: selectedFlavor.name === flavor.name ? `0 0 8px ${flavor.color}` : 'none'
+                      boxShadow: selectedFlavor.name === flavor.name ? `0 0 10px ${flavor.color}` : 'none'
                     }}
                   />
                 ))}
@@ -118,9 +119,9 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
           </div>
           
           {/* Bottom section: Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-2 mt-4 pt-3 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row items-center gap-2 mt-6 pt-4 border-t border-white/10">
               <Button
-                className="w-full h-8 text-[11px] font-bold text-black transition-all duration-300 rounded-md"
+                className="w-full h-9 text-xs font-bold text-black transition-all duration-300 rounded-md"
                 style={{ backgroundColor: accentColor }}
                 onMouseOver={e => (e.currentTarget.style.filter = 'brightness(1.1)')}
                 onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
@@ -128,7 +129,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
               ADD TO CART
             </Button>
             <Button
-              className="w-full h-8 text-[11px] font-bold text-black transition-all duration-300 rounded-md"
+              className="w-full h-9 text-xs font-bold text-black transition-all duration-300 rounded-md"
               style={{ backgroundColor: 'white' }}
               onMouseOver={e => (e.currentTarget.style.filter = 'brightness(0.9)')}
               onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
