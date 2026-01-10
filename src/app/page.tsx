@@ -7,8 +7,7 @@ import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { products, bestSellers } from '@/lib/products';
-import BestSellerCard from '@/components/BestSellerCard';
+import { products } from '@/lib/products';
 
 const ProductsSection = () => {
   return (
@@ -25,19 +24,6 @@ const ProductsSection = () => {
       </div>
     </section>
   );
-};
-
-const BestSellersSection = () => {
-    return (
-        <section id="bestsellers" className="py-20 sm:py-32">
-            <div className="container mx-auto px-5">
-                <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Best Sellers</h2>
-                <div className="flex items-center justify-center">
-                    {bestSellers.length > 0 && <BestSellerCard product={bestSellers[0]} />}
-                </div>
-            </div>
-        </section>
-    );
 };
 
 const GallerySection = () => {
@@ -144,7 +130,6 @@ export default function Home() {
   const navItems = [
     { label: 'HOME', href: '#home' },
     { label: 'PRODUCTS', href: '#products' },
-    { label: 'BEST SELLERS', href: '#bestsellers' },
     { label: 'GALLERY', href: '#gallery' },
     { label: 'CONTACT', href: '#contact' },
     { label: 'ABOUT', href: '#about' },
@@ -163,7 +148,6 @@ export default function Home() {
         </div>
         <div className="h-20 md:h-32 bg-transparent"></div>
         <ProductsSection />
-        <BestSellersSection />
         <GallerySection />
         <ContactSection />
         <AboutUsSection />
