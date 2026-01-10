@@ -17,12 +17,12 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
   const accentColor = selectedFlavor.color;
 
   return (
-    <div className="font-sans bg-[#232733] rounded-xl shadow-2xl shadow-black/40 overflow-hidden w-full max-w-4xl mx-auto flex flex-col md:flex-row relative text-white/90">
+    <div className="font-sans bg-[#1a1e29] rounded-xl shadow-2xl shadow-black/40 overflow-hidden w-full max-w-4xl mx-auto flex flex-col md:flex-row text-white/90">
       
       {/* Left Panel: Visual */}
-      <div className="relative w-full md:w-1/2 flex items-center justify-center p-6 bg-[#1a1e29] rounded-l-xl overflow-hidden min-h-[350px] md:min-h-0">
+      <div className="relative w-full md:w-1/2 flex items-center justify-center p-6 bg-[#1a1e29] overflow-hidden min-h-[350px] md:min-h-0 rounded-t-xl md:rounded-l-xl md:rounded-r-none">
         <div 
-          className="absolute -left-1/2 top-1/2 -translate-y-1/2 w-[180%] h-[110%] rounded-r-full"
+          className="absolute -left-1/2 top-1/2 -translate-y-1/2 w-[200%] h-[110%] rounded-r-full"
           style={{ backgroundColor: accentColor }}
         />
         <div className="relative w-4/5 aspect-[1/1] drop-shadow-[0_20px_15px_rgba(0,0,0,0.4)] z-10">
