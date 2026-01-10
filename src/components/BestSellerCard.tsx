@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import { Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { bestSellers } from '@/lib/products';
@@ -55,20 +54,20 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
 
         {/* Right Side: Product Details */}
         <div className="w-full sm:w-1/2 flex flex-col p-4 sm:p-6 text-white">
-          <div className="flex-grow space-y-3">
-            {/* Name & Price */}
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="text-sm lg:text-base font-bold font-headline uppercase tracking-wider">{product.name}</h3>
-                <p className="text-md lg:text-lg font-semibold mt-1" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
-              </div>
-              <div className="text-right flex flex-col items-center space-y-1 flex-shrink-0 ml-2">
-                 <CircularProgress value={progressValue} size={28} strokeWidth={2} color={accentColor} />
-                 <p className="text-[8px] uppercase tracking-widest text-white/50">{product.stat.label}</p>
-              </div>
+          {/* Top section: Name, Price, Stat */}
+          <div className="flex justify-between items-start mb-4">
+            <div className="flex-1">
+              <h3 className="text-sm font-bold font-headline uppercase tracking-wider">{product.name}</h3>
+              <p className="text-lg font-semibold mt-1" style={{ color: accentColor }}>₹{product.price.toLocaleString()}</p>
             </div>
-            
-            {/* Size */}
+            <div className="text-right flex flex-col items-center space-y-1 flex-shrink-0 ml-2">
+                <CircularProgress value={progressValue} size={28} strokeWidth={2} color={accentColor} />
+                <p className="text-[8px] uppercase tracking-widest text-white/50">{product.stat.label}</p>
+            </div>
+          </div>
+          
+          {/* Middle section: Size & Flavor */}
+          <div className="flex-grow space-y-4 mb-4">
             <div>
               <p className="text-xs uppercase tracking-widest text-white/50 mb-2">SIZE</p>
               <div className="flex gap-4">
@@ -88,11 +87,9 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                 ))}
               </div>
             </div>
-
-            {/* Flavor */}
             <div>
               <p className="text-xs uppercase tracking-widest text-white/50 mb-2">FLAVOR</p>
-               <div className="flex gap-3">
+                <div className="flex gap-3">
                 {product.flavors.map(flavor => (
                   <button
                     key={flavor.name}
@@ -102,7 +99,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
                       "w-5 h-5 rounded-full border-2 transition-all duration-300",
                       selectedFlavor.name === flavor.name ? 'scale-110 shadow-lg' : 'border-transparent opacity-70'
                     )}
-                     style={{ 
+                      style={{ 
                       backgroundColor: flavor.color, 
                       borderColor: selectedFlavor.name === flavor.name ? 'white' : 'transparent',
                       boxShadow: selectedFlavor.name === flavor.name ? `0 0 8px ${flavor.color}` : 'none'
@@ -113,9 +110,9 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
             </div>
           </div>
           
-          {/* Buttons */}
+          {/* Bottom section: Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-2 mt-auto pt-4">
-             <Button
+              <Button
                 className="w-full h-9 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
                 style={{ backgroundColor: accentColor }}
                 onMouseOver={e => (e.currentTarget.style.filter = 'brightness(1.1)')}
@@ -126,7 +123,7 @@ const BestSellerCard = ({ product }: BestSellerCardProps) => {
             <Button
               className="w-full h-9 text-xs sm:text-sm font-bold text-black transition-all duration-300 rounded-lg"
               style={{ backgroundColor: 'white' }}
-               onMouseOver={e => (e.currentTarget.style.filter = 'brightness(0.9)')}
+                onMouseOver={e => (e.currentTarget.style.filter = 'brightness(0.9)')}
                 onMouseOut={e => (e.currentTarget.style.filter = 'brightness(1)')}
             >
               ADD TO CART
