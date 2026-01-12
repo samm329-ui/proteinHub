@@ -14,10 +14,11 @@ type NavItem = {
 interface NavbarProps {
   navItems: NavItem[];
   onNavItemClick: (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => void;
+  onCartClick: () => void;
   suppressHydrationWarning?: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydrationWarning }) => {
+const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, onCartClick, suppressHydrationWarning }) => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cart } = useCart();
@@ -55,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
     onNavItemClick(e, targetId);
   }
 
-  const cartItemCount = isMounted ? cart.length : 0;
+  const cartItemCount = isMounted ? cart.reduce((total, item) => total + item.quantity, 0) : 0;
 
   return (
     <>
@@ -87,7 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
             </ul>
           </nav>
           <div className="hidden md:flex flex-1 items-center justify-end">
-            <button className="relative text-white/75 hover:text-accent transition-colors" suppressHydrationWarning={suppressHydrationWarning}>
+            <button onClick={onCartClick} className="relative text-white/75 hover:text-accent transition-colors" suppressHydrationWarning={suppressHydrationWarning}>
               <ShoppingCart size={20} />
               {cartItemCount > 0 && (
                 <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-accent text-xs font-bold text-black">
@@ -134,7 +135,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
                         </li>
                     ))}
                      <li className="mt-8">
-                      <button className="relative text-white/85 hover:text-accent transition-colors">
+                      <button onClick={() => { setIsMenuOpen(false); onCartClick(); }} className="relative text-white/85 hover:text-accent transition-colors">
                         <ShoppingCart size={28} />
                         {cartItemCount > 0 && (
                           <span className="absolute -top-2 -right-3 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-xs font-bold text-black">

@@ -1,4 +1,3 @@
-
 'use client';
 
 import Navbar from '@/components/Navbar';
@@ -13,7 +12,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import MobileProducts from '@/components/MobileProducts';
 import MobileBestSellers from '@/components/MobileBestSellers';
-
+import BottomNavbar from '@/components/BottomNavbar';
+import CartSheet from '@/components/CartSheet';
 
 const ProductsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<(typeof productsByCategory)[0] | null>(null);
@@ -159,7 +159,7 @@ const AboutUsSection = () => (
 );
 
 const Footer = () => (
-  <footer className="py-12" suppressHydrationWarning>
+  <footer className="py-12 pb-24 md:pb-12" suppressHydrationWarning>
     <div className="container mx-auto px-5 text-center text-white/60 text-sm space-y-4">
         <div className="flex flex-col md:flex-row justify-center items-center md:space-x-6 space-y-4 md:space-y-0">
             <a href="#" className="hover:text-white/90 transition-colors">Instagram</a>
@@ -173,6 +173,7 @@ const Footer = () => (
 );
 
 export default function Home() {
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -183,12 +184,19 @@ export default function Home() {
   };
   
   const navItems = [
-    { label: 'HOME', href: '#home' },
-    { label: 'PRODUCTS', href: '#products' },
-    { label: 'BEST SELLERS', href: '#bestsellers' },
-    { label: 'GALLERY', href: '#gallery' },
-    { label: 'CONTACT', href: '#contact' },
-    { label: 'ABOUT', href: '#about' },
+    { label: 'HOME', href: '#home', id: 'home' },
+    { label: 'PRODUCTS', href: '#products', id: 'products' },
+    { label: 'BEST SELLERS', href: '#bestsellers', id: 'bestsellers' },
+    { label: 'GALLERY', href: '#gallery', id: 'gallery' },
+    { label: 'CONTACT', href: '#contact', id: 'contact' },
+    { label: 'ABOUT', href: '#about', id: 'about' },
+  ];
+
+  const bottomNavItems = [
+    { label: 'Home', href: '#home', id: 'home' },
+    { label: 'Products', href: '#products', id: 'products' },
+    { label: 'Best Sellers', href: '#bestsellers', id: 'bestsellers' },
+    { label: 'Contact', href: '#contact', id: 'contact' },
   ];
 
   return (
@@ -196,6 +204,7 @@ export default function Home() {
       <Navbar
         navItems={navItems}
         onNavItemClick={handleScroll}
+        onCartClick={() => setIsCartOpen(true)}
         suppressHydrationWarning
       />
       <main suppressHydrationWarning>
@@ -224,6 +233,17 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      <div className="md:hidden">
+        <BottomNavbar 
+          navItems={bottomNavItems} 
+          onNavItemClick={handleScroll} 
+          onCartClick={() => setIsCartOpen(true)}
+        />
+        <CartSheet isOpen={isCartOpen} onOpenChange={setIsCartOpen} />
+      </div>
+       <div className="hidden md:block">
+        <CartSheet isOpen={isCartOpen} onOpenChange={setIsCartOpen} />
+      </div>
     </div>
   );
 }

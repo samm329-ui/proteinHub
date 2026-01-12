@@ -4,12 +4,14 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { BestSellerProduct } from '@/lib/bestseller-products';
 
-type CartItem = BestSellerProduct & { quantity: number };
+export type CartItem = BestSellerProduct & { quantity: number };
 
 interface CartContextType {
   cart: CartItem[];
   addToCart: (product: BestSellerProduct) => void;
-  // We can add more functions here later like removeFromCart, updateQuantity etc.
+  removeFromCart: (productName: string) => void;
+  updateQuantity: (productName: string, quantity: number) => void;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -21,18 +23,36 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.name === product.name);
       if (existingItem) {
-        // If item exists, increase quantity
         return prevCart.map((item) =>
           item.name === product.name ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      // If item doesn't exist, add it to cart with quantity 1
       return [...prevCart, { ...product, quantity: 1 }];
     });
   };
 
+  const removeFromCart = (productName: string) => {
+    setCart((prevCart) => prevCart.filter((item) => item.name !== productName));
+  };
+
+  const updateQuantity = (productName: string, quantity: number) => {
+    if (quantity <= 0) {
+      removeFromCart(productName);
+      return;
+    }
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.name === productName ? { ...item, quantity } : item
+      )
+    );
+  };
+
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart }}>
       {children}
     </CartContext.Provider>
   );
