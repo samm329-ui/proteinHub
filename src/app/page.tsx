@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from '@/components/Navbar';
@@ -196,7 +197,6 @@ export default function Home() {
     { label: 'Home', href: '#home', id: 'home' },
     { label: 'Products', href: '#products', id: 'products' },
     { label: 'Best Sellers', href: '#bestsellers', id: 'bestsellers' },
-    { label: 'Contact', href: '#contact', id: 'contact' },
   ];
 
   return (
@@ -247,3 +247,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
