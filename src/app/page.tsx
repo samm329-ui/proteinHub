@@ -1,3 +1,4 @@
+
 'use client';
 
 import Navbar from '@/components/Navbar';
@@ -10,6 +11,8 @@ import { bestSellerProducts } from '@/lib/bestseller-products';
 import VerticalProductCard from '@/components/VerticalProductCard';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import CreatineSection from '@/components/CreatineSection';
+
 
 const ProductsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<(typeof productsByCategory)[0] | null>(null);
@@ -209,19 +212,24 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-[#050505]" suppressHydrationWarning>
+    <div className="bg-[#050505] md:hidden" suppressHydrationWarning>
       <Navbar
         navItems={navItems}
         onNavItemClick={handleScroll}
         suppressHydrationWarning
       />
       <main suppressHydrationWarning>
-        <ProteinScroll />
-        <ProductsSection />
-        <BestSellersSection />
-        <GallerySection />
-        <ContactSection />
-        <AboutUsSection />
+        <div className="hidden md:block">
+          <ProteinScroll />
+          <ProductsSection />
+          <BestSellersSection />
+          <GallerySection />
+          <ContactSection />
+          <AboutUsSection />
+        </div>
+        <div className="md:hidden">
+          <CreatineSection />
+        </div>
       </main>
       <Footer />
     </div>
