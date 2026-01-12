@@ -34,7 +34,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = ({ navItems, onNavItemClick, o
     setIsMounted(true);
     
     const handleScroll = () => {
-      const allSections = [...navItems.map(item => item.id), 'cart'];
+      const allSections = [...navItems.map(item => item.id)];
       const sections = allSections.map(id => document.getElementById(id)).filter(Boolean);
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
@@ -64,6 +64,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = ({ navItems, onNavItemClick, o
           {allNavItems.map((item) => {
             const Icon = iconMap[item.id];
             const isCart = item.id === 'cart';
+            const isActive = activeSection === item.id && !isCart;
 
             const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
               if (isCart) {
@@ -81,7 +82,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = ({ navItems, onNavItemClick, o
                   onClick={handleClick}
                   className={cn(
                     'flex flex-col items-center justify-center gap-1 transition-colors duration-300 relative',
-                    activeSection === item.id && !isCart ? 'text-accent' : 'text-white/60 hover:text-white/90'
+                    isActive ? 'text-accent' : 'text-white/60 hover:text-white/90'
                   )}
                 >
                   {Icon && <Icon size={24} />}
