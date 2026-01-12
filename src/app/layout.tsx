@@ -20,6 +20,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&family=Montserrat:wght@500&family=Oswald:wght@700&display=swap" rel="stylesheet" />
+        <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE" />
       </head>
       <body suppressHydrationWarning>
         <CartProvider>
