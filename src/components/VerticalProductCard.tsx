@@ -67,7 +67,7 @@ const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) =>
       </div>
 
       {/* Product Image */}
-      <div className="relative flex-shrink-0 h-1/2 w-full flex items-center justify-center mt-4">
+      <div className="relative flex-shrink-0 h-2/5 w-full flex items-center justify-center mt-4">
         <div className="relative w-4/5 h-full drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)] transform transition-transform duration-500 group-hover:scale-105">
           <Image
             src={product.image.src}
@@ -80,7 +80,7 @@ const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) =>
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-grow px-5 py-4 text-center items-center justify-between">
+      <div className="flex flex-col flex-grow px-5 py-2 text-center items-center justify-between">
         {/* Top Text */}
         <div className="w-full">
           <h3 className="text-sm font-bold uppercase text-white/90 leading-tight">
@@ -94,7 +94,7 @@ const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) =>
         </div>
         
         {/* Bottom Actions */}
-        <div className="w-full flex flex-col items-center space-y-3">
+        <div className="w-full flex flex-col items-center space-y-2">
           <StarRating rating={product.rating} />
           <Button
             className="w-full rounded-full font-bold uppercase tracking-wider transition-all duration-300 text-black text-xs h-9"
