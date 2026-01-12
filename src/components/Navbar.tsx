@@ -3,6 +3,8 @@
 
 import { useState, useEffect } from 'react';
 import { ShoppingCart, Menu, X } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
+import { cn } from '@/lib/utils';
 
 type NavItem = {
   label: string;
@@ -18,22 +20,27 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydrationWarning }) => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { cart } = useCart();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map(item => document.getElementById(item.href.substring(1))).filter(Boolean);
       const scrollPosition = window.scrollY + 100;
 
+      let currentSection = 'home';
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section && section.offsetTop <= scrollPosition) {
-          const newActiveSection = section.id;
-          if (newActiveSection) {
-            setActiveSection(newActiveSection);
-          }
+          currentSection = section.id;
           break;
         }
       }
+      setActiveSection(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -47,6 +54,8 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
     setIsMenuOpen(false);
     onNavItemClick(e, targetId);
   }
+
+  const cartItemCount = isMounted ? cart.length : 0;
 
   return (
     <>
@@ -64,11 +73,12 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
                   <a
                     href={item.href}
                     onClick={(e) => onNavItemClick(e, item.href.substring(1))}
-                    className={`font-medium tracking-widest uppercase transition-colors duration-300 text-sm ${
+                    className={cn(
+                      'font-medium tracking-widest uppercase transition-colors duration-300 text-sm',
                       activeSection === item.href.substring(1)
                         ? 'text-accent'
                         : 'text-white/75 hover:text-accent'
-                    }`}
+                    )}
                   >
                     {item.label}
                   </a>
@@ -77,8 +87,13 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
             </ul>
           </nav>
           <div className="hidden md:flex flex-1 items-center justify-end">
-            <button className="text-white/75 hover:text-accent transition-colors" suppressHydrationWarning={suppressHydrationWarning}>
+            <button className="relative text-white/75 hover:text-accent transition-colors" suppressHydrationWarning={suppressHydrationWarning}>
               <ShoppingCart size={20} />
+              {cartItemCount > 0 && (
+                <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-accent text-xs font-bold text-black">
+                  {cartItemCount}
+                </span>
+              )}
             </button>
           </div>
           <div className="md:hidden flex-1 flex justify-end">
@@ -107,16 +122,27 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
                         <a
                             href={item.href}
                             onClick={(e) => handleMobileNavClick(e, item.href.substring(1))}
-                            className={`font-headline tracking-[0.2em] text-2xl uppercase transition-colors duration-300 ${
-                            activeSection === item.href.substring(1)
+                            className={cn(
+                              'font-headline tracking-[0.2em] text-2xl uppercase transition-colors duration-300',
+                              activeSection === item.href.substring(1)
                                 ? 'text-accent'
                                 : 'text-white/85 hover:text-accent'
-                            }`}
+                            )}
                         >
                             {item.label}
                         </a>
                         </li>
                     ))}
+                     <li className="mt-8">
+                      <button className="relative text-white/85 hover:text-accent transition-colors">
+                        <ShoppingCart size={28} />
+                        {cartItemCount > 0 && (
+                          <span className="absolute -top-2 -right-3 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-xs font-bold text-black">
+                            {cartItemCount}
+                          </span>
+                        )}
+                      </button>
+                    </li>
                 </ul>
             </nav>
         </div>

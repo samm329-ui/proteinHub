@@ -163,7 +163,6 @@ export default function Home() {
       />
       <main suppressHydrationWarning>
         <ProteinScroll />
-        <div className="h-20 md:h-32 bg-transparent"></div>
         <ProductsSection />
         <BestSellersSection />
         <GallerySection />

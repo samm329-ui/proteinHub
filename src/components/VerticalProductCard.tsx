@@ -7,6 +7,7 @@ import { Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { BestSellerProduct } from '@/lib/bestseller-products';
+import { useCart } from '@/context/CartContext';
 
 interface VerticalProductCardProps {
   product: BestSellerProduct;
@@ -43,6 +44,7 @@ const StarRating = ({ rating, totalStars = 5 }: { rating: number, totalStars?: n
 };
 
 const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) => {
+  const { addToCart } = useCart();
   const glowStyle = {
     background: `radial-gradient(ellipse 40% 40% at 50% 40%, ${product.accentGlowColor}20, transparent 80%)`,
   };
@@ -97,6 +99,7 @@ const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) =>
         <div className="w-full flex flex-col items-center space-y-2">
           <StarRating rating={product.rating} />
           <Button
+            onClick={() => addToCart(product)}
             className="w-full rounded-full font-bold uppercase tracking-wider transition-all duration-300 text-black text-xs h-9"
             style={{
               backgroundColor: product.accentGlowColor,
