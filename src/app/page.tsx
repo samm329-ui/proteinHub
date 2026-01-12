@@ -29,7 +29,7 @@ const ProductsSection = () => {
 
   return (
     <>
-      <section id="products" className="py-20 sm:py-32">
+      <section id="products" className="hidden py-20 sm:py-32 md:block">
         <div className="container mx-auto px-5">
           <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-16 text-white/90">Our Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -89,7 +89,7 @@ const ProductsSection = () => {
 
 const BestSellersSection = () => {
   return (
-    <section id="bestsellers" className="py-20 sm:py-32">
+    <section id="bestsellers" className="hidden py-20 sm:py-32 md:block">
       <div className="container mx-auto px-5">
         <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Best Sellers</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -208,29 +208,25 @@ export default function Home() {
         suppressHydrationWarning
       />
       <main suppressHydrationWarning>
+        <div id="home">
+            <ProteinScroll />
+        </div>
         {/* Desktop View */}
         <div className="hidden md:block">
-            <div id="home">
-                <ProteinScroll />
-            </div>
             <ProductsSection />
             <BestSellersSection />
-            <GallerySection />
-            <ContactSection />
-            <AboutUsSection />
         </div>
         
         {/* Mobile View */}
         <div className="md:hidden">
-          <div id="home">
-              <ProteinScroll />
-          </div>
           <MobileProducts />
           <MobileBestSellers />
-          <GallerySection />
-          <ContactSection />
-          <AboutUsSection />
         </div>
+
+        <GallerySection />
+        <ContactSection />
+        <AboutUsSection />
+
       </main>
       <Footer />
       <div className="md:hidden">
@@ -239,11 +235,10 @@ export default function Home() {
           onNavItemClick={handleScroll} 
           onCartClick={() => setIsCartOpen(true)}
         />
-        <CartSheet isOpen={isCartOpen} onOpenChange={setIsCartOpen} />
       </div>
-       <div className="hidden md:block">
-        <CartSheet isOpen={isCartOpen} onOpenChange={setIsCartOpen} />
-      </div>
+       <CartSheet isOpen={isCartOpen} onOpenChange={setIsCartOpen} />
     </div>
   );
 }
+
+    

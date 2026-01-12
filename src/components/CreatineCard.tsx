@@ -34,6 +34,10 @@ const StarRating = ({ rating, totalStars = 5 }: { rating: number; totalStars?: n
 const CreatineCard: React.FC<CreatineCardProps> = ({ product }) => {
   const { addToCart } = useCart();
 
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
+
   const cardStyle = {
     '--accent-color': product.accentGlowColor,
   } as React.CSSProperties;
@@ -80,7 +84,7 @@ const CreatineCard: React.FC<CreatineCardProps> = ({ product }) => {
           <div className="mt-auto pt-6 flex flex-col items-center gap-6 w-full">
             <StarRating rating={product.rating} />
             <Button
-              onClick={() => addToCart(product)}
+              onClick={handleAddToCart}
               className="w-full h-14 rounded-full font-bold uppercase text-base tracking-wider transition-all duration-300 text-black bg-[var(--accent-color)] hover:brightness-110"
               style={{
                 boxShadow: `0 0 20px 0px var(--accent-color)`,
@@ -96,3 +100,5 @@ const CreatineCard: React.FC<CreatineCardProps> = ({ product }) => {
 };
 
 export default CreatineCard;
+
+    

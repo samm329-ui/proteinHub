@@ -52,6 +52,10 @@ const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) =>
   const buttonGlowStyle = {
     boxShadow: `0 0 15px 2px ${product.accentGlowColor}50`,
   };
+  
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
 
   return (
     <div className="font-sans relative flex flex-col w-full bg-[#1A1A1A] rounded-2xl overflow-hidden group border border-white/10 aspect-[3/4.5]">
@@ -99,7 +103,7 @@ const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) =>
         <div className="w-full flex flex-col items-center space-y-2">
           <StarRating rating={product.rating} />
           <Button
-            onClick={() => addToCart(product)}
+            onClick={handleAddToCart}
             className="w-full rounded-full font-bold uppercase tracking-wider transition-all duration-300 text-black text-xs h-9"
             style={{
               backgroundColor: product.accentGlowColor,
@@ -115,3 +119,5 @@ const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) =>
 };
 
 export default VerticalProductCard;
+
+    

@@ -41,23 +41,35 @@ const MobileProducts = () => {
 
       <div className="relative z-10 h-full flex flex-col">
         <div className="px-4">
-            {!selectedCategory ? (
-                <h2 className="text-center text-3xl font-bold tracking-[0.2em] uppercase py-6 text-white/90">
-                    Our Products
-                </h2>
-            ) : (
-                <div className="h-20 flex flex-col justify-center">
-                    <header className="flex items-center justify-between">
-                        <button onClick={handleBack} className="flex items-center gap-1 p-2 -ml-2 text-white/80 hover:text-white">
-                            <ChevronLeft size={24} />
-                            Back
-                        </button>
-                    </header>
-                    <h2 className="text-center text-2xl font-bold tracking-[0.2em] uppercase text-white/90">
-                        {selectedCategory.category}
-                    </h2>
-                </div>
-            )}
+            <AnimatePresence mode="wait">
+                {!selectedCategory ? (
+                    <motion.h2 
+                        key="our-products-title"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="text-center text-3xl font-bold tracking-[0.2em] uppercase py-6 text-white/90 h-20 flex items-center justify-center">
+                        Our Products
+                    </motion.h2>
+                ) : (
+                    <motion.div 
+                        key="category-header"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="h-20 flex flex-col justify-center">
+                        <header className="flex items-center justify-between">
+                            <button onClick={handleBack} className="flex items-center gap-1 p-2 -ml-2 text-white/80 hover:text-white">
+                                <ChevronLeft size={24} />
+                                Back
+                            </button>
+                        </header>
+                        <h2 className="text-center text-2xl font-bold tracking-[0.2em] uppercase text-white/90">
+                            {selectedCategory.category}
+                        </h2>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
 
         <div className="relative flex-grow">
@@ -123,3 +135,5 @@ const MobileProducts = () => {
 };
 
 export default MobileProducts;
+
+    
