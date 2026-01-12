@@ -177,34 +177,7 @@ export default function Home() {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
-      // For mobile, we just want to scroll, not do the fancy animation
-      if (window.innerWidth < 768) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-      
-      const targetPosition = targetElement.offsetTop;
-      const startPosition = window.pageYOffset;
-      const distance = targetPosition - startPosition;
-      const duration = 1000;
-      let startTime: number | null = null;
-
-      const animation = (currentTime: number) => {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = ease(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-      };
-
-      const ease = (t: number, b: number, c: number, d: number) => {
-        t /= d / 2;
-        if (t < 1) return c / 2 * t * t + b;
-        t--;
-        return -c / 2 * (t * (t - 2) - 1) + b;
-      };
-
-      requestAnimationFrame(animation);
+      targetElement.scrollIntoView({ behavior: 'smooth' });
     }
   };
   
@@ -218,17 +191,18 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-[#050505]" suppressHydrationWarning>
+    <div className="bg-background" suppressHydrationWarning>
       <Navbar
         navItems={navItems}
         onNavItemClick={handleScroll}
         suppressHydrationWarning
       />
       <main suppressHydrationWarning>
-        {/* Desktop View */}
-        <div id="home" className="hidden md:block">
-          <ProteinScroll />
+        <div id="home">
+            <ProteinScroll />
         </div>
+        
+        {/* Desktop View */}
         <div className="hidden md:block">
           <ProductsSection />
           <BestSellersSection />
@@ -239,9 +213,6 @@ export default function Home() {
         
         {/* Mobile View */}
         <div className="md:hidden">
-          <div id="home">
-            <ProteinScroll />
-          </div>
           <MobileProducts />
           <BestSellersSection />
           <GallerySection />
