@@ -73,11 +73,17 @@ const ProductsSection = () => {
               <h2 className="text-3xl sm:text-5xl md:text-6xl text-center mb-8 sm:mb-12 text-white/90 shrink-0">
                 {selectedCategory.category}
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 overflow-y-auto flex-grow w-full max-w-7xl mx-auto p-4">
-                {selectedCategory.products.map((product) => (
-                  <VerticalProductCard key={product.name} product={product} />
-                ))}
-              </div>
+              {selectedCategory.products.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 overflow-y-auto flex-grow w-full max-w-7xl mx-auto p-4">
+                  {selectedCategory.products.map((product) => (
+                    <VerticalProductCard key={product.name} product={product} />
+                  ))}
+                </div>
+              ) : (
+                <div className="flex-grow flex items-center justify-center">
+                  <p className="text-white/60 text-lg">No products available in this category yet.</p>
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}

@@ -40,7 +40,7 @@ const MobileProducts = () => {
       </div>
 
       <div className="relative z-10 h-full flex flex-col">
-        <div className="px-4">
+        <div className="px-4 h-20 flex flex-col justify-center">
             <AnimatePresence mode="wait">
                 {!selectedCategory ? (
                     <motion.h2 
@@ -48,7 +48,7 @@ const MobileProducts = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="text-center text-3xl font-bold tracking-[0.2em] uppercase py-6 text-white/90 h-20 flex items-center justify-center">
+                        className="text-center text-3xl font-bold tracking-[0.2em] uppercase text-white/90">
                         Our Products
                     </motion.h2>
                 ) : (
@@ -57,14 +57,14 @@ const MobileProducts = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="h-20 flex flex-col justify-center">
+                    >
                         <header className="flex items-center justify-between">
                             <button onClick={handleBack} className="flex items-center gap-1 p-2 -ml-2 text-white/80 hover:text-white">
                                 <ChevronLeft size={24} />
                                 Back
                             </button>
                         </header>
-                        <h2 className="text-center text-2xl font-bold tracking-[0.2em] uppercase text-white/90">
+                        <h2 className="text-center text-2xl font-bold tracking-[0.2em] uppercase text-white/90 -mt-8">
                             {selectedCategory.category}
                         </h2>
                     </motion.div>
@@ -75,6 +75,7 @@ const MobileProducts = () => {
         <div className="relative flex-grow">
           <AnimatePresence mode="wait">
             {selectedCategory ? (
+              selectedCategory.products.length > 0 ? (
                <motion.div
                 key="product_carousel"
                 initial={{ opacity: 0 }}
@@ -108,6 +109,17 @@ const MobileProducts = () => {
                   ))}
                 </div>
                </motion.div>
+              ) : (
+                <motion.div
+                  key="no_products"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex items-center justify-center h-full pt-4"
+                >
+                  <p className="text-white/60">No products available in this category yet.</p>
+                </motion.div>
+              )
             ) : (
               <motion.div 
                 key="category_list"
@@ -135,5 +147,3 @@ const MobileProducts = () => {
 };
 
 export default MobileProducts;
-
-    
