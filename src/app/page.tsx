@@ -3,11 +3,10 @@
 
 import Navbar from '@/components/Navbar';
 import ProteinScroll from '@/components/ProteinScroll';
-import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { products } from '@/lib/products';
+import { productsByCategory } from '@/lib/all-products';
 import { bestSellerProducts } from '@/lib/bestseller-products';
 import VerticalProductCard from '@/components/VerticalProductCard';
 
@@ -15,11 +14,16 @@ const ProductsSection = () => {
   return (
     <section id="products" className="py-20 sm:py-32">
       <div className="container mx-auto px-5">
-        <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Our Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-2xl mx-auto">
-          {products.map((product) => (
-            <div key={product.name} className="bg-[#111111] p-4 rounded-md text-center h-[56px] flex items-center justify-center">
-              <h3 className="text-sm sm:text-base uppercase tracking-wider text-white/90">{product.name}</h3>
+        <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-16 text-white/90">Our Products</h2>
+        <div className="space-y-24">
+          {productsByCategory.map((category) => (
+            <div key={category.category}>
+              <h3 className="text-2xl sm:text-4xl font-bold text-center mb-12 text-white/80">{category.category}</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                {category.products.map((product) => (
+                  <VerticalProductCard key={product.name} product={product} />
+                ))}
+              </div>
             </div>
           ))}
         </div>
