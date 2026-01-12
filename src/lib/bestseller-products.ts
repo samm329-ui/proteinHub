@@ -68,7 +68,7 @@ export const bestSellerProducts: BestSellerProduct[] = [
     ],
     rating: 4.9,
     image: {
-      src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/pre-workout-200-xtreme.png',
+      src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/preworkout%20xtreem%20200.png',
       hint: 'pre workout 200 xtreme',
     },
   },
