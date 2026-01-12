@@ -9,28 +9,96 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 import { productsByCategory } from '@/lib/all-products';
 import { bestSellerProducts } from '@/lib/bestseller-products';
 import VerticalProductCard from '@/components/VerticalProductCard';
+import React, { useState } from 'react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+} from '@/components/ui/drawer';
+import { useMediaQuery } from '@/hooks/use-media-query';
 
 const ProductsSection = () => {
-  return (
-    <section id="products" className="py-20 sm:py-32">
-      <div className="container mx-auto px-5">
-        <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-16 text-white/90">Our Products</h2>
-        <div className="space-y-24">
-          {productsByCategory.map((category) => (
-            <div key={category.category}>
-              <h3 className="text-2xl sm:text-4xl font-bold text-center mb-12 text-white/80">{category.category}</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                {category.products.map((product) => (
-                  <VerticalProductCard key={product.name} product={product} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+  const [selectedCategory, setSelectedCategory] = useState<(typeof productsByCategory)[0] | null>(null);
+  const isDesktop = useMediaQuery('(min-width: 768px)');
+  
+  const handleCategoryClick = (category: (typeof productsByCategory)[0]) => {
+    setSelectedCategory(category);
+  };
+
+  const handleClose = () => {
+    setSelectedCategory(null);
+  };
+
+  const renderContent = () => (
+    <>
+      <DialogHeader>
+        <DialogTitle className="text-3xl sm:text-5xl text-center mb-8 text-white/90">
+          {selectedCategory?.category}
+        </DialogTitle>
+      </DialogHeader>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-h-[80vh] overflow-y-auto p-4">
+        {selectedCategory?.products.map((product) => (
+          <VerticalProductCard key={product.name} product={product} />
+        ))}
       </div>
-    </section>
+    </>
+  );
+
+  return (
+    <>
+      <section id="products" className="py-20 sm:py-32">
+        <div className="container mx-auto px-5">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-16 text-white/90">Our Products</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {productsByCategory.map((category) => (
+              <div
+                key={category.category}
+                className="relative aspect-video flex items-center justify-center bg-card border border-white/10 rounded-2xl cursor-pointer group overflow-hidden"
+                onClick={() => handleCategoryClick(category)}
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
+                <h3 className="relative z-20 text-2xl font-bold uppercase text-white/90 transition-transform duration-300 group-hover:scale-105">
+                  {category.category}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {isDesktop ? (
+        <Dialog open={!!selectedCategory} onOpenChange={handleClose}>
+          <DialogContent className="max-w-6xl w-full bg-card border-border">
+            {renderContent()}
+          </DialogContent>
+        </Dialog>
+      ) : (
+        <Drawer open={!!selectedCategory} onClose={handleClose}>
+          <DrawerContent className="bg-card border-border">
+             <DrawerHeader className="text-left">
+                <DrawerTitle className="text-2xl font-bold text-center text-white/90">
+                    {selectedCategory?.category}
+                </DrawerTitle>
+            </DrawerHeader>
+            <div className="grid grid-cols-2 gap-4 p-4 max-h-[70vh] overflow-y-auto">
+                {selectedCategory?.products.map((product) => (
+                    <VerticalProductCard key={product.name} product={product} />
+                ))}
+            </div>
+          </DrawerContent>
+        </Drawer>
+      )}
+    </>
   );
 };
+
 
 const BestSellersSection = () => {
   return (
@@ -152,7 +220,7 @@ export default function Home() {
   const navItems = [
     { label: 'HOME', href: '#home' },
     { label: 'PRODUCTS', href: '#products' },
-    { label: 'BEST SELLERS', href: '#bestsellers'},
+    { label: 'BEST SELLERS', href: '#bestsellers' },
     { label: 'GALLERY', href: '#gallery' },
     { label: 'CONTACT', href: '#contact' },
     { label: 'ABOUT', href: '#about' },
