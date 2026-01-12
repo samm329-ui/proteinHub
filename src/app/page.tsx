@@ -5,29 +5,16 @@ import Navbar from '@/components/Navbar';
 import ProteinScroll from '@/components/ProteinScroll';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, X } from 'lucide-react';
 import { productsByCategory } from '@/lib/all-products';
 import { bestSellerProducts } from '@/lib/bestseller-products';
 import VerticalProductCard from '@/components/VerticalProductCard';
 import React, { useState } from 'react';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-} from '@/components/ui/drawer';
-import { useMediaQuery } from '@/hooks/use-media-query';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const ProductsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<(typeof productsByCategory)[0] | null>(null);
-  const isDesktop = useMediaQuery('(min-width: 768px)');
-  
+
   const handleCategoryClick = (category: (typeof productsByCategory)[0]) => {
     setSelectedCategory(category);
   };
@@ -35,21 +22,6 @@ const ProductsSection = () => {
   const handleClose = () => {
     setSelectedCategory(null);
   };
-
-  const renderContent = () => (
-    <>
-      <DialogHeader>
-        <DialogTitle className="text-3xl sm:text-5xl text-center mb-8 text-white/90">
-          {selectedCategory?.category}
-        </DialogTitle>
-      </DialogHeader>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-h-[80vh] overflow-y-auto p-4">
-        {selectedCategory?.products.map((product) => (
-          <VerticalProductCard key={product.name} product={product} />
-        ))}
-      </div>
-    </>
-  );
 
   return (
     <>
@@ -73,28 +45,39 @@ const ProductsSection = () => {
         </div>
       </section>
 
-      {isDesktop ? (
-        <Dialog open={!!selectedCategory} onOpenChange={handleClose}>
-          <DialogContent className="max-w-6xl w-full bg-card border-border">
-            {renderContent()}
-          </DialogContent>
-        </Dialog>
-      ) : (
-        <Drawer open={!!selectedCategory} onClose={handleClose}>
-          <DrawerContent className="bg-card border-border">
-             <DrawerHeader className="text-left">
-                <DrawerTitle className="text-2xl font-bold text-center text-white/90">
-                    {selectedCategory?.category}
-                </DrawerTitle>
-            </DrawerHeader>
-            <div className="grid grid-cols-2 gap-4 p-4 max-h-[70vh] overflow-y-auto">
-                {selectedCategory?.products.map((product) => (
-                    <VerticalProductCard key={product.name} product={product} />
+      <AnimatePresence>
+        {selectedCategory && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-lg flex flex-col items-center justify-center p-4 sm:p-8"
+          >
+            <button
+              onClick={handleClose}
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white/90 transition-colors z-10"
+            >
+              <X size={32} />
+            </button>
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
+              className="w-full h-full flex flex-col"
+            >
+              <h2 className="text-3xl sm:text-5xl md:text-6xl text-center mb-8 sm:mb-12 text-white/90 shrink-0">
+                {selectedCategory.category}
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 overflow-y-auto flex-grow w-full max-w-7xl mx-auto p-4">
+                {selectedCategory.products.map((product) => (
+                  <VerticalProductCard key={product.name} product={product} />
                 ))}
-            </div>
-          </DrawerContent>
-        </Drawer>
-      )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
