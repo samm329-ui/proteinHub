@@ -46,7 +46,7 @@ const StarRating = ({ rating, totalStars = 5 }: { rating: number, totalStars?: n
 const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
   const glowStyle = {
-    background: `radial-gradient(ellipse 40% 40% at 50% 40%, ${product.accentGlowColor}20, transparent 80%)`,
+    background: `radial-gradient(ellipse 50% 40% at 50% 40%, ${product.accentGlowColor}30, transparent 70%)`,
   };
 
   const buttonGlowStyle = {
