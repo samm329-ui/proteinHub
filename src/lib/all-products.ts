@@ -147,7 +147,7 @@ export const productsByCategory: ProductCategory[] = [
             features: ['8:1:1 BCAA ratio', 'Glutamine for recovery', 'Essential Amino Acids'],
             rating: 4.6,
             image: {
-              src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/bcaa%20pro.png',
+              src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/bcaa%20pro%20essential.png',
               hint: 'bcaa pro essential',
             },
           },
@@ -158,7 +158,7 @@ export const productsByCategory: ProductCategory[] = [
             features: ['Larger serving pack', 'Watermelon flavour', '8:1:1 Amino Acids'],
             rating: 4.7,
             image: {
-              src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/bcaa%20gold.png',
+              src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/bcaa%20gold%208;1;1.png',
               hint: 'bcaa gold',
             },
           },
