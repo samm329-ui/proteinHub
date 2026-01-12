@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 type NavItem = {
   label: string;
   href: string;
+  id: string;
 };
 
 interface NavbarProps {
@@ -30,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, onCartClick, 
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => document.getElementById(item.href.substring(1))).filter(Boolean);
+      const sections = navItems.map(item => document.getElementById(item.id)).filter(Boolean);
       const scrollPosition = window.scrollY + 100;
 
       let currentSection = 'home';
@@ -73,10 +74,10 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, onCartClick, 
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    onClick={(e) => onNavItemClick(e, item.href.substring(1))}
+                    onClick={(e) => onNavItemClick(e, item.id)}
                     className={cn(
                       'font-medium tracking-widest uppercase transition-colors duration-300 text-sm',
-                      activeSection === item.href.substring(1)
+                      activeSection === item.id
                         ? 'text-accent'
                         : 'text-white/75 hover:text-accent'
                     )}
@@ -122,10 +123,10 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, onCartClick, 
                         <li key={item.label}>
                         <a
                             href={item.href}
-                            onClick={(e) => handleMobileNavClick(e, item.href.substring(1))}
+                            onClick={(e) => handleMobileNavClick(e, item.id)}
                             className={cn(
                               'font-headline tracking-[0.2em] text-2xl uppercase transition-colors duration-300',
-                              activeSection === item.href.substring(1)
+                              activeSection === item.id
                                 ? 'text-accent'
                                 : 'text-white/85 hover:text-accent'
                             )}

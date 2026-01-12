@@ -34,24 +34,32 @@ const BottomNavbar: React.FC<BottomNavbarProps> = ({ navItems, onNavItemClick, o
     setIsMounted(true);
     
     const handleScroll = () => {
-      const allSections = [...navItems.map(item => item.id)];
+      const allSections = [...navItems.map(item => item.id), 'gallery', 'contact', 'about'];
       const sections = allSections.map(id => document.getElementById(id)).filter(Boolean);
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       let currentSection = 'home';
       for (const section of sections) {
         if (section && section.offsetTop <= scrollPosition && section.offsetTop + section.offsetHeight > scrollPosition) {
-          currentSection = section.id;
+          // find the nav item that corresponds to this section
+          const navItem = navItems.find(item => item.id === section.id);
+          currentSection = navItem ? navItem.id : activeSection;
           break;
         }
       }
+      // If no section is found, it might be because we're at the very top or bottom.
+      // Default to home if at top.
+      if (window.scrollY < 100) {
+        currentSection = 'home';
+      }
+      
       setActiveSection(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [navItems]);
+  }, [navItems, activeSection]);
 
   const cartItemCount = isMounted ? cart.reduce((total, item) => total + item.quantity, 0) : 0;
   
