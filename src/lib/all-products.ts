@@ -39,7 +39,7 @@ export const productsByCategory: ProductCategory[] = [
         features: ['80% concentrate', 'Easy-digest whey source', 'Unflavoured'],
         rating: 4.5,
         image: {
-          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/raw%20whey.png',
+          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/raw%20whey%2080.png',
           hint: 'raw whey protein',
         },
       },
@@ -66,7 +66,7 @@ export const productsByCategory: ProductCategory[] = [
         features: ['Mass gainer variant', 'Creatine added for strength', 'For serious bulking'],
         rating: 4.4,
         image: {
-          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/bulk%20gainer.png',
+          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/bulk%20gainer%20creatin.png',
           hint: 'bulk gainer creatine',
         },
       },
@@ -82,7 +82,7 @@ export const productsByCategory: ProductCategory[] = [
         features: ['Caffeine, creatine blend', 'For energy & focus', 'Intense performance'],
         rating: 4.8,
         image: {
-          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/wrathx.png',
+          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/preworkout%20wrathx.png',
           hint: 'pre workout wrathx',
         },
       },
@@ -109,7 +109,7 @@ export const productsByCategory: ProductCategory[] = [
         features: ['Boosts strength/energy', 'Standard creatine', 'CreAMP technology'],
         rating: 4.9,
         image: {
-          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/creamp.png',
+          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/creatin%20monohydrate%20creAMP.png',
           hint: 'creatine creamp',
         },
       },
@@ -120,7 +120,7 @@ export const productsByCategory: ProductCategory[] = [
         features: ['Finer micronised form', 'Better mixability', 'Unflavoured'],
         rating: 4.7,
         image: {
-          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/micronised%20creatine.png',
+          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/micronized%20creatin.png',
           hint: 'micronised creatine',
         },
       },
@@ -131,7 +131,7 @@ export const productsByCategory: ProductCategory[] = [
         features: ['Premium creatine variant', 'Featuring Creapure®', 'Purity guaranteed'],
         rating: 4.9,
         image: {
-          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/creapro.png',
+          src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/creapro%20creatin.png',
           hint: 'creapro creapure',
         },
       },
