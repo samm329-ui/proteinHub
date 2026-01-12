@@ -41,39 +41,40 @@ const MobileProducts = () => {
       </div>
 
       <div className="relative z-10 h-full flex flex-col">
-        <div className="relative h-20">
-            <AnimatePresence initial={false}>
-            <motion.div
-                key={selectedCategory ? 'products' : 'categories'}
-                initial={{ opacity: 0, x: selectedCategory ? 300 : -300 }}
+        <div className="relative h-20 px-4">
+          <AnimatePresence mode="wait">
+            {selectedCategory ? (
+              <motion.div
+                key="products-header"
+                initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: selectedCategory ? -300 : 300 }}
+                exit={{ opacity: 0, x: -100 }}
                 transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-                className="absolute top-0 left-0 right-0"
-            >
-                {selectedCategory ? (
-                // Product view
-                <div className="px-4">
-                    <header className="flex items-center justify-between py-3">
-                    <button onClick={handleBack} className="flex items-center gap-1 p-2 -ml-2 text-white/80 hover:text-white">
-                        <ChevronLeft size={24} />
-                        Back
-                    </button>
-                    </header>
-                    <h2 className="text-center text-3xl font-bold tracking-[0.2em] uppercase my-2 text-white/90">
-                    {selectedCategory.category}
-                    </h2>
-                </div>
-                ) : (
-                // Category list view
-                <div className="px-4">
-                    <h2 className="text-center text-3xl font-bold tracking-[0.2em] uppercase py-6 text-white/90">
-                    Our Products
-                    </h2>
-                </div>
-                )}
-            </motion.div>
-            </AnimatePresence>
+                className="absolute inset-0"
+              >
+                <header className="flex items-center justify-between py-3">
+                  <button onClick={handleBack} className="flex items-center gap-1 p-2 -ml-2 text-white/80 hover:text-white">
+                    <ChevronLeft size={24} />
+                    Back
+                  </button>
+                </header>
+                <h2 className="text-center text-3xl font-bold tracking-[0.2em] uppercase my-2 text-white/90">
+                  {selectedCategory.category}
+                </h2>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="categories-header"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <h2 className="text-center text-3xl font-bold tracking-[0.2em] uppercase py-6 text-white/90">
+                  Our Products
+                </h2>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         <div className="relative flex-grow">
