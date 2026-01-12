@@ -5,13 +5,13 @@ import Navbar from '@/components/Navbar';
 import ProteinScroll from '@/components/ProteinScroll';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
-import { Phone, Mail, MapPin, X } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import { productsByCategory } from '@/lib/all-products';
 import { bestSellerProducts } from '@/lib/bestseller-products';
 import VerticalProductCard from '@/components/VerticalProductCard';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import CreatineSection from '@/components/CreatineSection';
+import MobileProducts from '@/components/MobileProducts';
 
 
 const ProductsSection = () => {
@@ -60,7 +60,7 @@ const ProductsSection = () => {
               onClick={handleClose}
               className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white/90 transition-colors z-10"
             >
-              <X size={32} />
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
             <motion.div 
               initial={{ y: 20, opacity: 0 }}
@@ -177,6 +177,12 @@ export default function Home() {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
+      // For mobile, we just want to scroll, not do the fancy animation
+      if (window.innerWidth < 768) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+      
       const targetPosition = targetElement.offsetTop;
       const startPosition = window.pageYOffset;
       const distance = targetPosition - startPosition;
@@ -220,8 +226,10 @@ export default function Home() {
       />
       <main suppressHydrationWarning>
         {/* Desktop View */}
-        <div className="hidden md:block">
+        <div id="home" className="hidden md:block">
           <ProteinScroll />
+        </div>
+        <div className="hidden md:block">
           <ProductsSection />
           <BestSellersSection />
           <GallerySection />
@@ -231,7 +239,12 @@ export default function Home() {
         
         {/* Mobile View */}
         <div className="md:hidden">
-          <CreatineSection />
+          <div id="home" className="h-screen bg-black" />
+          <MobileProducts />
+          <BestSellersSection />
+          <GallerySection />
+          <ContactSection />
+          <AboutUsSection />
         </div>
       </main>
       <Footer />

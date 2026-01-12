@@ -1,7 +1,7 @@
 
 import { BestSellerProduct } from './bestseller-products';
 
-type ProductCategory = {
+export type ProductCategory = {
   category: string;
   products: BestSellerProduct[];
 };
@@ -164,4 +164,12 @@ export const productsByCategory: ProductCategory[] = [
           },
     ],
   },
+  {
+      category: 'Multivitamins',
+      products: []
+  },
+  {
+      category: 'Fat Burners',
+      products: []
+  }
 ];

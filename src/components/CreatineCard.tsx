@@ -36,7 +36,6 @@ const CreatineCard: React.FC<CreatineCardProps> = ({ product }) => {
 
   const cardStyle = {
     '--accent-color': product.accentGlowColor,
-    '--accent-color-rgb': product.accentGlowColor.replace('#', ''),
   } as React.CSSProperties;
 
   return (
