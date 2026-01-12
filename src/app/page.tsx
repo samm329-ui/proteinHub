@@ -29,7 +29,7 @@ const ProductsSection = () => {
 
   return (
     <>
-      <section id="products" className="hidden py-20 sm:py-32 md:block">
+      <section className="hidden py-20 sm:py-32 md:block">
         <div className="container mx-auto px-5">
           <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-16 text-white/90">Our Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -89,7 +89,7 @@ const ProductsSection = () => {
 
 const BestSellersSection = () => {
   return (
-    <section id="bestsellers" className="hidden py-20 sm:py-32 md:block">
+    <section className="hidden py-20 sm:py-32 md:block">
       <div className="container mx-auto px-5">
         <h2 className="text-3xl sm:text-5xl md:text-7xl text-center mb-12 sm:mb-16 text-white/90">Best Sellers</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -211,16 +211,29 @@ export default function Home() {
         <div id="home">
             <ProteinScroll />
         </div>
-        {/* Desktop View */}
-        <div className="hidden md:block">
-            <ProductsSection />
-            <BestSellersSection />
-        </div>
         
-        {/* Mobile View */}
-        <div className="md:hidden">
-          <MobileProducts />
-          <MobileBestSellers />
+        <div id="products">
+          {/* Desktop View */}
+          <div className="hidden md:block">
+              <ProductsSection />
+          </div>
+          
+          {/* Mobile View */}
+          <div className="md:hidden">
+            <MobileProducts />
+          </div>
+        </div>
+
+        <div id="bestsellers">
+          {/* Desktop View */}
+          <div className="hidden md:block">
+              <BestSellersSection />
+          </div>
+
+          {/* Mobile View */}
+          <div className="md:hidden">
+            <MobileBestSellers />
+          </div>
         </div>
 
         <GallerySection />
@@ -240,5 +253,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
