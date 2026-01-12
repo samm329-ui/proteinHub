@@ -3,6 +3,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { BestSellerProduct } from '@/lib/bestseller-products';
+import { useToast } from '@/hooks/use-toast';
 
 export type CartItem = BestSellerProduct & { quantity: number };
 
@@ -18,6 +19,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const { toast } = useToast();
 
   const addToCart = (product: BestSellerProduct) => {
     setCart((prevCart) => {
@@ -29,6 +31,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       }
       return [...prevCart, { ...product, quantity: 1 }];
     });
+    toast({
+        title: "Added to cart",
+        description: `${product.name} has been added to your cart.`,
+    })
   };
 
   const removeFromCart = (productName: string) => {
