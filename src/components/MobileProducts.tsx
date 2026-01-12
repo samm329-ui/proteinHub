@@ -34,7 +34,7 @@ const MobileProducts = () => {
     setSelectedCategory(null);
   };
   
-  const FAKE_HEADER_HEIGHT = 56; // Approx height for header + title
+  const FAKE_HEADER_HEIGHT = 120; // Approx height for header + title
 
   return (
     <div id="products" className="bg-black min-h-screen text-white font-sans overflow-hidden">
@@ -124,7 +124,7 @@ const MobileProducts = () => {
                     ref={scrollRef}
                     onScroll={handleScroll}
                     className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 gap-4"
-                    style={{ scrollbarWidth: 'none', paddingLeft: 'calc(50% - 140px)', paddingRight: 'calc(50% - 140px)', marginTop: "80px" }}
+                    style={{ scrollbarWidth: 'none', paddingLeft: 'calc(50% - 140px)', paddingRight: 'calc(50% - 140px)' }}
                 >
                   {selectedCategory.products.map((product, index) => (
                     <div key={index} className="w-[280px] h-[480px] flex-shrink-0 snap-center">
@@ -151,7 +151,7 @@ const MobileProducts = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="px-4 space-y-4 pt-24"
+                className="px-4 space-y-4 pt-4"
               >
                 {productsByCategory.map((category) => (
                   <button
