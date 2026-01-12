@@ -1,7 +1,5 @@
-import type {NextConfig} from 'next';
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -33,14 +31,12 @@ const nextConfig: NextConfig = {
         hostname: 'xizgjjkyqpzyuwxcgcuk.supabase.co',
         port: '',
         pathname: '/**',
-      }
+      },
     ],
   },
   devIndicators: {
     buildActivity: false,
   },
-  // Adding this to allow cross-origin requests in development
-  // This is necessary for the Firebase Studio environment
   ...(process.env.NODE_ENV === 'development' && {
     experimental: {
       allowedDevOrigins: [
@@ -50,4 +46,4 @@ const nextConfig: NextConfig = {
   }),
 };
 
-export default nextConfig;
+module.exports = nextConfig;
