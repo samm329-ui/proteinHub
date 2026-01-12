@@ -33,7 +33,7 @@ const MobileProducts = () => {
   };
   
   return (
-    <section id="products" className="bg-background min-h-[calc(100vh-4rem)] text-white font-sans overflow-hidden py-16">
+    <section id="products" className="bg-background text-white font-sans overflow-hidden py-16">
       
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-cyan-500/20 rounded-full filter blur-[150px] opacity-50" />
