@@ -80,13 +80,13 @@ const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) =>
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-grow p-5 text-center items-center justify-between">
+      <div className="flex flex-col flex-grow px-5 py-4 text-center items-center justify-between">
         {/* Top Text */}
         <div className="w-full">
-          <h3 className="text-base font-bold uppercase text-white/90 leading-tight">
+          <h3 className="text-sm font-bold uppercase text-white/90 leading-tight">
             {product.name}
           </h3>
-          <ul className="mt-3 space-y-1 text-xs text-white/50 list-inside">
+          <ul className="mt-2 space-y-0.5 text-[10px] text-white/50 list-inside">
             {product.features.map((feature, i) => (
               <li key={i}>{feature}</li>
             ))}
@@ -94,10 +94,10 @@ const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) =>
         </div>
         
         {/* Bottom Actions */}
-        <div className="w-full flex flex-col items-center space-y-4">
+        <div className="w-full flex flex-col items-center space-y-3">
           <StarRating rating={product.rating} />
           <Button
-            className="w-full rounded-full font-bold uppercase tracking-wider transition-all duration-300 text-black"
+            className="w-full rounded-full font-bold uppercase tracking-wider transition-all duration-300 text-black text-xs h-9"
             style={{
               backgroundColor: product.accentGlowColor,
               ...buttonGlowStyle,
