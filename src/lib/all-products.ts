@@ -158,7 +158,7 @@ export const productsByCategory: ProductCategory[] = [
             features: ['Larger serving pack', 'Watermelon flavour', '8:1:1 Amino Acids'],
             rating: 4.7,
             image: {
-              src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/product/bcaa-gold.png',
+              src: 'https://xizgjjkyqpzyuwxcgcuk.supabase.co/storage/v1/object/public/asset/processed-image%20(8).png',
               hint: 'bcaa gold',
             },
           },
