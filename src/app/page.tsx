@@ -12,6 +12,7 @@ import VerticalProductCard from '@/components/VerticalProductCard';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import MobileProducts from '@/components/MobileProducts';
+import MobileBestSellers from '@/components/MobileBestSellers';
 
 
 const ProductsSection = () => {
@@ -198,23 +199,25 @@ export default function Home() {
         suppressHydrationWarning
       />
       <main suppressHydrationWarning>
-        <div id="home">
-            <ProteinScroll />
-        </div>
-        
         {/* Desktop View */}
         <div className="hidden md:block">
-          <ProductsSection />
-          <BestSellersSection />
-          <GallerySection />
-          <ContactSection />
-          <AboutUsSection />
+            <div id="home">
+                <ProteinScroll />
+            </div>
+            <ProductsSection />
+            <BestSellersSection />
+            <GallerySection />
+            <ContactSection />
+            <AboutUsSection />
         </div>
         
         {/* Mobile View */}
         <div className="md:hidden">
+          <div id="home">
+              <ProteinScroll />
+          </div>
           <MobileProducts />
-          <BestSellersSection />
+          <MobileBestSellers />
           <GallerySection />
           <ContactSection />
           <AboutUsSection />
