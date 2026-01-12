@@ -62,56 +62,59 @@ const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) =>
       {/* Background Glow */}
       <div className="absolute inset-0 z-0" style={glowStyle} />
 
-      {/* Price Badge */}
-      <div className="absolute top-4 right-4 z-20">
-        <div
-          className="px-3 py-1 rounded-full text-xs font-bold text-black"
-          style={{ backgroundColor: product.accentGlowColor, boxShadow: `0 0 10px ${product.accentGlowColor}` }}
-        >
-          ₹{product.price}
-        </div>
-      </div>
-
-      {/* Product Image */}
-      <div className="relative flex-shrink-0 h-2/5 w-full flex items-center justify-center mt-4">
-        <div className="relative w-4/5 h-full drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)] transform transition-transform duration-500 group-hover:scale-105">
-          <Image
-            src={product.image.src}
-            alt={product.name}
-            fill
-            className="object-contain"
-            unoptimized
-          />
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col flex-grow px-5 py-2 text-center items-center justify-between">
-        {/* Top Text */}
-        <div className="w-full">
-          <h3 className="text-sm font-bold uppercase text-white/90 leading-tight">
-            {product.name}
-          </h3>
-          <ul className="mt-2 space-y-0.5 text-[10px] text-white/50 list-inside">
-            {product.features.map((feature, i) => (
-              <li key={i}>{feature}</li>
-            ))}
-          </ul>
-        </div>
-        
-        {/* Bottom Actions */}
-        <div className="w-full flex flex-col items-center space-y-2">
-          <StarRating rating={product.rating} />
-          <Button
-            onClick={handleAddToCart}
-            className="w-full rounded-full font-bold uppercase tracking-wider transition-all duration-300 text-black text-xs h-9"
-            style={{
-              backgroundColor: product.accentGlowColor,
-              ...buttonGlowStyle,
-            }}
+      {/* All content is now in a z-10 container to ensure it's on top of the glow */}
+      <div className="relative z-10 flex flex-col flex-grow">
+        {/* Price Badge */}
+        <div className="absolute top-4 right-4 z-20">
+          <div
+            className="px-3 py-1 rounded-full text-xs font-bold text-black"
+            style={{ backgroundColor: product.accentGlowColor, boxShadow: `0 0 10px ${product.accentGlowColor}` }}
           >
-            Add to Cart
-          </Button>
+            ₹{product.price}
+          </div>
+        </div>
+
+        {/* Product Image */}
+        <div className="relative flex-shrink-0 h-2/5 w-full flex items-center justify-center mt-4">
+          <div className="relative w-4/5 h-full drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)] transform transition-transform duration-500 group-hover:scale-105">
+            <Image
+              src={product.image.src}
+              alt={product.name}
+              fill
+              className="object-contain"
+              unoptimized
+            />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col flex-grow px-5 py-2 text-center items-center justify-between">
+          {/* Top Text */}
+          <div className="w-full">
+            <h3 className="text-sm font-bold uppercase text-white/90 leading-tight">
+              {product.name}
+            </h3>
+            <ul className="mt-2 space-y-0.5 text-[10px] text-white/50 list-inside">
+              {product.features.map((feature, i) => (
+                <li key={i}>{feature}</li>
+              ))}
+            </ul>
+          </div>
+          
+          {/* Bottom Actions */}
+          <div className="w-full flex flex-col items-center space-y-2">
+            <StarRating rating={product.rating} />
+            <Button
+              onClick={handleAddToCart}
+              className="w-full rounded-full font-bold uppercase tracking-wider transition-all duration-300 text-black text-xs h-9"
+              style={{
+                backgroundColor: product.accentGlowColor,
+                ...buttonGlowStyle,
+              }}
+            >
+              Add to Cart
+            </Button>
+          </div>
         </div>
       </div>
     </div>
@@ -119,5 +122,3 @@ const VerticalProductCard: React.FC<VerticalProductCardProps> = ({ product }) =>
 };
 
 export default VerticalProductCard;
-
-    
