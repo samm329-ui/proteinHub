@@ -212,13 +212,14 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-[#050505] md:hidden" suppressHydrationWarning>
+    <div className="bg-[#050505]" suppressHydrationWarning>
       <Navbar
         navItems={navItems}
         onNavItemClick={handleScroll}
         suppressHydrationWarning
       />
       <main suppressHydrationWarning>
+        {/* Desktop View */}
         <div className="hidden md:block">
           <ProteinScroll />
           <ProductsSection />
@@ -227,6 +228,8 @@ export default function Home() {
           <ContactSection />
           <AboutUsSection />
         </div>
+        
+        {/* Mobile View */}
         <div className="md:hidden">
           <CreatineSection />
         </div>
