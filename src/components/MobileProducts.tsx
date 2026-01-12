@@ -34,47 +34,30 @@ const MobileProducts = () => {
   
   return (
     <section id="products" className="bg-background text-white font-sans overflow-hidden py-16">
-      
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-cyan-500/20 rounded-full filter blur-[150px] opacity-50" />
         <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-purple-500/20 rounded-full filter blur-[150px] opacity-50" />
       </div>
 
       <div className="relative z-10 h-full flex flex-col">
-        <div className="relative h-20 px-4">
-          <AnimatePresence mode="wait">
-            {selectedCategory ? (
-              <motion.div
-                key="products-header"
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-                className="absolute inset-0"
-              >
-                <header className="flex items-center justify-between py-3">
-                  <button onClick={handleBack} className="flex items-center gap-1 p-2 -ml-2 text-white/80 hover:text-white">
-                    <ChevronLeft size={24} />
-                    Back
-                  </button>
-                </header>
-                <h2 className="text-center text-3xl font-bold tracking-[0.2em] uppercase my-2 text-white/90">
-                  {selectedCategory.category}
-                </h2>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="categories-header"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
+        <div className="px-4">
+            {!selectedCategory ? (
                 <h2 className="text-center text-3xl font-bold tracking-[0.2em] uppercase py-6 text-white/90">
-                  Our Products
+                    Our Products
                 </h2>
-              </motion.div>
+            ) : (
+                <div className="h-20 flex flex-col justify-center">
+                    <header className="flex items-center justify-between">
+                        <button onClick={handleBack} className="flex items-center gap-1 p-2 -ml-2 text-white/80 hover:text-white">
+                            <ChevronLeft size={24} />
+                            Back
+                        </button>
+                    </header>
+                    <h2 className="text-center text-2xl font-bold tracking-[0.2em] uppercase text-white/90">
+                        {selectedCategory.category}
+                    </h2>
+                </div>
             )}
-          </AnimatePresence>
         </div>
 
         <div className="relative flex-grow">
@@ -86,7 +69,7 @@ const MobileProducts = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: 0.1, duration: 0.4 }}
-                className="h-full flex flex-col justify-center"
+                className="h-full flex flex-col justify-center pt-4"
                >
                  <div 
                     ref={scrollRef}
