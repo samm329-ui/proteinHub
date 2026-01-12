@@ -239,7 +239,9 @@ export default function Home() {
         
         {/* Mobile View */}
         <div className="md:hidden">
-          <div id="home" className="h-screen bg-black" />
+          <div id="home">
+            <ProteinScroll />
+          </div>
           <MobileProducts />
           <BestSellersSection />
           <GallerySection />
