@@ -105,7 +105,7 @@ export const productsByCategory: ProductCategory[] = [
       {
         name: 'Creatine Monohydrate CreAMP',
         price: 950,
-        accentGlowColor: '#00C4FF',
+        accentGlowColor: '#2ECC71',
         features: ['Boosts strength/energy', 'Standard creatine', 'CreAMP technology'],
         rating: 4.9,
         image: {
