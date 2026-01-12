@@ -31,7 +31,8 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, onCartClick, 
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => document.getElementById(item.id)).filter(Boolean);
+      const allSections = [...navItems.map(item => item.id), 'gallery', 'contact', 'about'];
+      const sections = allSections.map(id => document.getElementById(id)).filter(Boolean);
       const scrollPosition = window.scrollY + 100;
 
       let currentSection = 'home';
@@ -107,7 +108,10 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, onCartClick, 
       </header>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 z-[100] bg-black transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+      <div className={cn(
+        "fixed inset-0 z-[100] bg-black transition-transform duration-300 ease-in-out md:hidden",
+        isMenuOpen ? 'translate-y-0' : '-translate-y-full'
+      )}>
         <div className="container mx-auto flex flex-col h-full px-5 py-4">
             <div className="flex justify-between items-center mb-16">
                  <div className="text-xl font-bold font-headline uppercase tracking-widest text-white/75">
