@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => document.getElementById(item.href.substring(1)));
+      const sections = navItems.map(item => document.getElementById(item.href.substring(1))).filter(Boolean);
       const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -37,6 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Set initial active section
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -52,9 +53,9 @@ const Navbar: React.FC<NavbarProps> = ({ navItems, onNavItemClick, suppressHydra
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 h-16 md:h-16 flex items-center" suppressHydrationWarning={suppressHydrationWarning}>
         <div className="container mx-auto flex justify-between items-center px-5">
           <div className="flex-1 flex justify-start">
-            <div className="text-xl font-bold font-headline uppercase tracking-widest text-white/75">
+            <a href="#home" onClick={(e) => onNavItemClick(e, 'home')} className="text-xl font-bold font-headline uppercase tracking-widest text-white/75">
               ProteinZone
-            </div>
+            </a>
           </div>
           <nav className="hidden md:flex flex-auto justify-center">
             <ul className="flex items-center space-x-8">
